@@ -9,19 +9,19 @@
 </head>
 
 <body>
-    <div class="grid-container">
-        <nav class="navbar">
-            <div class="navbar_logo">
+    <!--<div class="grid-container">-->
+        <nav class="nav_bar">
+            <!--<div class="navbar_logo">
                 <a href="mainpage.php">GameScout</a>
-            </div>
-            <div class="navbar_menu">
-                <ul>
-                    <li class="nav_link"><a href="signup.php">Signup</a></li>
-                    <li class="nav_link"><a href="wishlist.php">Wishlist</a></li>
-                </ul>
-            </div>
-
+            </div>-->
+            <ul>
+                <li class="nav_link"><a href="signup.php">Signup</a></li>
+                <li class="nav_link"><a href="wishlist.php">Wishlist</a></li>
+            </ul>
         </nav>
+        <div>
+
+        <!--</div>-->
     </div>
 </body>
 

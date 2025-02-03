@@ -9,19 +9,19 @@
 </head>
 
 <body>
-    <!--<div class="grid-container">-->
+    <div class="grid-container">
         <nav class="nav_bar">
-            <!--<div class="navbar_logo">
-                <a href="mainpage.php">GameScout</a>
-            </div>-->
             <ul>
-                <li class="nav_link"><a href="signup.php">Signup</a></li>
+                <li><a href="mainpage.php" class-nav_link>GameScout</a></li>
+                <li class="nav_link"> <a href="signup.php">
+                        <img src="../images/person.png" alt="Clickable Image">
+                </a></li>
                 <li class="nav_link"><a href="wishlist.php">Wishlist</a></li>
             </ul>
         </nav>
         <div>
 
-        <!--</div>-->
+        </div>
     </div>
 </body>
 

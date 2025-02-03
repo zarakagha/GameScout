@@ -9,19 +9,18 @@
 </head>
 
 <body>
-    <div class="grid-container">
-        <nav class="nav_bar">
+    <nav class="nav_bar">
+        <div class="nav_div">
+            <div class="logo"><a href="#">
+                <img src="../images/GameScout-logo.png" alt=""> </a></div>
             <ul>
-                <li><a href="mainpage.php" class-nav_link>GameScout</a></li>
-                <li class="nav_link"> <a href="signup.php">
-                        <img src="../images/person.png" alt="Clickable Image">
-                </a></li>
-                <li class="nav_link"><a href="wishlist.php">Wishlist</a></li>
+                <li><a href="signup.php"><img src="../images/person.png" alt=""></a></li>
+                <li><a href=""><img src="../images/shopping-cart.png" alt=""></a></li>
             </ul>
-        </nav>
-        <div>
-
         </div>
+    </nav>
+    <div>
+
     </div>
 </body>
 

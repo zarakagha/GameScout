@@ -15,7 +15,7 @@
                 <img src="../images/GameScout-logo.png" alt=""> </a></div>
             <ul>
                 <li><a href="signup.php"><img src="../images/person.png" alt=""></a></li>
-                <li><a href=""><img src="../images/shopping-cart.png" alt=""></a></li>
+                <li><a href=""><img src="../images/heart.png" alt=""></a></li>
             </ul>
         </div>
     </nav>

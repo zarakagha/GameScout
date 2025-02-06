@@ -13,6 +13,7 @@
         <div class="nav_div">
             <div class="logo"><a href="#">
                 <img src="../images/GameScout-logo.png" alt=""> </a></div>
+                <input type="text" placeholder="Search">
             <ul>
                 <li><a href="signup.php"><img src="../images/person.png" alt=""></a></li>
                 <li><a href=""><img src="../images/heart.png" alt=""></a></li>

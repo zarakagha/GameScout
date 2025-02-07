@@ -1,0 +1,45 @@
+/*MAINPAGE.PHP*/
+* {
+  text-decoration: none;
+}
+
+body {
+  margin: 10px;
+  background-color: white;
+}
+
+/*Navigation Bar*/
+.nav_bar {
+  font-family: Arial, sans-serif;
+  padding-right: 20px;
+  padding-left: 20px;
+  background: black;
+}
+/*Navigation Bar Buttons*/
+.logo img {
+  color: white;
+  height: 90px;
+}
+.nav_bar {
+  height: 95px;
+}
+.nav_div ul {
+  padding-right: 10px;
+}
+.nav_div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav_div li {
+  list-style: none;
+  display: inline-block;
+}
+.nav_div li a img {
+  width: 37px;
+  height: 44px;
+}
+.nav_div li a img:hover {
+  transform: scale(1.2);
+  transition: 0.35s;
+}

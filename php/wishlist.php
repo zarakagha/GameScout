@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<!-- START of top navigation bar, includes profile, wishlist, search, and logo -->
     <nav class="nav_bar">
         <div class="nav_div">
             <div class="logo">
@@ -18,10 +19,16 @@
             </ul>
         </div>
     </nav>
+<!-- END of navigation Bar code -->
+
+<!-- START of Wishlist code -->
+    <!-- image and users wishlist title -->
     <div>
         <img src="../images/BlankAvatar.png" alt="Avatar" width="200"> 
         <span style="font-size: 30px;color:black;">Undefined's Wishlist</span>
     </div>
+
+    <!-- options to search and filter wishlist -->
     <div>
         <span style="font-size: 16px;color:black">Filter </span>
         <select size="1">
@@ -30,5 +37,7 @@
         </select>
         <input type="text" placeholder="Search Wishlist">
     </div>
+
+<!-- END of Wishlist code -->
 
 </body>

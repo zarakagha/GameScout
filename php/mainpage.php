@@ -9,7 +9,6 @@
 </head>
 
 <body>
-    <div class="banner-wrap">
         <nav class="nav_bar">
             <div class="nav_div">
                 <div class="logo"><a href="#">
@@ -21,6 +20,8 @@
                 </ul>
             </div>
         </nav>
+    <div class="banner-wrap">
+        
     </div>
 </body>
 

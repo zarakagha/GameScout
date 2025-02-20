@@ -6,7 +6,7 @@
 body {
   margin: 0px;
   background-color: white;
-  height: 1000vh;
+  height: 100%;
 }
 .banner-wrap {
   width: 100%;
@@ -53,12 +53,44 @@ body {
   transform: scale(1.2);
   transition: 0.35s;
 }
+/*Content*/
+.content {
+  width: 100%;
+  height: 60vh;
+  background: rgb(70, 45, 160);
+  color: black;
+}
+/*Footer*/
+.footer {
+  width: 100%;
+  height: 150px;
+  background: black;
+  color: rgb(212, 0, 255);
+  display: flex;
+  font-family: "Poppins", sans-serif;
+}
+.footer div {
+  text-align: center;
+}
+.footer div h3 {
+  font-weight: 300;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+.footer div a {
+  display: block;
+}
+.footerColumn1 {
+  width: 50%;
+}
+.footerColumn2 {
+  width: 50%;
+}
 
 .admin_options {
   display: flex;
   flex-direction: row;
 }
-
 .admin_options a button {
   background-color: #818282;
   border: none;

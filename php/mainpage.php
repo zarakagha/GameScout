@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameScout</title>
-    <link rel="stylesheet" href="../css/style.css"/> 
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" /> 
+    <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
 </head>
 
 <body>
@@ -13,7 +15,10 @@
             <div class="nav_div">
                 <div class="logo"><a href="#">
                     <img src="../images/GameScout-logo.png" alt=""> </a></div>
-                    <input type="text" placeholder="Search">
+                    <div class="search">
+                        <span class="material-symbols-outlined">search</span>
+                        <input class="input-search" type="search" placeholder="Search for Games">
+                    </div>
                 <ul>
                     <li><a href="signup.php"><img src="../images/person.png" alt=""></a></li>
                     <li><a href=""><img src="../images/heart.png" alt=""></a></li>
@@ -21,9 +26,19 @@
             </div>
         </nav>
     <div class="banner-wrap">
+        <div class="banner-slideshow">
+            <div class="background-Img" style="background-image: url(../images/MainPage-wallpapers/wukong.jpeg)"></div>
+            <div class="background-img" style="background-image: url(../images/MainPage-wallpapers/EldenRing.webp)"></div>
+            <div class="background-img" style="background-image: url(../images/MainPage-wallpapers/LastofUs-II.jpg)"></div>
+            <div class="background-img" style="background-image: url(../images/MainPage-wallpapers/ResidentEvil4.jpeg)"></div>
+        </div>
     </div>
-    <div class="content">
-        
+    <div class="content-wrap">
+        <div class="content-row">
+            <div class="mainpage-titles">
+                <h1>On Sale</h1>
+            </div>
+        </div>
     </div>
     <div class="footer">
         <div class="footerColumn1">

@@ -15,7 +15,7 @@ body {
   font-family: Arial, sans-serif;
   padding-right: var(--padding1);
   padding-left: var(--padding1);
-  background: rgb(184, 158, 11);
+  background: black;
 }
 /*Search Bar*/
 .search {
@@ -121,13 +121,14 @@ body {
 .content {
   width: 100%;
   height: 60vh;
-  background: rgb(70, 45, 160);
+  background: rgb(255, 255, 255);
   color: black;
 }
 /*Footer*/
 .footer {
   width: 100%;
-  height: 150px;
+  height: 300px;
+  padding-top: 20px;
   background: black;
   color: rgb(212, 0, 255);
   display: flex;
@@ -143,13 +144,19 @@ body {
 }
 .footer div a {
   display: block;
+  padding-bottom: 20px;
+  color: white;
 }
 .footerColumn1 {
-  --halfWidth: 50%;
-  width: var(--halfWidth);
+  width: 50%;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
 }
 .footerColumn2 {
-  width: var(--halfWidth);
+  color: white;
+  width: 50%;
+  font-size: 20px;
 }
 
 .admin_options {

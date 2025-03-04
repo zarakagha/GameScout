@@ -22,17 +22,15 @@ if isFound:
     cheapsharkGameIDResponse = requests.get(cheapsharkRequestString)
     cheapsharkGameIDResponseJSON = cheapsharkGameIDResponse.json()
     cheapsharkGameIDString = json.dumps(cheapsharkGameIDResponseJSON)
-    FoundcheapsharkGameID = re.search(str(regexForCheapSharkGameID), cheapsharkGameIDString)
-    if FoundcheapsharkGameID:
-        cheapsharkGameID = FoundcheapsharkGameID.group()
-        cheapsharkGameID = cheapsharkGameID[10:]
-        cheapsharkGameID = cheapsharkGameID.replace('"', "")
-        cheapsharkGameID = cheapsharkGameID.replace(',', "")
-        cheapsharkGameDealsRequestString = "https://www.cheapshark.com/api/1.0/games?id={}".format(cheapsharkGameID)
+    cheapsharkGameIDJSON = json.loads(cheapsharkGameIDString)
+    cheapsharkGameIDJSONFound = cheapsharkGameIDJSON[0]["gameID"]
+    if cheapsharkGameIDJSONFound:
+        cheapsharkGameDealsRequestString = "https://www.cheapshark.com/api/1.0/games?id={}".format(cheapsharkGameIDJSONFound)
         cheapsharkGameDealsResponse = requests.get(cheapsharkGameDealsRequestString)
         cheapsharkGameDealsResponseJSON = cheapsharkGameDealsResponse.json()
         cheapsharkGameDeals = json.dumps(cheapsharkGameDealsResponseJSON)
-        print(cheapsharkGameDeals)
+        cheapsharkJSON = json.loads(cheapsharkGameDeals)
+        print(cheapsharkJSON["deals"])
     else:
         print("Failed to find Cheapshark game id")
     

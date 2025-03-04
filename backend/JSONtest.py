@@ -2,10 +2,11 @@ import requests
 import json
 import re
 
+fileout = open("storelist.json", mode="w")
 
-cheapsharkRequestString = "https://www.cheapshark.com/api/1.0/games?steamAppID=1245620"
+cheapsharkRequestString = "https://www.cheapshark.com/api/1.0/stores"
 cheapsharkGameIDResponse = requests.get(cheapsharkRequestString)
 cheapsharkGameIDResponseJSON = cheapsharkGameIDResponse.json()
-data = json.loads(cheapsharkGameIDResponseJSON)
+json.dump(cheapsharkGameIDResponseJSON, fileout)
 
-print(data)
+fileout.close()

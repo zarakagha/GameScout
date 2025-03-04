@@ -2,6 +2,12 @@ import requests
 import json
 import re
 
+#store 1 = steam
+#store 7 = GOG
+#store 8 = origin
+#store 11 = Humble
+#store 25 = epic games
+#store 31 = blizzard
 
 userRequest = input("Enter game name: ")
 userRequest = userRequest.lower()

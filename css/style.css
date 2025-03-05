@@ -155,6 +155,7 @@ body {
   overflow-x: auto;
   scroll-behavior: smooth;
   height: 52vh;
+  scrollbar-width: none;
 }
 
 .product-container::-webkit-scrollbar {

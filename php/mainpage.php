@@ -42,120 +42,110 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/card1.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/RDR2.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">brand</h2>
-                        <p class="product-short-description">a short line about the cloth..</p>
                         <span class="price">$20</span><span class="actual-price">$40</span>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/card2.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/EldenRing.webp" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">brand</h2>
-                        <p class="product-short-description">a short line about the cloth..</p>
                         <span class="price">$20</span><span class="actual-price">$40</span>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/card3.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/BMWukong.jpeg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">brand</h2>
-                        <p class="product-short-description">a short line about the cloth..</p>
                         <span class="price">$20</span><span class="actual-price">$40</span>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/card4.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/GTAV.webp" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">brand</h2>
-                        <p class="product-short-description">a short line about the cloth..</p>
                         <span class="price">$20</span><span class="actual-price">$40</span>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/card5.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/Celeste.png" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">brand</h2>
-                        <p class="product-short-description">a short line about the cloth..</p>
                         <span class="price">$20</span><span class="actual-price">$40</span>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/card6.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/Undertale.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">brand</h2>
-                        <p class="product-short-description">a short line about the cloth..</p>
                         <span class="price">$20</span><span class="actual-price">$40</span>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/card7.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/uncharted-4.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">brand</h2>
-                        <p class="product-short-description">a short line about the cloth..</p>
                         <span class="price">$20</span><span class="actual-price">$40</span>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/card8.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/Doom.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">brand</h2>
-                        <p class="product-short-description">a short line about the cloth..</p>
                         <span class="price">$20</span><span class="actual-price">$40</span>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/card9.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/Witcher_3.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">brand</h2>
-                        <p class="product-short-description">a short line about the cloth..</p>
                         <span class="price">$20</span><span class="actual-price">$40</span>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/card10.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/P5R.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">brand</h2>
-                        <p class="product-short-description">a short line about the cloth..</p>
                         <span class="price">$20</span><span class="actual-price">$40</span>
                     </div>
                 </div>

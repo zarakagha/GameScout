@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/style.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" /> 
     <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
+    <script src="../js//eventHandlerMainpage.js"></script>
 </head>
 
 <body>
@@ -34,15 +35,15 @@
         </div>
     </div>
     <div class="content-wrap">
-        <section class="product"> 
+       <section class="product"> 
             <h2 class="product-category">best selling</h2>
-            <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
-            <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
+            <button class="pre-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
+            <button class="nxt-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
             <div class="product-container">
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="images/Game-Cards/card1.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/card1.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -54,7 +55,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="images/card2.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/card2.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -66,7 +67,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="images/card3.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/card3.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -78,7 +79,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="images/card4.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/card4.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -90,7 +91,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="images/card5.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/card5.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -102,7 +103,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="images/card6.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/card6.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -114,7 +115,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="images/card7.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/card7.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -126,7 +127,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="images/card8.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/card8.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -138,7 +139,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="images/card9.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/card9.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -150,7 +151,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="images/card10.jpg" class="product-thumb" alt="">
+                        <img src="../images/Game-Cards/card10.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -160,7 +161,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> 
     </div>
     <div class="footer">
         <div class="footerColumn1">
@@ -177,6 +178,7 @@
             <a href="">zarakagha</a>
         </div>
     </div>
+    <script src="../js/eventRegisterMainpage.js"></script>
 </body>
 
 </html>

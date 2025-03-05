@@ -34,16 +34,357 @@
         </div>
     </div>
     <div class="content-wrap">
-        <div class="content-row">
-            <div class="mainpage-titles">
-                <h1>On Sale</h1>
+       <section class="product"> 
+            <h2 class="product-category">On Sale</h2>
+            <button class="pre-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
+            <button class="nxt-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">80% off</span>
+                        <img src="../images/Game-Cards/Ori.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Ori and the Blind Forest: Definetive Edition</h2>
+                        <span class="price">$4.99</span><span class="actual-price">$24.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="../images/Game-Cards/R6S.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Tom Clancy's Rainbow Six® Siege</h2>
+                        <span class="price">$4.99</span><span class="actual-price">$24.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">70% off</span>
+                        <img src="../images/Game-Cards/EAFC25.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">EA SPORTS FC™ 25</h2>
+                        <span class="price">$26.99</span><span class="actual-price">$51.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">60% off</span>
+                        <img src="../images/Game-Cards/AC-Mirage.avif" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Assassin's Creed Mirage</h2>
+                        <span class="price">$27.99</span><span class="actual-price">$69.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">80% off</span>
+                        <img src="../images/Game-Cards/South_Park_The_Fractured_but_Whole.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">South Park™: The Fractured But Whole™</h2>
+                        <span class="price">$39.99</span><span class="actual-price">$7.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">75% off</span>
+                        <img src="../images/Game-Cards/The_Escapists_2.png" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">The Escapists 2</h2>
+                        <span class="price">$5.49</span><span class="actual-price">$21.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">60% off</span>
+                        <img src="../images/Game-Cards/Gang_Beasts.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Gang Beasts</h2>
+                        <span class="price">$10.39</span><span class="actual-price">$25.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">70% off</span>
+                        <img src="../images/Game-Cards/Uno.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">UNO</h2>
+                        <span class="price">$4.04</span><span class="actual-price">$13.49</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">40% off</span>
+                        <img src="../images/Game-Cards/Among_Us.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Among Us</h2>
+                        <span class="price">$3.89</span><span class="actual-price">$6.49</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">40% off</span>
+                        <img src="../images/Game-Cards/Lies-of-P.png" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Lies of P</h2>
+                        <span class="price">$47.99</span><span class="actual-price">$79.99</span>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section> 
+    </div>
+    <div class="content-wrap">
+       <section class="product"> 
+            <h2 class="product-category">G.O.A.T-worthy</h2>
+            <button class="pre-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
+            <button class="nxt-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../images/Game-Cards/RDR2.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Red Dead Redemption 2</h2>
+                        <span class="price">$79.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../images/Game-Cards/EldenRing.webp" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Elden Ring</h2>
+                        <span class="price">$79.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../images/Game-Cards/BMWukong.jpeg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Black Myth: Wukong</h2>
+                        <span class="price">$79.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="../images/Game-Cards/GTAV.webp" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">GTA V</h2>
+                        <span class="price">$16.87</span><span class="actual-price">$33.75</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../images/Game-Cards/Celeste.png" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Celeste</h2>
+                        <span class="price">$25.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../images/Game-Cards/Undertale.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Undertale</h2>
+                        <span class="price">$10.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../images/Game-Cards/uncharted-4.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Uncharted 4</h2>
+                        <span class="price">$64.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../images/Game-Cards/Doom.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">DOOM</h2>
+                        <span class="price">$24.99</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../images/Game-Cards/Witcher_3.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">The Witcher 3: Wild Hunt</h2>
+                        <span class="price">$55.99</span>                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../images/Game-Cards/P5R.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Persona 5 Royal</h2>
+                        <span class="price">$79.99</span>                  </div>
+                </div>
+            </div>
+        </section> 
+    </div>
+    <div class="content-wrap">
+       <section class="product"> 
+            <h2 class="product-category">My Wishlist</h2>
+            <button class="pre-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
+            <button class="nxt-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="../images/Game-Cards/RDR2.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Red Dead Redemption 2</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="../images/Game-Cards/EldenRing.webp" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Elden Ring</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="../images/Game-Cards/BMWukong.jpeg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Black Myth: Wukong</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="../images/Game-Cards/GTAV.webp" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">GTA V</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="../images/Game-Cards/Celeste.png" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Celeste</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="../images/Game-Cards/Undertale.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Undertale</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="../images/Game-Cards/uncharted-4.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Uncharted 4</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="../images/Game-Cards/Doom.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">DOOM</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="../images/Game-Cards/Witcher_3.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">The Witcher 3: Wild Hunt</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="../images/Game-Cards/P5R.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Persona 5 Royal</h2>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+            </div>
+        </section> 
+    </div>
+    <div>
     </div>
     <div class="footer">
         <div class="footerColumn1">
             <h3>Other Game Stores</h3>
-            <a href="https://store.playstation.com/en-ca/pages/latest?gad_source=1&gclid=EAIaIQobChMIi8qlrYvRiwMVrAytBh33ZAicEAAYASAAEgJ9CPD_BwE&gclsrc=aw.ds" target="_blank">Playstation</a>
+            <a href="https://store.playstation.com/en-ca/pages/latest?gad_source=1&gclid=EAIaIQobChMIi8qlrYvRiwMVrAytBh33ZAicEAAYASAAEgJ9CPD_BwE&gclsrc=aw.ds" target=" nk">Playstation</a>
             <a href="https://www.microsoft.com/en-ca/store/games" target="_blank">Microsoft</a>
             <a href="https://www.nintendo.com/en-ca/store/games/?utm_source=sw&utm_medium=pdpd&utm_id=C1090-01&utm_campaign=C1090-01&gad_source=1&gclid=EAIaIQobChMI1Oqb3IvRiwMVY83CBB0YjALfEAAYASAAEgJg5fD_BwE&gclsrc=aw.ds" target="_blank">Nintendo</a>
             <a href="https://store.steampowered.com/" target="_blank">Steam</a>
@@ -56,5 +397,5 @@
         </div>
     </div>
 </body>
-
+<script src="../js/MainpageScript.js"></script>
 </html>

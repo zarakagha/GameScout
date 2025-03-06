@@ -1,0 +1,20 @@
+Steam : 1
+GamersGate: 2
+GreenManGaming : 3
+GOG : 7
+Origin: 8
+Humble : 11
+Uplay (ubisoft) : 13
+Fanatical : 15
+WinGameStore : 21
+GameBillet : 23
+Voidu : 24
+Epic Games Store: 25
+Gamesplanet: 27
+Gamesload: 28
+2Game: 29
+IndieGala: 30
+BlizzardShop: 31
+DLGamer: 33 
+Noctre: 34
+DreamGame: 35 

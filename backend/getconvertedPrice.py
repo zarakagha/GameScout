@@ -7,6 +7,7 @@ import re
 
 
 
+"""
 def get_inital_price(appid):
     SteamRetailPriceResponse = requests.get("http://store.steampowered.com/api/appdetails?appids={}&cc=CA&filters=price_overview".format(appid))
     SteamRetailPriceResponseJSON = SteamRetailPriceResponse.json()
@@ -16,7 +17,15 @@ def get_inital_price(appid):
     inital_price = float(inital_price) / 100
     inital_price = str(inital_price)
     return inital_price
+"""
 
+def get_currency_exchange_rate():
+    currencyexchangeResponse = requests.get("")
+    currencyexchangeResponseJSON = currencyexchangeResponse.json()
+    currencyexchangeResponseString = json.dumps(currencyexchangeResponseJSON)
+    currencyexchangeJSON = json.loads(currencyexchangeResponseString)
+    print(currencyexchangeJSON["conversion_rates"]["CAD"])
+    return currencyexchangeJSON["conversion_rates"]["CAD"]
 
 
 TestcheapSharkResponse = requests.get("https://www.cheapshark.com/api/1.0/games?id=236717")
@@ -25,12 +34,9 @@ TestcheapsharkResponseString = json.dumps(TestcheapSharkResponseJSON)
 TestcheapsharkDealsJSON = json.loads(TestcheapsharkResponseString)
 
 def get_discount(appid):
-    inital_cad_price = get_inital_price(appid)
-    inital_cad_price = float(inital_cad_price)
+    currency_exchange_rate = float(get_currency_exchange_rate())
     for store in TestcheapsharkDealsJSON["deals"]:
-        savings = float(store["savings"]) / 100
-        discount_value = 1 - savings
-        discount_cad_price = inital_cad_price * discount_value
+        discount_cad_price = float(store["price"]) * currency_exchange_rate
         print("for store id: " + store["storeID"] + " the value is $" + format(discount_cad_price, '.2f') + "CAD")
         
 

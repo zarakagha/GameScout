@@ -20,12 +20,12 @@ def get_inital_price(appid):
 """
 
 def get_currency_exchange_rate():
-    currencyexchangeResponse = requests.get("")
+    currencyexchangeResponse = requests.get("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json")
     currencyexchangeResponseJSON = currencyexchangeResponse.json()
     currencyexchangeResponseString = json.dumps(currencyexchangeResponseJSON)
     currencyexchangeJSON = json.loads(currencyexchangeResponseString)
-    print(currencyexchangeJSON["conversion_rates"]["CAD"])
-    return currencyexchangeJSON["conversion_rates"]["CAD"]
+    print(currencyexchangeJSON["usd"]["cad"])
+    return currencyexchangeJSON["usd"]["cad"]
 
 
 TestcheapSharkResponse = requests.get("https://www.cheapshark.com/api/1.0/games?id=236717")

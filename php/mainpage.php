@@ -20,8 +20,19 @@
                         <input class="input-search" type="search" placeholder="Search for Games">
                     </div>
                 <ul>
-                    <li><a href="signup.php"><img src="../images/person.png" alt=""></a></li>
-                    <li><a href=""><img src="../images/heart.png" alt=""></a></li>
+                    <li>
+                        <div class="dropdown">
+                            <a class="drop-button" href="signup.php">
+                                <img class="navdiv-icon" src="../images/person.png" alt="">
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="login.php">Log In</a>
+                                <a href="signup.php">Sign Up</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img class="navdiv-icon" src="../images/heart.png" alt=""></a></li>
+                    <li><a href=""><img class="navdiv-icon" src="../images/Logout.png" alt=""></a></li>
                 </ul>
             </div>
         </nav>

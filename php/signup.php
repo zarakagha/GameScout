@@ -1,3 +1,78 @@
+<?php
+
+require_once("db.php");
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data); //encodes
+    return $data;
+}
+
+$fname = test_input($_POST["firstname"]);
+$lname = test_input($_POST["lastname"]);
+$uname = test_input($_POST["username"]);
+$pwd = test_input($_POST["password"]);
+
+$nameRegex = "/^[a-zA-Z]+$/";
+$unameRegex = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/";
+$passwordRegex = "/^.{8}$/";
+
+if (!preg_match($nameRegex, $fname)) {
+    $errors["fname"] = "Invalid First Name";
+}
+if (!preg_match($nameRegex, $lname)) {
+    $errors["lname"] = "Invalid Last Name";
+}
+if (!preg_match($unameRegex, $uname)) {
+    $errors["username"] = "Invalid Username";
+}
+if (!preg_match($passwordRegex, $pwd)) {
+    $errors["password"] = "Invalid Password";
+}
+
+$target_file ="";
+
+try {
+    $db = new PDO($attr, $db_user, $db_pwd, $options);
+} catch (PDOException $e) {
+    throw new PDOException($e->getMessage(), (int)$e->getCode());
+}
+$query = "SELECT * FROM signup WHERE username = '$username'";
+
+$result = $db->query($query);
+
+$match =0;
+
+$row = $result->fetch(\PDO::FETCH_ASSOC);
+if($row == true) {
+    $match=$row[0];
+}
+if($match)
+{
+    $errors["Account already exists"] = "username already exists";
+}
+
+if (empty($errors)) {
+
+    $query = "INSERT INTO signup (first_name, last_name, username, password) VALUES ('$firstName', '$lastName', '$username', '$password')";
+    $result = $db->exec($query);
+
+    if (!$result) {
+        $errors["Database Error:"] = "Cant create account";
+    } 
+
+       
+        
+      
+    } 
+
+if (!empty($errors)) {
+    foreach($errors as $type => $message) {
+        print("$type: $message \n<br />");
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 

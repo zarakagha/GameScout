@@ -6,10 +6,10 @@ import re
 
 
 #files that will contain game names
-fileout = open("Gameslist.txt", mode="w")
+#fileout = open("Gameslist.txt", mode="w")
 fileoutappidandname = open("Gameslistwithappidandname.txt", mode="w")
 fileoutraw = open("RawGameList.json", mode="w")
-fileoutappid = open("gamelistappid.txt", mode="w")
+#fileoutappid = open("gamelistappid.txt", mode="w")
 
 #initalize dictionary for no duplicates
 gamedict = {}
@@ -40,12 +40,12 @@ for gameappidandname in list_of_games_with_appid_and_name:
         #Appid + gamename file
         print(gameappidandname, file=fileoutappidandname)
         #app id only file
-        print(currgameappid, file=fileoutappid)
+        #print(currgameappid, file=fileoutappid)
         #game name only file
-        print(currgamename, file=fileout)
+        #print(currgamename, file=fileout)
 
 
 fileoutappidandname.close()
-fileout.close()
+#fileout.close()
 fileoutraw.close()
-fileoutappid.close()
+#fileoutappid.close()

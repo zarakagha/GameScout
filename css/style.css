@@ -100,7 +100,15 @@ body {
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
-
+/*Banner*/
+.banner {
+  width: 100%;
+  height: 90vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
 .banner-wrap {
   /*Banner*/
   width: 100%;

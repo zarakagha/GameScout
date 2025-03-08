@@ -22,7 +22,7 @@
                 <ul>
                     <li>
                         <div class="dropdown">
-                            <a class="drop-button" href="signup.php">
+                            <a class="drop-button">
                                 <img class="navdiv-icon" src="../images/person.png" alt="">
                             </a>
                             <div class="dropdown-content">

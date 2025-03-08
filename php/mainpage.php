@@ -10,7 +10,7 @@
     <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
 </head>
 
-<body>
+<body class="mainpage-body">
         <nav class="nav_bar">
             <div class="nav_div">
                 <div class="logo"><a href="#">

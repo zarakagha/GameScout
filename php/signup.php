@@ -5,62 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameScout</title>
-    <link rel="stylesheet" href="css/style.css"/> 
+    <link rel="stylesheet" href="../css/style.css"/> 
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="js/eventHandlers.js"></script>
 </head>
 
-<body>
-    <div id="container">
-        <header>
-            <h1>SignUp Page</h1>
-
-        </header>
-        
-            <hr class="line">
-    
-        <main id="main-center">
-            <div class="container">
-            <form class="signup-form" id="signup-form" action="mainpage.php" method="post">
-                <p class="signup">
-
-                    <label for="firstname">First Name</label>
-                    <input type="text" name="firstname"><br>
-                    <p id="error-test-fname" class="error-text hidden">First name is invalid</p>
-                </p>
-                <p class="signup">
-                
-                    <label for="lastname">Last Name</label>
-                    <input type="text" name="lastname"> <br>
-                    <p id="error-test-lname" class="error-text hidden">Last name is invalid</p>
-                </p>
-                <p class="signup">
-                    <label for="email">email</label>
-                    <input type="text" name="email"> 
-                    <p id="error-text-email" class="error-text hidden">Username is invalid. please enter an email</p>
-                </p>
-                <p class="signup">
-    
-                    <label for="password">Password</label>
-                    <input type="password" name="password"><br>
-                    <p id="error-text-password" class="error-text hidden">Passwords is invalid.</p>
-                </p>
-                <p class="signup">
-                    <label for="repassword">Confirm Password</label>
-                    <input type="password"  name="repassword"> 
-                    <p id="error-text-repassword" class="error-text hidden">Passwords do not match</p>
-
-                </p>
-                <p class="signup">
-                   
-                    <input type="submit" class="form-submit" value="Signup">
-                </p>
+<body id="signup-page" class="ID-body2">
+    <div class="wrapper">
+            <form action="">
+            <div class="logo"><a href="mainpage.php">
+                    <img src="../images/GameScout-logo.png" alt=""> 
+                </a>
+            </div>
+            <h1>Sign Up</h1>
+            <div class="input-box">
+                <input type="text" placeholder="First Name" required>
+                <i></i>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Last Name" required>
+                <i></i>
+            </div>
+            <div class="input-box">
+                <input class="User" type="text" placeholder="Username" required>
+                <i></i>
+            </div>
+            <div class="input-box">
+                <input class="email" type="text" placeholder="Email" required>
+                <i></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" required>
+                <i></i>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+            <div class="signup-link">
+                <p>Already have an account? <a href="login.php">Login</a></p>
+            </div>
             </form>
-        </main>
-        
-    </div>
-    <div class="footer">
-        <a href="mainpage.php">Already have an Account?</a>
-    </div>
+        </div>
 </body>
 <script src="js/eventRegisterSignup.js"></script>
 </html>

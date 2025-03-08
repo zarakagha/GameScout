@@ -32,6 +32,47 @@ function validateUsername(uname) {
         else
             return false;
 }
+
+function validateLogin(event) 
+{
+    let username =document.getElementById('username');
+    let password =document.getElementById('password');
+    let formisvalid = true;
+
+    if(!validateUsername(username.value))
+    {
+      username.classList.add("errorborder");
+      var errortext = document.getElementById("error-text-username");
+      errortext.classList.remove("hidden");
+      event.preventDefault();
+    }
+    else
+    {
+        username.classList.remove("errorborder");
+        var errortext = document.getElementById("error-text-username");
+		errortext.classList.add("hidden");
+        
+    }
+    if(!validatePWD(password.value))
+    {
+        password.classList.add("errorborder");
+        var errortext = document.getElementById("error-text-password");
+        errortext.classList.remove("hidden");
+        event.preventDefault();
+       
+    }
+    else
+    {
+        password.classList.remove("errorborder");
+        var errortext = document.getElementById("error-text-password");
+        errortext.classList.add("hidden");
+        
+    }
+    if(formisvalid===true)
+    {
+        console.log("Validation passed");
+    }
+}
 function validateSignup(event)  
 {
     let fname =document.getElementById('firstname');

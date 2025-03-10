@@ -36,7 +36,7 @@ def serve_form():
 def get_Game():
     if request.method == "POST":
         name= request.form.get("name")
-        session["name"]=uni 
+        session["name"]=name 
         
         return redirect("/game") 
     else:

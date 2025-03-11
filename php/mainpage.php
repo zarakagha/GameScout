@@ -13,7 +13,7 @@
 <body class="mainpage-body">
         <nav class="nav_bar">
             <div class="nav_div">
-                <div class="logo"><a href="#">
+                <div class="logo"><a href="mainpage.php">
                     <img src="../images/GameScout-logo.png" alt=""> </a></div>
                     <div class="search">
                         <span class="material-symbols-outlined">search</span>
@@ -36,6 +36,7 @@
                 </ul>
             </div>
         </nav>
+
     <div class="banner-wrap">
         <div class="banner-slideshow">
             <div class="background-Img" style="background-image: url(../images/MainPage-wallpapers/wukong.jpeg)"></div>
@@ -44,6 +45,7 @@
             <div class="background-img" style="background-image: url(../images/MainPage-wallpapers/ResidentEvil4.jpeg)"></div>
         </div>
     </div>
+
     <div class="content-wrap">
        <section class="product"> 
             <h2 class="product-category">On Sale</h2>

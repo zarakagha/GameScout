@@ -1,7 +1,4 @@
 import os
-from steam_web_api import Steam
-KEY = os.environ.get()
-steam = Steam(KEY)
 from flask import Flask, request, render_template, session, redirect 
 from flask_session import Session
 from datetime import timedelta
@@ -53,7 +50,7 @@ def game():
 
    if not gamename:
         return redirect("/")
-   results = steam.apps.search_games(gamename)
+   results = firstresult
    if results:
       firstresult = results["items"][0]
       gameid = firstresult.get("appid")

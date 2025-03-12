@@ -72,6 +72,7 @@ def game():
         return redirect("/")
    results = firstresult
    if results:
+      print(gamename)
       firstresult = results["items"][0]
       gameid = firstresult.get("appid")
       gamename = firstresult.get("name")

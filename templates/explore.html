@@ -21,7 +21,8 @@
     </nav>
     <div>
         {% for item in game_list %}
-            <p>{{item.title}}</p>
+            <a href="{{url_for('gamedetail',game_id=item.gameID)}}">{{item.title}}</a>
+
         {% endfor %}
     </div>
 </body>

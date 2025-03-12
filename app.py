@@ -77,62 +77,15 @@ def game():
    else:
         return render_template("explore.html", error="Game details not found.")
 
-#print(json.dumps(steamGame))
-#isFound = re.search(str(regexForGame), Gamefilecontent)
-#if isFound:
-   # UserGame = isFound.group()
-    #appid = UserGame.split(',')[0]
-    #appid = appid[10:]
-    
-   # if name is not None: 
-        
-        #name=
-        #price=
-       # storefront=
+@app.route('/gamedetail/<int:game_id>')
 
-    #return render_template("game.php",name=name,price=price,storefront=storefront) 
-
+def gamedetail(game_id):
+      print(game_id)
+      if game_id:
+            return render_template("game.html")
+      else:
+            return render_template("game.html")
        
 if __name__=='__main__':
    app.run(debug=True)
 
-#steamResponse = requests.get("")
-#print(steamResponse)
-#steamGame = steamResponse.json()
-#print(json.dumps(steamGame))
-#isFound = re.search(str(regexForGame), Gamefilecontent)
-#if isFound:
-   # UserGame = isFound.group()
-    #appid = UserGame.split(',')[0]
-    #appid = appid[10:]
-    
-    #cheapsharkRequestString = "https://www.cheapshark.com/api/1.0/games?steamAppID={}".format(appid)
-    #cheapsharkGameIDResponse = requests.get(cheapsharkRequestString)
-    #cheapsharkGameIDResponseJSON = cheapsharkGameIDResponse.json()
-    #cheapsharkGameIDString = json.dumps(cheapsharkGameIDResponseJSON)
-    #cheapsharkGameIDJSON = json.loads(cheapsharkGameIDString)
-    #cheapsharkGameIDJSONFound = cheapsharkGameIDJSON[0]["gameID"]
-    #if cheapsharkGameIDJSONFound:
-        #cheapsharkGameDealsRequestString = "https://www.cheapshark.com/api/1.0/games?id={}".format(cheapsharkGameIDJSONFound)
-        #cheapsharkGameDealsResponse = requests.get(cheapsharkGameDealsRequestString)
-        #cheapsharkGameDealsResponseJSON = cheapsharkGameDealsResponse.json()
-        #cheapsharkGameDeals = json.dumps(cheapsharkGameDealsResponseJSON)
-        #cheapsharkJSON = json.loads(cheapsharkGameDeals)
-        #print(cheapsharkJSON["deals"])
-    #else:
-       # print("Failed to find Cheapshark game id")
-    
-#else:
-    #print("Sorry the game: " + userRequest + " Could not be found")
-    
-
-
-
-    
-
-#cheapSharkResponse = requests.get("https://www.cheapshark.com/api/1.0/games?id=236717")
-#print(cheapSharkResponse)
-#Result = cheapSharkResponse.json()
-#print(json.dumps(Result)
-
-#Gamefile.close()

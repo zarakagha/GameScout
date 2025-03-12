@@ -4,6 +4,7 @@ from flask_session import Session
 from datetime import timedelta
 import requests
 import urllib.parse
+import json
 
 
 #store 1 = steam
@@ -37,9 +38,6 @@ def accounts():
 @app.route('/admin')
 def admin():
         return render_template("admin.html")
-@app.route('/explore')
-def explore():
-        return render_template("explore.html")
 @app.route('/genre')
 def genre():
         return render_template("genre.html")
@@ -57,89 +55,37 @@ def get_Game():
     if request.method == "POST":
         name= request.form.get("name")
         session["name"]=name 
-        print(name)
-        return redirect("/game") 
+        return redirect('/game') 
     else:
-        return redirect("/") 
+        return redirect('/') 
 
-@app.route("/game", methods=["GET","POST"])
+@app.route('/game', methods=["GET","POST"])
 
 def game():
     
    gamename=session.get("name")
-
+   game_name=str(gamename)
+   game_name=game_name.replace(" ","+")
+   gamelist=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=1&title={}".format(game_name))
+   gamelistjson=gamelist.json()
+   gamelistjson=gamelistjson[:5]
+   print(gamelistjson[0])
    if not gamename:
         return redirect("/")
-   results = firstresult
-   if results:
-      print(gamename)
-      firstresult = results["items"][0]
-      gameid = firstresult.get("appid")
-      gamename = firstresult.get("name")
-      
-      if gameid and gamename:
-            return render_template("game.html", gamename=gamename, gameid=gameid)
-      else:
-            return render_template("game.html", error="Game details not found.")
+   if gamename:
+        return render_template("explore.html",game_list=gamelistjson)
    else:
-        return render_template("game.html", error="No games found.")
+        return render_template("explore.html", error="Game details not found.")
 
-#print(json.dumps(steamGame))
-#isFound = re.search(str(regexForGame), Gamefilecontent)
-#if isFound:
-   # UserGame = isFound.group()
-    #appid = UserGame.split(',')[0]
-    #appid = appid[10:]
-    
-   # if name is not None: 
-        
-        #name=
-        #price=
-       # storefront=
+@app.route('/gamedetail/<int:game_id>')
 
-    #return render_template("game.php",name=name,price=price,storefront=storefront) 
-
+def gamedetail(game_id):
+      print(game_id)
+      if game_id:
+            return render_template("game.html")
+      else:
+            return render_template("game.html")
        
 if __name__=='__main__':
    app.run(debug=True)
 
-#steamResponse = requests.get("")
-#print(steamResponse)
-#steamGame = steamResponse.json()
-#print(json.dumps(steamGame))
-#isFound = re.search(str(regexForGame), Gamefilecontent)
-#if isFound:
-   # UserGame = isFound.group()
-    #appid = UserGame.split(',')[0]
-    #appid = appid[10:]
-    
-    #cheapsharkRequestString = "https://www.cheapshark.com/api/1.0/games?steamAppID={}".format(appid)
-    #cheapsharkGameIDResponse = requests.get(cheapsharkRequestString)
-    #cheapsharkGameIDResponseJSON = cheapsharkGameIDResponse.json()
-    #cheapsharkGameIDString = json.dumps(cheapsharkGameIDResponseJSON)
-    #cheapsharkGameIDJSON = json.loads(cheapsharkGameIDString)
-    #cheapsharkGameIDJSONFound = cheapsharkGameIDJSON[0]["gameID"]
-    #if cheapsharkGameIDJSONFound:
-        #cheapsharkGameDealsRequestString = "https://www.cheapshark.com/api/1.0/games?id={}".format(cheapsharkGameIDJSONFound)
-        #cheapsharkGameDealsResponse = requests.get(cheapsharkGameDealsRequestString)
-        #cheapsharkGameDealsResponseJSON = cheapsharkGameDealsResponse.json()
-        #cheapsharkGameDeals = json.dumps(cheapsharkGameDealsResponseJSON)
-        #cheapsharkJSON = json.loads(cheapsharkGameDeals)
-        #print(cheapsharkJSON["deals"])
-    #else:
-       # print("Failed to find Cheapshark game id")
-    
-#else:
-    #print("Sorry the game: " + userRequest + " Could not be found")
-    
-
-
-
-    
-
-#cheapSharkResponse = requests.get("https://www.cheapshark.com/api/1.0/games?id=236717")
-#print(cheapSharkResponse)
-#Result = cheapSharkResponse.json()
-#print(json.dumps(Result)
-
-#Gamefile.close()

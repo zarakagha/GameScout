@@ -4,7 +4,8 @@ from ConvertPrice import ConvertUSDToCad
 testobj = Game()
 
 testobj.setGameName = "elden ring"
-testobj.setGamePrice = float("79.99")
+testobj.setGamePrice = 79.99
+print(testobj.gamePrice())
 testobj.setGameSteamappid = int("1245620")
 
 testobj.setToListOfStores("1")

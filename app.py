@@ -1,7 +1,4 @@
 import os
-from steam_web_api import Steam
-KEY = os.environ.get()
-steam = Steam(KEY)
 from flask import Flask, request, render_template, session, redirect 
 from flask_session import Session
 from datetime import timedelta
@@ -34,7 +31,27 @@ Session(app)
 @app.route('/',methods=["GET","POST"])
 def serve_form():
     return render_template("mainpage.html") 
-
+@app.route('/accounts')
+def accounts():
+        return render_template("account.html")
+@app.route('/admin')
+def admin():
+        return render_template("admin.html")
+@app.route('/explore')
+def explore():
+        return render_template("explore.html")
+@app.route('/genre')
+def genre():
+        return render_template("genre.html")
+@app.route('/login')
+def login():
+        return render_template("login.html")
+@app.route('/signup')
+def signup():
+        return render_template("signup.html")
+@app.route('/wishlist')
+def wishlist():
+        return render_template("wishlist.html")
 @app.route('/gamesearch',methods =["GET","POST"])
 def get_Game():
     if request.method == "POST":
@@ -53,7 +70,7 @@ def game():
 
    if not gamename:
         return redirect("/")
-   results = steam.apps.search_games(gamename)
+   results = firstresult
    if results:
       firstresult = results["items"][0]
       gameid = firstresult.get("appid")

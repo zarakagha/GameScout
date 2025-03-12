@@ -20,7 +20,9 @@
         </div>
     </nav>
     <div>
-
+        {% for item in game_list %}
+            <p>{{item.title}}</p>
+        {% endfor %}
     </div>
 </body>
 

@@ -35,6 +35,12 @@
                 </div>
                 <div class="split-right">
                     <h1>Right Section</h1>
+                    {% if error %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% else %}
+                        <p>Game Name: {{ gamename }}</p>
+                        <p>Game ID: {{ gameid }}</p>
+                    {% endif %}
                     <p>
                         <br> You can add your content here.You can add your content here.You can add your content here.You can add your content here.You can add your content here.You can add your content here.You can add your content here.<br>
                         <br> You can add your content here.<br>

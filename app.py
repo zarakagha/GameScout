@@ -30,8 +30,28 @@ Session(app)
 
 @app.route('/',methods=["GET","POST"])
 def serve_form():
-    return render_template("mainpage.php") 
-
+    return render_template("mainpage.html") 
+@app.route('/accounts')
+def accounts():
+        return render_template("account.html")
+@app.route('/admin')
+def admin():
+        return render_template("admin.html")
+@app.route('/explore')
+def explore():
+        return render_template("explore.html")
+@app.route('/genre')
+def genre():
+        return render_template("genre.html")
+@app.route('/login')
+def login():
+        return render_template("login.html")
+@app.route('/signup')
+def signup():
+        return render_template("signup.html")
+@app.route('/wishlist')
+def wishlist():
+        return render_template("wishlist.html")
 @app.route('/gamesearch',methods =["GET","POST"])
 def get_Game():
     if request.method == "POST":
@@ -57,11 +77,11 @@ def game():
       gamename = firstresult.get("name")
       
       if gameid and gamename:
-            return render_template("game.php", gamename=gamename, gameid=gameid)
+            return render_template("game.html", gamename=gamename, gameid=gameid)
       else:
-            return render_template("game.php", error="Game details not found.")
+            return render_template("game.html", error="Game details not found.")
    else:
-        return render_template("game.php", error="No games found.")
+        return render_template("game.html", error="No games found.")
 
 #print(json.dumps(steamGame))
 #isFound = re.search(str(regexForGame), Gamefilecontent)

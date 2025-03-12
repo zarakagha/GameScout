@@ -3,8 +3,8 @@ from ConvertPrice import ConvertUSDToCad
 
 testobj = Game()
 
-testobj.setGameName = "elden ring"
-testobj.setGamePrice = 79.99
+testobj.setGameName("elden ring")
+testobj.setGamePrice(79.99)
 print(testobj.gamePrice())
 testobj.setGameSteamappid = int("1245620")
 
@@ -26,6 +26,4 @@ testobj.setStoreAndPrice(15, 36)
 
 testobj.setStoreAndPrice(4, 54)
 
-print(testobj.storesWithPrice())
 ConvertUSDToCad.convertListOfPricesFromGame(testobj)
-print(testobj.storesWithPrice())

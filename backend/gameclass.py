@@ -3,10 +3,10 @@
 class Game:
     #initalization of game Object
 
-    def __init__(self):
+    def __init__(self, appid):
         self.inital_price = 0
         self.name = ""
-        self.steamappid = 0
+        self.steamappid = appid
         self.cheapsharkgameid = 0
         self.list_of_prices = []
         self.list_of_game_stores = []

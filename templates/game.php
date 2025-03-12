@@ -10,46 +10,79 @@
     <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
 </head>
 
-<body>
+<body class="mainpage-body">
         <nav class="nav_bar">
             <div class="nav_div">
-                <div class="logo"><a href="#">
-                <img src="../images/GameScout-logo.png" alt=""> </a></div>
+                <div class="logo"><a href="mainpage.php">
+                    <img src="../images/GameScout-logo.png" alt=""> </a></div>
                     <div class="search">
                         <span class="material-symbols-outlined">search</span>
                         <input class="input-search" type="search" placeholder="Search for Games">
                     </div>
                 <ul>
-                    <li><a href="signup.php"><img src="../images/person.png" alt=""></a></li>
-                    <li><a href=""><img src="../images/heart.png" alt=""></a></li>
+                    <li>
+                        <div class="dropdown">
+                            <a class="drop-button">
+                                <img class="navdiv-icon" src="../images/person.png" alt="">
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="login.php">Log In</a>
+                                <a href="signup.php">Sign Up</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img class="navdiv-icon" src="../images/heart.png" alt=""></a></li>
+                    <li><a href=""><img class="navdiv-icon" src="../images/Logout.png" alt=""></a></li>
                 </ul>
             </div>
         </nav>
 
-        <div class="banner" style="background-image: url(../images/Game-Wallpapers/AC_Mirage.jpg)"></div>
+        <div class="game-banner" style="background-image: url(../images/Game-Wallpapers/Doom.jpg)"></div>
         <div class="game-text">
-            <h1 style="font-size:50px">Game Title</h1>
             <div class="split-container">
                 <div class="split-left">
-                    <img src="../images/Game-Cards/AC-Mirage.avif" object-fit: contain; alt="">
+                    <img src="../images/Game-Cards/Doom.jpg" object-fit: contain; alt="">
                 </div>
                 <div class="split-right">
-                    <h1>Right Section</h1>
-                    <p>
-                        <br> You can add your content here.You can add your content here.You can add your content here.You can add your content here.You can add your content here.You can add your content here.You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                    </p>
+                    <h1 style="font-size:50px">Game Title</h1>
+                    <br> Game Descriptions<br>
+                    <table >
+                        <tr>
+                            <td>Genre</td>
+                            <td>Shooter</td>
+                        </tr>
+                        <tr>
+                            <td>Release Date</td>
+                            <td>May 13, 2016</td>
+                        </tr>
+                        <tr>
+                            <td>Rating</td>
+                            <td>9/10</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th style="font-size:25px">Store</th>
+                            <th style="font-size:25px">Cost</th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://store.playstation.com/en-ca/pages/latest" target="_blank">Playstation</a></td>
+                            <td>$19.99</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.microsoft.com/en-ca/store/games" target="_blank">Microsoft</a></td>
+                            <td>$19.99</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.nintendo.com/en-ca/store/games" target="_blank">Nintendo</a></td>
+                            <td>$19.99</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://store.steampowered.com/" target="_blank">Steam</a></td>
+                            <td>$19.99</td>
+                        </tr>
+                    </table>
+                    <button class="game-btn">Add to Wishlist</button>
                 </div>
             </div>
         </div>

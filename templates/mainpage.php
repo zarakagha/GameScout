@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameScout</title>
-    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="..static/css/style.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" /> 
     <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
 </head>
@@ -14,7 +14,7 @@
         <nav class="nav_bar">
             <div class="nav_div">
                 <div class="logo"><a href="#">
-                    <img src="../images/GameScout-logo.png" alt=""> </a></div>
+                    <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
                     <div class="search">
                         <span class="material-symbols-outlined">search</span>
                         <input class="input-search" type="search" placeholder="Search for Games">
@@ -23,7 +23,7 @@
                     <li>
                         <div class="dropdown">
                             <a class="drop-button">
-                                <img class="navdiv-icon" src="../images/person.png" alt="">
+                                <img class="navdiv-icon" src="../static/images/person.png" alt="">
                             </a>
                             <div class="dropdown-content">
                                 <a href="login.php">Log In</a>
@@ -31,29 +31,29 @@
                             </div>
                         </div>
                     </li>
-                    <li><a href=""><img class="navdiv-icon" src="../images/heart.png" alt=""></a></li>
-                    <li><a href=""><img class="navdiv-icon" src="../images/Logout.png" alt=""></a></li>
+                    <li><a href=""><img class="navdiv-icon" src="../static/images/heart.png" alt=""></a></li>
+                    <li><a href=""><img class="navdiv-icon" src="../static/images/Logout.png" alt=""></a></li>
                 </ul>
             </div>
         </nav>
     <div class="banner-wrap">
         <div class="banner-slideshow">
-            <div class="background-Img" style="background-image: url(../images/MainPage-wallpapers/wukong.jpeg)"></div>
-            <div class="background-img" style="background-image: url(../images/MainPage-wallpapers/EldenRing.webp)"></div>
-            <div class="background-img" style="background-image: url(../images/MainPage-wallpapers/LastofUs-II.jpg)"></div>
-            <div class="background-img" style="background-image: url(../images/MainPage-wallpapers/ResidentEvil4.jpeg)"></div>
+            <div class="background-Img" style="background-image: url(../static/images/MainPage-wallpapers/wukong.jpeg)"></div>
+            <div class="background-img" style="background-image: url(../static/images/MainPage-wallpapers/EldenRing.webp)"></div>
+            <div class="background-img" style="background-image: url(../static/images/MainPage-wallpapers/LastofUs-II.jpg)"></div>
+            <div class="background-img" style="background-image: url(../static/images/MainPage-wallpapers/ResidentEvil4.jpeg)"></div>
         </div>
     </div>
     <div class="content-wrap">
        <section class="product"> 
             <h2 class="product-category">On Sale</h2>
-            <button class="pre-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
-            <button class="nxt-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
+            <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
+            <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
             <div class="product-container">
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">80% off</span>
-                        <img src="../images/Game-Cards/Ori.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/Ori.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -64,7 +64,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/R6S.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/R6S.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -75,7 +75,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">70% off</span>
-                        <img src="../images/Game-Cards/EAFC25.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/EAFC25.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -86,7 +86,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">60% off</span>
-                        <img src="../images/Game-Cards/AC-Mirage.avif" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/AC-Mirage.avif" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -97,7 +97,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">80% off</span>
-                        <img src="../images/Game-Cards/South_Park_The_Fractured_but_Whole.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/South_Park_The_Fractured_but_Whole.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -108,7 +108,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">75% off</span>
-                        <img src="../images/Game-Cards/The_Escapists_2.png" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/The_Escapists_2.png" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -119,7 +119,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">60% off</span>
-                        <img src="../images/Game-Cards/Gang_Beasts.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/Gang_Beasts.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -130,7 +130,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">70% off</span>
-                        <img src="../images/Game-Cards/Uno.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/Uno.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -141,7 +141,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">40% off</span>
-                        <img src="../images/Game-Cards/Among_Us.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/Among_Us.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -152,7 +152,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">40% off</span>
-                        <img src="../images/Game-Cards/Lies-of-P.png" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/Lies-of-P.png" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -166,12 +166,12 @@
     <div class="content-wrap">
        <section class="product"> 
             <h2 class="product-category">G.O.A.T-worthy</h2>
-            <button class="pre-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
-            <button class="nxt-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
+            <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
+            <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
             <div class="product-container">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../images/Game-Cards/RDR2.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/RDR2.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -181,7 +181,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../images/Game-Cards/EldenRing.webp" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/EldenRing.webp" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -191,7 +191,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../images/Game-Cards/BMWukong.jpeg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/BMWukong.jpeg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -202,7 +202,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/GTAV.webp" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/GTAV.webp" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -212,7 +212,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../images/Game-Cards/Celeste.png" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/Celeste.png" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -222,7 +222,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../images/Game-Cards/Undertale.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/Undertale.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -232,7 +232,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../images/Game-Cards/uncharted-4.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/uncharted-4.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -242,7 +242,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../images/Game-Cards/Doom.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/Doom.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -252,7 +252,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../images/Game-Cards/Witcher_3.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/Witcher_3.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -261,7 +261,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../images/Game-Cards/P5R.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/P5R.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -274,13 +274,13 @@
     <div class="content-wrap">
        <section class="product"> 
             <h2 class="product-category">My Wishlist</h2>
-            <button class="pre-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
-            <button class="nxt-btn"><img src="../images/Game-Cards/arrow.png" alt=""></button>
+            <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
+            <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
             <div class="product-container">
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/RDR2.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/RDR2.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -291,7 +291,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/EldenRing.webp" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/EldenRing.webp" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -302,7 +302,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/BMWukong.jpeg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/BMWukong.jpeg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -313,7 +313,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/GTAV.webp" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/GTAV.webp" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -324,7 +324,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/Celeste.png" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/Celeste.png" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -335,7 +335,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/Undertale.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/Undertale.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -346,7 +346,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/uncharted-4.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/uncharted-4.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -357,7 +357,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/Doom.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/Doom.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -368,7 +368,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/Witcher_3.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/Witcher_3.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -379,7 +379,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
-                        <img src="../images/Game-Cards/P5R.jpg" class="product-thumb" alt="">
+                        <img src="../static/images/Game-Cards/P5R.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">

@@ -21,4 +21,4 @@ class ConvertUSDToCad:
                 discounted_price = original_price * savings
                 Gameobj.storesWithPrice()[int(storeID)] = discounted_price
             else:
-                ConvertUSDToCad.Convert(Gameobj.storesWithPrice()[int(storeID)])
+                Gameobj.storesWithPrice()[int(storeID)] = ConvertUSDToCad.Convert(Gameobj.storesWithPrice()[int(storeID)])

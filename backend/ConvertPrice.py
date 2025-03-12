@@ -1,5 +1,5 @@
 import requests
-from gameclass import Game
+from backend.gameclass import Game
 import json
 
 class ConvertUSDToCad:

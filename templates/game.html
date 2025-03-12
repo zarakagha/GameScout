@@ -28,34 +28,17 @@
 
         <div class="banner" style="background-image: url(../static/images/Game-Wallpapers/AC_Mirage.jpg)"></div>
         <div class="game-text">
-            <h1 style="font-size:50px">Game Title</h1>
+            <h1 style="font-size:50px">{{gamename}}</h1>
             <div class="split-container">
                 <div class="split-left">
                     <img src="../static/images/Game-Cards/AC-Mirage.avif" object-fit: contain; alt="">
                 </div>
                 <div class="split-right">
                     <h1>Right Section</h1>
-                    {% if error %}
-                        <p style="color: red;">{{ error }}</p>
-                    {% else %}
-                        <p>Game Name: {{ gamename }}</p>
-                        <p>Game ID: {{ gameid }}</p>
-                    {% endif %}
-                    <p>
-                        <br> You can add your content here.You can add your content here.You can add your content here.You can add your content here.You can add your content here.You can add your content here.You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                        <br> You can add your content here.<br>
-                    </p>
+                    {{% for i in stores_with_price %}}
+                    <p>{{i}}</p>
+                    {{% endfor %}}
+
                 </div>
             </div>
         </div>

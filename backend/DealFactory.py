@@ -1,9 +1,9 @@
 import requests
 import json
 import re
-from gameclass import Game
-from GetSteamPriceCadForGame import get_inital_price
-from ConvertPrice import ConvertUSDToCad
+from backend.gameclass import Game
+from backend.GetSteamPriceCadForGame import get_inital_price
+from backend.ConvertPrice import ConvertUSDToCad
 
 class DealForGameSimpleFactory:
         

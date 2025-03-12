@@ -5,7 +5,8 @@ from datetime import timedelta
 import requests
 import urllib.parse
 import json
-
+from backend.gameclass import Game
+from backend.DealFactory import DealForGameSimpleFactory
 
 
 #store 1 = steam
@@ -82,10 +83,14 @@ def game():
 
 def gamedetail(game_id):
       print(game_id)
+      currentgamedeals=DealForGameSimpleFactory.GetGameDealsAcrossStores(game_id)
+      print(currentgamedeals.storesWithPrice())
+      name=currentgamedeals.GetGamename()
+      storeswithprice=currentgamedeals.storesWithPrice()
       if game_id:
-            return render_template("game.html")
+            return render_template("game.html",gamename=name,stores_with_price=storeswithprice)
       else:
-            return render_template("game.html")
+            return render_template("game.html",404,404)
        
 if __name__=='__main__':
    app.run(debug=True)

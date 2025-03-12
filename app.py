@@ -7,6 +7,7 @@ import urllib.parse
 import json
 
 
+
 #store 1 = steam
 #store 7 = GOG
 #store 8 = origin

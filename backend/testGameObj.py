@@ -1,29 +1,33 @@
 from gameclass import Game
 from ConvertPrice import ConvertUSDToCad
+from DealFactory import DealForGameSimpleFactory
 
-testobj = Game()
+#testobj = Game()
 
-testobj.setGameName("elden ring")
-testobj.setGamePrice(79.99)
-print(testobj.gamePrice())
-testobj.setGameSteamappid = int("1245620")
+#testobj.setGameName("elden ring")
+#testobj.setGamePrice(79.99)
+#print(testobj.gamePrice())
+#testobj.setGameSteamappid = int("1245620")
 
-testobj.setToListOfStores("1")
-testobj.setToListOfStores("2")
-testobj.setToListOfStores("15")
+#testobj.setToListOfStores("1")
+#testobj.setToListOfStores("2")
+#testobj.setToListOfStores("15")
 
-testobj.setToListOfStores("4")
+#testobj.setToListOfStores("4")
 
-testobj.setStoreAndSavings(1, 25)
-testobj.setStoreAndSavings(2, 0)
-testobj.setStoreAndSavings(15, 40)
+#testobj.setStoreAndSavings(1, 25)
+#testobj.setStoreAndSavings(2, 0)
+#testobj.setStoreAndSavings(15, 40)
 
-testobj.setStoreAndSavings(4, 10)
+#testobj.setStoreAndSavings(4, 10)
 
-testobj.setStoreAndPrice(1, 45)
-testobj.setStoreAndPrice(2, 60)
-testobj.setStoreAndPrice(15, 36)
+#testobj.setStoreAndPrice(1, 45)
+#testobj.setStoreAndPrice(2, 60)
+#testobj.setStoreAndPrice(15, 36)
 
-testobj.setStoreAndPrice(4, 54)
+#testobj.setStoreAndPrice(4, 54)
 
-ConvertUSDToCad.convertListOfPricesFromGame(testobj)
+#ConvertUSDToCad.convertListOfPricesFromGame(testobj)
+
+newobj = DealForGameSimpleFactory.GetGameDealsAcrossStores("142818")
+print(newobj.storesWithPrice())

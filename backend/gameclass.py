@@ -1,13 +1,14 @@
 #Game object class
 
+
 class Game:
     #initalization of game Object
 
-    def __init__(self, appid):
+    def __init__(self, cheapsharkID):
         self.inital_price = 0
         self.name = ""
-        self.steamappid = appid
-        self.cheapsharkgameid = 0
+        self.steamappid = 0
+        self.cheapsharkgameid = cheapsharkID
         self.list_of_prices = []
         self.list_of_game_stores = []
         self.store_and_price = {}
@@ -18,22 +19,22 @@ class Game:
     def setGameName(self, Game_name):
         self.name = str(Game_name)
     
-    def setGamePrice(self, Game_price):
+    def setGamePriceCAD(self, Game_price):
         self.inital_price = float(Game_price)
     
     def setGameSteamappid(self, Game_steamappid):
         self.steamappid = int(Game_steamappid)
     
-    def setToListOfPrices(self, price):
+    def addToListOfPrices(self, price):
         self.list_of_prices.append(float(price))
     
-    def setToListOfStores(self, storeID):
+    def addToListOfStores(self, storeID):
         self.list_of_game_stores.append(int(storeID))
         
-    def setStoreAndPrice(self, storeID, price):
+    def addStoreAndPrice(self, storeID, price):
         self.store_and_price[int(storeID)] = float(price)
         
-    def setStoreAndSavings(self, storeID, savings):
+    def addStoreAndSavings(self, storeID, savings):
         self.store_and_savings[int(storeID)] = float(savings)
     
     #getters

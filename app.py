@@ -11,17 +11,7 @@ from backend.DealFactory import DealForGameSimpleFactory
 from backend.StoreNameAndPrice import StoreIDAction
 
 
-#store 1 = steam
-#store 7 = GOG
-#store 8 = origin
 
-#userRequest = input("Enter game name: ")
-#userRequest = userRequest.lower()
-
-#Gamefile = open("Gameslistwithappidandname.txt", mode="r")
-#Gamefilecontent = Gamefile.read().lower()
-#regexForGame = '{{"appid".*?"name": "{}"}}'.format(userRequest)
-#regexForCheapSharkGameID = '"gameID".*?,'
 
 app = Flask(__name__)
 app.secret_key="GameScout"

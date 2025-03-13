@@ -1,6 +1,7 @@
 import os
 from flask import Flask, request, render_template, session, redirect 
 from flask_session import Session
+from sqlalchemy import SQLAlchemy
 from datetime import timedelta
 import requests
 import urllib.parse

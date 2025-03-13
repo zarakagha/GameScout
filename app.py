@@ -64,7 +64,7 @@ def game():
    game_name=game_name.replace(" ","+")
    gamelist=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=1&title={}".format(game_name))
    gamelistjson=gamelist.json()
-   gamelistjson=gamelistjson[:5]
+   gamelistjson=gamelistjson[:15]
    print(gamelistjson[0])
    if not gamename:
         return redirect("/")
@@ -78,11 +78,12 @@ def game():
 def gamedetail(game_id):
       print(game_id)
       currentgamedeals=DealForGameSimpleFactory.GetGameDealsAcrossStores(game_id)
-      print(currentgamedeals.storesWithPrice())
       name=currentgamedeals.GetGamename()
-      storeswithprice=StoreIDAction.StoreIDToNameWithPrice(currentgamedeals.storesWithPrice())
+      storedict=StoreIDAction.StoreIDToNameWithPrice(currentgamedeals.storeWithPriceSavingsDealURl())
+      gameImg=currentgamedeals.gameImage()
+      print(storedict)
       if game_id:
-            return render_template("game.html",gamename=name,stores_with_price=storeswithprice.items())
+            return render_template("game.html",gamename=name,store_dict=storedict.items(), gameIMG=gameImg)
       else:
             return render_template("game.html",404,404)
        

@@ -21,6 +21,7 @@
     </nav>
     <div>
         {% for item in game_list %}
+            <img src={{item.thumb}}>
             <a href="{{url_for('gamedetail',game_id=item.gameID)}}">{{item.title}}</a>
 
         {% endfor %}

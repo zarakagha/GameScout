@@ -31,13 +31,13 @@
             <h1 style="font-size:50px">{{gamename}}</h1>
             <div class="split-container">
                 <div class="split-left">
-                    <img src="../static/images/Game-Cards/AC-Mirage.avif" object-fit: contain; alt="">
+                    <img src={{gameIMG}} object-fit: contain; alt="">
                 </div>
                 <div class="split-right">
                     <h1>Right Section</h1>
-                    {% for key, value in stores_with_price %}
-                    <p>{{key}}</p>
-                    <span>{{value}}</span>
+                    {% for key, value in store_dict %}
+                    <a href={{value[2]}}>{{key}}</a>
+                    <span>{{value[0]}}</span>
                     {% endfor %}
 
                 </div>

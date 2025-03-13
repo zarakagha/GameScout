@@ -17,8 +17,8 @@ class ConvertUSDToCad:
         for storeID in Gameobj.gameStores():
             if int(storeID) in CanadianStoreID:
                 original_price = Gameobj.gamePrice()
-                savings = 1 - (Gameobj.storeWithSavings()[int(storeID)] / 100)
+                savings = 1 - (Gameobj.storeWithPriceSavingsDealURl()[int(storeID)][1] / 100)
                 discounted_price = original_price * savings
-                Gameobj.storesWithPrice()[int(storeID)] = discounted_price
+                Gameobj.storeWithPriceSavingsDealURl()[int(storeID)][0] = discounted_price
             else:
-                Gameobj.storesWithPrice()[int(storeID)] = ConvertUSDToCad.Convert(Gameobj.storesWithPrice()[int(storeID)])
+                Gameobj.storeWithPriceSavingsDealURl()[int(storeID)][0] = ConvertUSDToCad.Convert(Gameobj.storeWithPriceSavingsDealURl()[int(storeID)][0])

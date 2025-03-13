@@ -14,10 +14,10 @@ class DealForGameSimpleFactory:
         gameObj.setGameName(cheapsharkJSON["info"]["title"])
         gameObj.setGameSteamappid(cheapsharkJSON["info"]["steamAppID"])
         gameObj.setGamePriceCAD(get_inital_price(gameObj.gameSteamAppId()))
+        gameObj.setGameImageURL(cheapsharkJSON["info"]["thumb"])
         for deal in cheapsharkJSON["deals"]:
             gameObj.addToListOfPrices(deal["price"])
             gameObj.addToListOfStores(deal["storeID"])
-            gameObj.addStoreAndPrice(deal["storeID"], deal["price"])
-            gameObj.addStoreAndSavings(deal["storeID"], deal["savings"])
+            gameObj.addStorePriceSavingsDealUrl(deal["storeID"], deal["price"], deal["savings"], gameObj.cheapSharkGeneralDealURL+deal["dealID"])
         ConvertUSDToCad.convertListOfPricesFromGame(gameObj)
         return gameObj

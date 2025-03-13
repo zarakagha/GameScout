@@ -8,11 +8,17 @@ import json
 from backend.gameclass import Game
 from backend.DealFactory import DealForGameSimpleFactory
 from backend.StoreNameAndPrice import StoreIDAction
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import func
+import re
 
 
-
-
+basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] =\
+        'sqlite:///' + os.path.join(basedir, 'database.db')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 app.secret_key="GameScout"
 
 SECRET_KEY = "GameScout"
@@ -21,6 +27,26 @@ app.config.from_object(__name__)
 app.permanent_session_lifetime = timedelta(minutes=10)
 Session(app)
 
+class user(db.Model):
+      __tablename__ = 'user'
+      id=db.Column(db.Integer, primary_key=True)
+      firstname= db.Column(db.String(100), nullable=False)
+      lastname= db.Column(db.String(100), nullable=False)
+      username= db.Column(db.String(100),unique=True, nullable=False)
+      email= db.Column(db.String(100),unique=True, nullable=False)
+      password=db.Column(db.String(100),nullable=False)
+      
+class games(db.Model):
+      __tablename__ = 'games'
+      id=db.Column(db.Integer, primary_key=True)
+      gameID= db.Column(db.String(100), nullable=False)
+      user_id =db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
+
+firstnameRegex=r'^[a-zA-Z]+$'
+lastnameRegex=r'^[a-zA-Z]+$'
+usernameRegex=r'^[a-zA-Z0-9]+$'
+emailRegex=r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+passwordRegex=r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
 
 @app.route('/',methods=["GET","POST"])
 def serve_form():
@@ -39,10 +65,32 @@ def login():
         if request.method=="POST":
               session.permanent =True
 
+
         return render_template("login.html")
-@app.route('/signup')
-def signup():
+@app.route('/signup', methods=['GET'])
+def signupform():
         return render_template("signup.html")
+@app.route('/signup', methods=['POST'])
+def signup():
+        firstname=request.form.get('firstname')
+        lastname=request.form.get('lastname')
+        username=request.form.get('username')
+        email=request.form.get('email')
+        password=request.form.get('password')
+        if not firstname or not lastname or not username or not email or not password:
+              return "please enter all data",400
+        elif not re.match(firstnameRegex,firstname):
+              return "please enter a first name with only letters",400
+        elif not re.match(lastnameRegex,lastname):
+              return "please enter a last name with only letters",400
+        elif not re.match(usernameRegex,username):
+              return "please enter a username with only letters and numbers",400
+        elif not re.match(emailRegex,email):
+              return "please enter a valid email",400
+        elif not re.match(passwordRegex,password):
+              return "please enter a valid password",400
+        else:
+              return render_template("signup.html")
 @app.route('/wishlist')
 def wishlist():
         return render_template("wishlist.html")

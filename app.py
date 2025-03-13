@@ -1,7 +1,6 @@
 import os
 from flask import Flask, request, render_template, session, redirect 
 from flask_session import Session
-
 from datetime import timedelta
 import requests
 import urllib.parse
@@ -35,8 +34,11 @@ def admin():
 @app.route('/genre')
 def genre():
         return render_template("genre.html")
-@app.route('/login')
+@app.route('/login',methods=["GET","POST"])
 def login():
+        if request.method=="POST":
+              session.permanent =True
+
         return render_template("login.html")
 @app.route('/signup')
 def signup():

@@ -15,17 +15,17 @@
                     <img src="../static/images/GameScout-logo.png" alt=""> 
                 </a>
             </div>
-            <form action="">
+            <form action="" method="POST">
             <h1>Login</h1>
             <div class="input-box">
-                <input type="text" placeholder="Username" required>
+                <input type="text" placeholder="Username" name="Username" value="{{username if username}}"required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Password" name="Password" required>
                 <i class='bx bxs-lock-alt' ></i>
             </div>
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="btn" value="submit">Login</button>
             <div class="signup-link">
                 <p>Dont have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
             </div>

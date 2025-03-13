@@ -35,9 +35,10 @@
                 </div>
                 <div class="split-right">
                     <h1>Right Section</h1>
-                    {{% for i in stores_with_price %}}
-                    <p>{{i}}</p>
-                    {{% endfor %}}
+                    {% for key, value in stores_with_price %}
+                    <p>{{key}}</p>
+                    <span>{{value}}</span>
+                    {% endfor %}
 
                 </div>
             </div>

@@ -31,8 +31,6 @@ class StoreIDAction:
                     StoreNameWithPrice["Gamesplanet"] = round(StoreIDWithPrice.get(key), 2)
                 case 28:
                     StoreNameWithPrice["Gamesload"] = round(StoreIDWithPrice.get(key), 2)
-                case 29:
-                    StoreNameWithPrice["2Game"] = round(StoreIDWithPrice.get(key), 2)
                 case 30:
                     StoreNameWithPrice["IndieGala"] = round(StoreIDWithPrice.get(key), 2)
                 case 31:

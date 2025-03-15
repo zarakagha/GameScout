@@ -10,6 +10,7 @@ class Game:
         self.steamappid = 0
         self.cheapsharkgameid = cheapsharkID
         self.imageURL = ""
+        self.NSFW = False
         self.cheapSharkGeneralDealURL = "https://www.cheapshark.com/redirect?dealID="
         self.list_of_prices = []
         self.list_of_game_stores = []
@@ -32,6 +33,8 @@ class Game:
     def setGameImageURL(self, url_link):
         self.imageURL = str(url_link)
     
+    def setNSFW(self, isNSFW):
+        self.NSFW = bool(isNSFW)
     
     def addToListOfPrices(self, price):
         self.list_of_prices.append(float(price))
@@ -63,6 +66,9 @@ class Game:
     
     def gameImage(self):
         return self.imageURL
+    
+    def NSFWstatus(self):
+        return self.NSFW
     
     def gamePricesAcrossStores(self):
         return self.list_of_prices

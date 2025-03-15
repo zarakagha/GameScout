@@ -8,6 +8,7 @@ import json
 from backend.gameclass import Game
 from backend.DealFactory import DealForGameSimpleFactory
 from backend.StoreNameAndPrice import StoreIDAction
+from backend.checkNSFW import CheckGameisNSFW
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 import re
@@ -139,11 +140,17 @@ def game():
    gamelist=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=1&title={}".format(game_name))
    gamelistjson=gamelist.json()
    gamelistjson=gamelistjson[:15]
-   print(gamelistjson[0])
+   print(gamelistjson)
+   noNSFWGameList = []
+   for game in gamelistjson:
+         if CheckGameisNSFW.isNSFWGame(game["steamAppID"]):
+               continue
+         else:
+               noNSFWGameList.append(game)
    if not gamename:
         return redirect("/")
    if gamename:
-        return render_template("explore.html",game_list=gamelistjson)
+        return render_template("explore.html",game_list=noNSFWGameList)
    else:
         return render_template("explore.html", error="Game details not found.")
 

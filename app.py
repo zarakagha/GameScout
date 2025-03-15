@@ -13,18 +13,18 @@ from sqlalchemy.sql import func
 import re
 
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] =\
-        'sqlite:///' + os.path.join(basedir, 'database.db')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-app.secret_key="GameScout"
 
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] ='SECRETKEY'
+app.secret_key="GameScout"
+db = SQLAlchemy(app)
 SECRET_KEY = "GameScout"
 SESSION_TYPE = 'filesystem'
 app.config.from_object(__name__)
 app.permanent_session_lifetime = timedelta(minutes=10)
+
 Session(app)
 
 class user(db.Model):
@@ -35,6 +35,7 @@ class user(db.Model):
       username= db.Column(db.String(100),unique=True, nullable=False)
       email= db.Column(db.String(100),unique=True, nullable=False)
       password=db.Column(db.String(100),nullable=False)
+      isadmin = db.Column(db.Boolean, default=False, nullable=False)
       
 class games(db.Model):
       __tablename__ = 'games'
@@ -50,6 +51,19 @@ passwordRegex=r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
 
 @app.route('/',methods=["GET","POST"])
 def serve_form():
+    steamgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=1")
+    steamgamesjson=steamgames.json()
+    steamgamesjson=steamgamesjson[:10]
+    epicgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=25")
+    epicgamesjson=epicgames.json()
+    epicgamesjson=epicgamesjson[:10]
+    goggames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=7")
+    goggamesjson=goggames.json()
+    goggamesjson=goggamesjson[:10]
+    fanaticalgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=15")
+    fanaticalgamesjson=fanaticalgames.json()
+    fanaticalgamesjson=fanaticalgamesjson[:10]
+
     return render_template("mainpage.html") 
 @app.route('/accounts')
 def accounts():
@@ -63,9 +77,16 @@ def genre():
 @app.route('/login',methods=["GET","POST"])
 def login():
         if request.method=="POST":
-              session.permanent =True
+            username =request.form.get('username')
+            password =request.form.get('password')
+            checkusername = user.query.filter_by(username=username).first()
 
-
+            if checkusername and user.password == password:
+                  session.permant = True
+                  session['userid']=user.id
+                  session['username']=user.username
+                  return redirect ('/')
+            
         return render_template("login.html")
 @app.route('/signup', methods=['GET'])
 def signupform():
@@ -89,8 +110,13 @@ def signup():
               return "please enter a valid email",400
         elif not re.match(passwordRegex,password):
               return "please enter a valid password",400
-        else:
-              return render_template("signup.html")
+        exists = user.query.filter((user.username== username)|(user.email == email)).first()
+        if exists:
+              return "user already exists",400
+        new_user =user(firstname=firstname,lastname=lastname,username=username,password=password,email=email,isadmin=False)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect("/login")
 @app.route('/wishlist')
 def wishlist():
         return render_template("wishlist.html")
@@ -134,7 +160,10 @@ def gamedetail(game_id):
             return render_template("game.html",gamename=name,store_dict=storedict.items(), gameIMG=gameImg)
       else:
             return render_template("game.html",404,404)
-       
+
+with app.app_context():
+    db.create_all() 
+
 if __name__=='__main__':
    app.run(debug=True)
 

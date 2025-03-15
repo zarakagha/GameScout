@@ -14,7 +14,7 @@ class DealForGameSimpleFactory:
         gameObj.setGameName(cheapsharkJSON["info"]["title"])
         gameObj.setGameSteamappid(cheapsharkJSON["info"]["steamAppID"])
         gameObj.setGamePriceCAD(get_inital_price(gameObj.gameSteamAppId()))
-        gameObj.setGameImageURL(cheapsharkJSON["info"]["thumb"])
+        gameObj.setGameImageURL("https://steamcdn-a.akamaihd.net/steam/apps/{}/library_600x900_2x.jpg".format(str(gameObj.gameSteamAppId())))
         for deal in cheapsharkJSON["deals"]:
             gameObj.addToListOfPrices(deal["price"])
             gameObj.addToListOfStores(deal["storeID"])

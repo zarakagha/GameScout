@@ -52,24 +52,90 @@
             <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
             <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
             <div class="product-container">
+                {% for key in steamgamesjson %}
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">80% off</span>
-                        <img src="https://steamcdn-a.akamaihd.net/steam/apps/306130/library_600x900_2x.jpg" class="product-thumb" alt="">
+                        <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key['steamAppID']}}/library_600x900_2x.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
-                        <h2 class="product-brand">Ori and the Blind Forest: Definetive Edition</h2>
-                        <span class="price">$4.99</span><span class="actual-price">$24.99</span>
+                        <h2 class="product-brand">{{key['title']}}</h2>
+                        <span class="price">{{key['salePrice']}}</span><span class="actual-price">{{key['normalPrice']}}</span>
                     </div>
                 </div>
-                <div class="product-card">
+                {% endfor %}
+            </section> 
+            <div class="content-wrap">
+                <section class="product"> 
+                     <h2 class="product-category">On Sale</h2>
+                     <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
+                     <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
+                     <div class="product-container">
+                         {% for key in epicgamesjson %}
+                         <div class="product-card">
+                             <div class="product-image">
+                                 <span class="discount-tag">80% off</span>
+                                 <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key['steamAppID']}}/library_600x900_2x.jpg" class="product-thumb" alt="">
+                                 <button class="card-btn">add to wishlist</button>
+                             </div>
+                             <div class="product-info">
+                                 <h2 class="product-brand">{{key['title']}}</h2>
+                                 <span class="price">{{key['salePrice']}}</span><span class="actual-price">{{key['normalPrice']}}</span>
+                             </div>
+                         </div>
+                         {% endfor %}
+                </section> 
+                </div>
+            <div class="content-wrap">
+                <section class="product"> 
+                        <h2 class="product-category">On Sale</h2>
+                        <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
+                        <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
+                        <div class="product-container">
+                            {% for key in goggamesjson %}
+                            <div class="product-card">
+                                 <div class="product-image">
+                                        <span class="discount-tag">80% off</span>
+                                        <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key['steamAppID']}}/library_600x900_2x.jpg" class="product-thumb" alt="">
+                                        <button class="card-btn">add to wishlist</button>
+                                 </div>
+                                 <div class="product-info">
+                                        <h2 class="product-brand">{{key['title']}}</h2>
+                                        <span class="price">{{key['salePrice']}}</span><span class="actual-price">{{key['normalPrice']}}</span>
+                                 </div>
+                            </div>
+                            {% endfor %}
+                </section>
+                </div>
+                <div class="content-wrap">
+                    <section class="product"> 
+                            <h2 class="product-category">On Sale</h2>
+                            <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
+                            <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
+                            <div class="product-container">
+                                {% for key in fanaticaljson %}
+                                <div class="product-card">
+                                     <div class="product-image">
+                                            <span class="discount-tag">80% off</span>
+                                            <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key['steamAppID']}}/library_600x900_2x.jpg" class="product-thumb" alt="">
+                                            <button class="card-btn">add to wishlist</button>
+                                     </div>
+                                     <div class="product-info">
+                                            <h2 class="product-brand">{{key['title']}}</h2>
+                                            <span class="price">{{key['salePrice']}}</span><span class="actual-price">{{key['normalPrice']}}</span>
+                                     </div>
+                                </div>
+                                {% endfor %}
+                    </section>  
+                    </div>
+                   <!--<div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
                         <img src="../static/images/Game-Cards/R6S.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
-                    <div class="product-info">
+             <div class="product-info">
                         <h2 class="product-brand">Tom Clancy's Rainbow Six® Siege</h2>
                         <span class="price">$4.99</span><span class="actual-price">$24.99</span>
                     </div>
@@ -409,6 +475,7 @@
             <a href="">zarakagha</a>
         </div>
     </div>
+-->
 </body>
 <script src="{{ url_for('static', filename='js/MainpageScript.js') }}"></script>
 </html>

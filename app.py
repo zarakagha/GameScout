@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, session, redirect 
+from flask import Flask, request, render_template, session, redirect, flash 
 from flask_session import Session
 from datetime import timedelta
 import requests
@@ -64,8 +64,8 @@ def serve_form():
     fanaticalgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=15")
     fanaticalgamesjson=fanaticalgames.json()
     fanaticalgamesjson=fanaticalgamesjson[:10]
-
-    return render_template("mainpage.html") 
+    
+    return render_template("mainpage.html", steamgamesjson=steamgamesjson,epicgamesjson=epicgamesjson,goggamesjson=goggamesjson,fanaticalgamesjson=fanaticalgamesjson) 
 @app.route('/accounts')
 def accounts():
         return render_template("account.html")
@@ -148,7 +148,11 @@ def game():
          else:
                noNSFWGameList.append(game)
    if not gamename:
-        return redirect("/")
+        return redirect("/",error="please enter game name")
+   
+   if len(noNSFWGameList) == 0:
+         error="no games found"
+         return render_template("explore.html",error=error)  
    if gamename:
         return render_template("explore.html",game_list=noNSFWGameList)
    else:

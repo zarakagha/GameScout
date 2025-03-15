@@ -54,17 +54,19 @@ passwordRegex=r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
 def serve_form():
     steamgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=1")
     steamgamesjson=steamgames.json()
-    steamgamesjson=steamgamesjson[:10]
+    steamgamesjson=steamgamesjson[:9]
     epicgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=25")
     epicgamesjson=epicgames.json()
-    epicgamesjson=epicgamesjson[:10]
+    epicgamesjson=epicgamesjson[:9]
     goggames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=7")
     goggamesjson=goggames.json()
-    goggamesjson=goggamesjson[:10]
+    goggamesjson=goggamesjson[:9]
     fanaticalgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=15")
     fanaticalgamesjson=fanaticalgames.json()
-    fanaticalgamesjson=fanaticalgamesjson[:10]
-    
+    fanaticalgamesjson=fanaticalgamesjson[:9]
+    print(steamgamesjson)
+    print(epicgamesjson)
+    print(goggamesjson)
     return render_template("mainpage.html", steamgamesjson=steamgamesjson,epicgamesjson=epicgamesjson,goggamesjson=goggamesjson,fanaticalgamesjson=fanaticalgamesjson) 
 @app.route('/accounts')
 def accounts():

@@ -65,14 +65,16 @@
                     </div>
                 </div>
                 {% endfor %}
+            </div>
             </section> 
+            </div>
             <div class="content-wrap">
                 <section class="product"> 
                      <h2 class="product-category">On Sale</h2>
                      <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
                      <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
                      <div class="product-container">
-                         {% for key in epicgamesjson %}
+                        {% for key in epicgamesjson %}
                          <div class="product-card">
                              <div class="product-image">
                                  <span class="discount-tag">80% off</span>
@@ -85,28 +87,8 @@
                              </div>
                          </div>
                          {% endfor %}
+                     </div>
                 </section> 
-                </div>
-            <div class="content-wrap">
-                <section class="product"> 
-                        <h2 class="product-category">On Sale</h2>
-                        <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
-                        <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
-                        <div class="product-container">
-                            {% for key in goggamesjson %}
-                            <div class="product-card">
-                                 <div class="product-image">
-                                        <span class="discount-tag">80% off</span>
-                                        <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key['steamAppID']}}/library_600x900_2x.jpg" class="product-thumb" alt="">
-                                        <button class="card-btn">add to wishlist</button>
-                                 </div>
-                                 <div class="product-info">
-                                        <h2 class="product-brand">{{key['title']}}</h2>
-                                        <span class="price">{{key['salePrice']}}</span><span class="actual-price">{{key['normalPrice']}}</span>
-                                 </div>
-                            </div>
-                            {% endfor %}
-                </section>
                 </div>
                 <div class="content-wrap">
                     <section class="product"> 
@@ -114,20 +96,23 @@
                             <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
                             <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
                             <div class="product-container">
-                                {% for key in fanaticaljson %}
+                                {% for item in goggamesjson %}
                                 <div class="product-card">
                                      <div class="product-image">
                                             <span class="discount-tag">80% off</span>
-                                            <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key['steamAppID']}}/library_600x900_2x.jpg" class="product-thumb" alt="">
+                                            <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{item['steamAppID']}}/library_600x900_2x.jpg" class="product-thumb" alt="">
                                             <button class="card-btn">add to wishlist</button>
                                      </div>
                                      <div class="product-info">
-                                            <h2 class="product-brand">{{key['title']}}</h2>
-                                            <span class="price">{{key['salePrice']}}</span><span class="actual-price">{{key['normalPrice']}}</span>
+                                            <h2 class="product-brand">{{item['title']}}</h2>
+                                            <span class="price">{{item['salePrice']}}</span><span class="actual-price">{{item['normalPrice']}}</span>
+    
                                      </div>
                                 </div>
                                 {% endfor %}
-                    </section>  
+                            </div>
+                            
+                    </section>
                     </div>
                    <!--<div class="product-card">
                     <div class="product-image">
@@ -457,6 +442,7 @@
                 </div>
             </div>
         </section> 
+            -->
     </div>
     <div>
     </div>
@@ -475,7 +461,7 @@
             <a href="">zarakagha</a>
         </div>
     </div>
--->
+
 </body>
 <script src="{{ url_for('static', filename='js/MainpageScript.js') }}"></script>
 </html>

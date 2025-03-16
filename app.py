@@ -68,7 +68,7 @@ def serve_form():
                 OriginalPriceOfGame = get_inital_price(currentdeal["steamAppID"])
                 discounted_price = round(ConvertUSDToCad.convertPriceForGame(float(OriginalPriceOfGame), int(currentdeal["storeID"]), float(currentdeal["savings"])), 2)
                 savings = int(round(float(currentdeal["savings"]), 0))
-                steamgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"]]
+                steamgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"], currentdeal["gameID"]]
           except:
                 print("Error in creating dictionary for game for Steam, Game name: " + currentdeal["title"] + " Steam App ID value: " + str(currentdeal["steamAppID"]))
                 continue
@@ -80,7 +80,7 @@ def serve_form():
                 OriginalPriceOfGame = get_inital_price(currentdeal["steamAppID"])
                 discounted_price = round(ConvertUSDToCad.convertPriceForGame(float(OriginalPriceOfGame), int(currentdeal["storeID"]), float(currentdeal["savings"])), 2)
                 savings = int(round(float(currentdeal["savings"]), 0))
-                epicgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"]]
+                epicgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"], currentdeal["gameID"]]
           except:
                 print("Error in creating dictionary for game for Epic, Game name: " + currentdeal["title"] + " Steam App ID value: " + str(currentdeal["steamAppID"]))
                 continue
@@ -92,7 +92,7 @@ def serve_form():
                 OriginalPriceOfGame = get_inital_price(currentdeal["steamAppID"])
                 discounted_price = round(ConvertUSDToCad.convertPriceForGame(float(OriginalPriceOfGame), int(currentdeal["storeID"]), float(currentdeal["savings"])), 2)
                 savings = int(round(float(currentdeal["savings"]), 0))
-                goggamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"]]
+                goggamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"], currentdeal["gameID"]]
           except:
                 print("Error in creating dictionary for game for GOG, Game name: " + currentdeal["title"] + " Steam App ID value: " + str(currentdeal["steamAppID"]))
                 continue
@@ -104,7 +104,7 @@ def serve_form():
                 OriginalPriceOfGame = get_inital_price(currentdeal["steamAppID"])
                 discounted_price = round(ConvertUSDToCad.convertPriceForGame(float(OriginalPriceOfGame), int(currentdeal["storeID"]), float(currentdeal["savings"])), 2)
                 savings = int(round(float(currentdeal["savings"]), 0))
-                fanaticalgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"]]
+                fanaticalgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"], currentdeal["gameID"]]
           except:
                 print("Error in creating dictionary for game for Fanatical, Game name: " + currentdeal["title"] + " Steam App ID value: " + str(currentdeal["steamAppID"]))
                 continue
@@ -196,7 +196,7 @@ def wishlist():
         usergameslist= games.query.filter_by(userid=userid).all()
         for game in usergameslist:
              id=game.id
-             gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?steamAppid={}").id
+             gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
              gamedetailsjson=gamedetails.json()
              gamedetailDict[id]=gamedetailsjson
             

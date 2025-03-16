@@ -56,7 +56,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">{{value[2]}} %</span>
-                        <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt="">
+                        <a href="{{url_for('gamedetail',game_id=value[4])}}"><img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt=""></a>
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
@@ -78,7 +78,7 @@
                          <div class="product-card">
                              <div class="product-image">
                                  <span class="discount-tag">{{value[2]}} %</span>
-                                 <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt="">
+                                 <a href="{{url_for('gamedetail',game_id=value[4])}}"><img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt=""></a>
                                  <button class="card-btn">add to wishlist</button>
                              </div>
                              <div class="product-info">
@@ -100,7 +100,7 @@
                                 <div class="product-card">
                                      <div class="product-image">
                                             <span class="discount-tag">{{value[2]}} %</span>
-                                            <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt="">
+                                            <a href="{{url_for('gamedetail',game_id=value[4])}}"><img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt=""></a>
                                             <button class="card-btn">add to wishlist</button>
                                      </div>
                                      <div class="product-info">
@@ -124,7 +124,7 @@
                                     <div class="product-card">
                                          <div class="product-image">
                                                 <span class="discount-tag">{{value[2]}} %</span>
-                                                <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt="">
+                                                <a href="{{url_for('gamedetail',game_id=value[4])}}"><img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt=""></a>
                                                 <button class="card-btn">add to wishlist</button>
                                          </div>
                                          <div class="product-info">

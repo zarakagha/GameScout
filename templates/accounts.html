@@ -4,30 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameScout here</title>
+    <title>GameScout</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/> 
 </head>
 
-<body>
+<body class = "admin-body">
     <nav class="nav_bar">
-        <div class="nav_div">
-            <div class="logo"><a href="#">
+        <div class="admin-div">
+            <div class="logo" style="flex-grow: 8"><a href="#">
                 <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
-            <ul>
-                <li><a href="{{ url_for('signup') }}"><img src="../static/images/person.png" alt=""></a></li>
-                <li><a href="{{ url_for('admin') }}"><img src="../static/images/home.png" alt=""></a></li>
-            </ul>
+            
+            <div><li><a href="{{ url_for('signup') }}"><img src="../static/images/person.png" alt=""></a></li></div>
+            <div><li><a href="{{ url_for('admin') }}"><img src="../static/images/home.png" alt=""></a></li></div>
+            
         </div>
     </nav>
 
-    <div>
-        <span style="font-size: 16px;color:black">Filter </span>
+    <div class = "admin-filters">
+        <div class = "filter"><p>Filter:</p>
         <select size="1">
             <option>Signup Date</option>
             <option>Last accessed</option>
             <option>UserName</option>
-        </select>
-        <input type="text" placeholder="Search Accounts">
+        </select></div>
+        <input  type="text" placeholder="Search Accounts">
     </div>
 
    

@@ -7,6 +7,7 @@
   </title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="{{ url_for('static', filename='js/eventHandler.js') }}"></script>
 </head>
 <body id="login-page" class="ID-body1">  
     <div id="login-page">
@@ -15,14 +16,16 @@
                     <img src="../static/images/GameScout-logo.png" alt=""> 
                 </a>
             </div>
-            <form action="" method="POST">
+            <form action="/login" method="POST" id="login-form">
             <h1>Login</h1>
             <div class="input-box">
-                <input type="text" placeholder="Username" name="Username" value="{{username if username}}"required>
+                <input type="text" placeholder="Username" name="Username" id="username"value="{{username if username}}">
+                <span id ="error-text-username" class="error-text hidden">Invalid username</span>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Password" name="Password" required>
+                <input type="password" placeholder="Password" name="Password" id="password" >
+                <span id ="error-text-password" class="error-text hidden">Invalid password</span>
                 <i class='bx bxs-lock-alt' ></i>
             </div>
             <button type="submit" class="btn" value="submit">Login</button>
@@ -32,5 +35,6 @@
             </form>
         </div>
         </div>
+        <script src="{{ url_for('static', filename='js/eventRegisterLogin.js') }}"></script>
     </body>
-</html>
+ </html>

@@ -66,8 +66,10 @@
         </ul>
       </div>
     </nav>
-    <div class="content-wrap">
-      <div class="gameList">
+    <div>
+        {% if error %}
+        <p>{{error}}</p>
+        {% endif %}
         {% for item in game_list %}
         <div class="gameCard">
           <img src="{{item.thumb}}" />

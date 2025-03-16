@@ -1,3 +1,4 @@
+
 function validatefname(fname) {
 	let nameRegEx = /^[a-zA-Z]+$/;
 
@@ -18,16 +19,22 @@ function validatelname(lname) {
 }
 
 function validatePWD(pwd) {
-	if (pwd.length === 8)
+    let pwdRegEx =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+	if (pwdRegEx.test(pwd))
 		return true;
 	else
 		return false;
 }
-
-function validateUsername(uname) {
-
-    let unameRegEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        if (unameRegEx.test(uname))
+function validateUsername(username) {
+    let usernameRegEx = /^[a-zA-Z0-9\-_.]{5,12}$/;
+        if (usernameRegEx.test(username))
+            return true;
+        else
+            return false;
+}
+function validateEmail(email) {
+    let emailRegEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (emailRegEx.test(email))
             return true;
         else
             return false;
@@ -35,16 +42,17 @@ function validateUsername(uname) {
 
 function validateLogin(event) 
 {
+    console.log("validateLogin called");
     let username =document.getElementById('username');
     let password =document.getElementById('password');
-    let formisvalid = true;
+    let formIsValid = true;
 
     if(!validateUsername(username.value))
     {
       username.classList.add("errorborder");
       var errortext = document.getElementById("error-text-username");
       errortext.classList.remove("hidden");
-      event.preventDefault();
+      formIsValid = false;
     }
     else
     {
@@ -59,6 +67,7 @@ function validateLogin(event)
         var errortext = document.getElementById("error-text-password");
         errortext.classList.remove("hidden");
         event.preventDefault();
+        formIsValid = false;
        
     }
     else
@@ -68,26 +77,25 @@ function validateLogin(event)
         errortext.classList.add("hidden");
         
     }
-    if(formisvalid===true)
-    {
-        console.log("Validation passed");
+    if (!formIsValid) {
+        event.preventDefault();
     }
 }
 function validateSignup(event)  
 {
     let fname =document.getElementById('firstname');
     let lname =document.getElementById('lastname');
-    let username =document.getElementById('email');
+    let username =document.getElementById('username');
+    let email = document.getElementById('email');
     let password =document.getElementById('password');
-    let password2 =document.getElementById('repassword');
-    let formisvalid = true;
+    let formIsValid = true;
 
     if(!validatefname(fname.value))
     {
         fname.classList.add("errorborder");
         var errortext = document.getElementById("error-text-fname");
         fname.classList.remove("hidden");
-        event.preventDefault();
+        formIsValid = false;
     }
     else
     {
@@ -100,7 +108,7 @@ function validateSignup(event)
         lname.classList.add("errorborder");
         var errortext = document.getElementById("error-text-lname");
         lname.classList.remove("hidden");
-        event.preventDefault();
+        formIsValid = false;
     }
     else
     {
@@ -111,22 +119,35 @@ function validateSignup(event)
     if(!validateUsername(username.value))
     {
         username.classList.add("errorborder");
-        var errortext = document.getElementById("error-text-email");
+        var errortext = document.getElementById("error-text-username");
         username.classList.remove("hidden");
-        event.preventDefault();
+        formIsValid = false;
     }
     else
     {
         username.classList.remove("errorborder");
-        var errortext = document.getElementById("error-text-email");
+        var errortext = document.getElementById("error-text-username");
         errortext.classList.add("hidden");
     }
+    if(!validateEmail(email.value))
+        {
+            email.classList.add("errorborder");
+            var errortext = document.getElementById("error-text-email");
+            username.classList.remove("hidden");
+            formIsValid = false;
+        }
+        else
+        {
+            email.classList.remove("errorborder");
+            var errortext = document.getElementById("error-text-email");
+            errortext.classList.add("hidden");
+        }
     if(!validatePWD(password.value))
     {
         password.classList.add("errorborder");
         var errortext = document.getElementById("error-text-password");
         password.classList.remove("hidden");
-        event.preventDefault();
+        formIsValid = false;
     }
     else
     {
@@ -134,22 +155,7 @@ function validateSignup(event)
         var errortext = document.getElementById("error-text-password");
         errortext.classList.add("hidden");
     }
-    if(password.value!== password2.value)
-    {
-        password2.classList.add("errorborder");
-        var errortext = document.getElementById("error-text-repassword");
-        password2.classList.remove("hidden");
+    if (!formIsValid) {
         event.preventDefault();
-    }
-    else
-    {
-        password2.classList.remove("errorborder");
-        var errortext = document.getElementById("error-text-repassword");
-        errortext.classList.add("hidden");
-    }
-    if(!formisvalid===true)
-    {
-    
-      console.log("Validation successful");
     }
 }

@@ -6,27 +6,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameScout here</title>
+    <title>GameScout</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/> 
 </head>
 
-<body>
+<body class = "admin-body">
     <nav class="nav_bar">
-        <div class="nav_div">
+        <div class="admin-div">
             <div class="logo"><a href="#">
                 <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
             <ul>
-                <li><a href="{{ url_for('signup') }}"><img src="../static/images/person.png" alt=""></a></li>
-                <li><a href=""><img src="../static/images/heart.png" alt=""></a></li>
+                <li><a href="{{ url_for('login') }}"><img src="../static/images/person.png" alt=""></a></li>
+                
             </ul>
         </div>
     </nav>
 
-    <div class ="admin_options">
+    <div class ="admin-options">
         
         <a href = "{{ url_for('accounts') }}">
-            <button type="button">Accounts</button>
+            <button type= "button">Accounts</button>
         </a>
+        <a href = "{{ url_for('game') }}">
+            <button type = "button">Games</button>
+        </a>
+        
+
     </div>
 
     

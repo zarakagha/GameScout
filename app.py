@@ -81,12 +81,17 @@ def login():
             username =request.form.get('username')
             password =request.form.get('password')
             checkusername = user.query.filter_by(username=username).first()
+            
 
             if checkusername and user.password == password:
                   session.permant = True
                   session['userid']=user.id
                   session['username']=user.username
-                  return redirect ('/')
+                  session['usertype'] = user.isadmin
+                  if session['usertype'] == True:
+                        return redirect ('/admin')
+                  else:
+                        return redirect ('/')
             
         return render_template("login.html")
 @app.route('/signup', methods=['GET'])
@@ -99,6 +104,7 @@ def signup():
         username=request.form.get('username')
         email=request.form.get('email')
         password=request.form.get('password')
+        
         if not firstname or not lastname or not username or not email or not password:
               return "please enter all data",400
         elif not re.match(firstnameRegex,firstname):
@@ -118,6 +124,7 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
         return redirect("/login")
+
 @app.route('/wishlist')
 def wishlist():
         return render_template("wishlist.html")

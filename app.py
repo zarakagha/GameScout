@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, session, redirect 
+from flask import Flask, request, render_template, session, redirect, flash 
 from flask_session import Session
 from datetime import timedelta
 import requests
@@ -54,18 +54,20 @@ passwordRegex=r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
 def serve_form():
     steamgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=1")
     steamgamesjson=steamgames.json()
-    steamgamesjson=steamgamesjson[:10]
+    steamgamesjson=steamgamesjson[:9]
     epicgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=25")
     epicgamesjson=epicgames.json()
-    epicgamesjson=epicgamesjson[:10]
+    epicgamesjson=epicgamesjson[:9]
     goggames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=7")
     goggamesjson=goggames.json()
-    goggamesjson=goggamesjson[:10]
+    goggamesjson=goggamesjson[:9]
     fanaticalgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=15")
     fanaticalgamesjson=fanaticalgames.json()
-    fanaticalgamesjson=fanaticalgamesjson[:10]
-
-    return render_template("mainpage.html") 
+    fanaticalgamesjson=fanaticalgamesjson[:9]
+    print(steamgamesjson)
+    print(epicgamesjson)
+    print(goggamesjson)
+    return render_template("mainpage.html", steamgamesjson=steamgamesjson,epicgamesjson=epicgamesjson,goggamesjson=goggamesjson,fanaticalgamesjson=fanaticalgamesjson) 
 @app.route('/accounts')
 def accounts():
         return render_template("account.html")
@@ -155,7 +157,11 @@ def game():
          else:
                noNSFWGameList.append(game)
    if not gamename:
-        return redirect("/")
+        return redirect("/",error="please enter game name")
+   
+   if len(noNSFWGameList) == 0:
+         error="no games found"
+         return render_template("explore.html",error=error)  
    if gamename:
         return render_template("explore.html",game_list=noNSFWGameList)
    else:

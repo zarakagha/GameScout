@@ -66,10 +66,12 @@
         </ul>
       </div>
     </nav>
-    <div>
-        {% if error %}
-        <p>{{error}}</p>
-        {% endif %}
+    <div class="explorePage-game_list">
+      <div class="box left"></div>
+      {% if error %}
+      <p>{{error}}</p>
+      {% endif %}
+      <div class="middle">
         {% for item in game_list %}
         <div class="gameCard">
           <img src="{{item.thumb}}" />
@@ -81,6 +83,7 @@
         </div>
         {% endfor %}
       </div>
+      <div class="box right"></div>
     </div>
     <div class="footer">
       <div class="footerColumn1">

@@ -553,48 +553,44 @@ table a {
 
 /*ADMIN*/
 .admin-body {
-  
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
   flex-wrap: wrap;
-  
+
   padding-top: 0px;
   font-family: "Motiva Sans", sans-serif;
   background: url(../images/ControlPanal.jpg) no-repeat;
   background-size: cover;
   background-position: center;
-  
 }
 .admin-div {
-  margin-top:0px;
+  margin-top: 0px;
   display: flex;
   flex-direction: row;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   background: black;
-  
+
   height: 100px;
   width: 97vw;
 }
-.admin-div img{
+.admin-div img {
   height: 90px;
 }
 .admin-options {
-
   display: flex;
-  
+
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-content: flex-start ;
-  padding:25px;
+  align-content: flex-start;
+  padding: 25px;
   width: 97vw;
   height: 25vw;
-  
 }
 .admin-options a button {
   background-color: #818282;
@@ -602,7 +598,6 @@ table a {
 
   padding: 32px 32px;
   text-align: center;
-  
 
   font-size: auto;
   min-width: 300px;
@@ -611,19 +606,19 @@ table a {
   width: 30vw;
 }
 
-.admin-filters{
+.admin-filters {
   display: flex;
-  
+
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-content: flex-start ;
-  padding:25px;
+  align-content: flex-start;
+  padding: 25px;
   width: 97vw;
   height: 70px;
 }
 
-.admin-filters .filter{
+.admin-filters .filter {
   background: white;
   margin-right: 20px;
   color: black;
@@ -632,22 +627,20 @@ table a {
   width: 20vw;
   min-width: 300px;
 }
-.admin-filters .filter select{
+.admin-filters .filter select {
   width: 20vw;
   min-width: 300px;
   height: 30px;
   border-radius: 15px;
 }
 
-.admin-filters input{
+.admin-filters input {
   margin-left: 20px;
   border-radius: 15px;
   opacity: 70%;
   width: 20vw;
   min-width: 300px;
-
 }
-
 
 .errorborder {
   border: 2px solid red;
@@ -660,18 +653,41 @@ table a {
 }
 
 /*EXPLORE PAGE*/
-.gameList {
-  background-color: black;
+.explorePage-game_list {
+  display: grid;
+  grid-template-columns: 0.4fr 2.2fr 0.4fr;
+  min-height: 65vh;
+  padding: 20px;
+  gap: 10px;
+  background-color: rgb(21, 8, 77);
+}
+.box {
+  display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-size: 20px;
+}
+.middle {
+  background-color: black;
+  flex-direction: column;
+  gap: 10px;
+}
+.gameCard {
+  height: 70px;
+  display: flex;
+  background-color: black;
+  border: 2px solid lightcyan;
+  padding: 20px;
+  font-size: 20px;
+  gap: 20px;
 }
 .explorePage_gameTitle {
   color: white;
-  font-size: 30px;
-}
-.gameCard {
-  height: 60px;
-}
-.gameCard img {
-  align-items: center;
-  justify-content: space-between;
+  font-size: 45px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block; /* Ensures the width applies */
+  width: 100%; /* Make sure it takes the div’s width */
 }

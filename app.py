@@ -116,10 +116,20 @@ def serve_form():
     return render_template("mainpage.html", steamgamesjson=steamgamesDict.items(),epicgamesjson=epicgamesDict.items(),goggamesjson=goggamesDict.items(),fanaticalgamesjson=fanaticalgamesDict.items()) 
 @app.route('/accounts')
 def accounts():
-        return render_template("account.html")
+        return render_template("accounts.html")
 @app.route('/admin')
 def admin():
         return render_template("admin.html")
+
+@app.route('/adminUser')
+def adminUser():
+        return render_template("adminUser.html")
+@app.route('/adminGamePage')
+def adminGamePage():
+        return render_template("adminGamePage.html")
+@app.route('/adminGame')
+def adminGame():
+        return render_template("adminGame.html")
 @app.route('/genre')
 def genre():
         return render_template("genre.html")

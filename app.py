@@ -44,6 +44,7 @@ class games(db.Model):
       __tablename__ = 'games'
       id=db.Column(db.Integer, primary_key=True)
       gameID= db.Column(db.String(100), nullable=False)
+      gameprice=db.Column(db.Float, nullable=False)
       user_id =db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
 
 def loginchecker():
@@ -186,7 +187,19 @@ def signup():
             return redirect("/login")
         else:
             return render_template("signup.html")
-
+@app.route('/addtowishlist',methods=['POST'])
+def addtowishlist():
+     gameid=request.form.get('gameID')
+     if not loginchecker():
+          return redirect('login')
+     userid= session['userid']
+     gameexists= games.query.filter_by(gameID=gameid,user_id=userid).first()
+     if gameexists:
+          return redirect('/wishlist')
+     newgame=games(gameID=gameid,user_id=userid)
+     db.session.add(newgame)
+     db.session.commit()
+     return redirect('/wishlist')
 @app.route('/wishlist')
 def wishlist():
         if not loginchecker():

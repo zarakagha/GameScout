@@ -118,6 +118,18 @@ def accounts():
 @app.route('/admin')
 def admin():
         return render_template("admin.html")
+@app.route('/adminUserList')
+def adminUserList():
+        return render_template("adminUserList.html")
+@app.route('/adminUser')
+def adminUser():
+        return render_template("adminUser.html")
+@app.route('/adminGamePage')
+def adminGamePage():
+        return render_template("adminGamePage.html")
+@app.route('/adminGame')
+def adminGame():
+        return render_template("adminGame.html")
 @app.route('/genre')
 def genre():
         return render_template("genre.html")

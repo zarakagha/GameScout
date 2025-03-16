@@ -12,7 +12,7 @@ from backend.checkNSFW import CheckGameisNSFW
 from backend.GetSteamPriceCadForGame import get_inital_price
 from backend.ConvertPrice import ConvertUSDToCad
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func
+from sqlalchemy.sql import func, text
 import re
 
 
@@ -46,11 +46,13 @@ class games(db.Model):
       gameID= db.Column(db.String(100), nullable=False)
       user_id =db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
 
+def loginchecker():
+     return 'userid' in session
 firstnameRegex=r'^[a-zA-Z]+$'
 lastnameRegex=r'^[a-zA-Z]+$'
 usernameRegex=r'^[a-zA-Z0-9]+$'
 emailRegex=r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
-passwordRegex=r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+passwordRegex=r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
 
 @app.route('/',methods=["GET","POST"])
 def serve_form():
@@ -130,16 +132,20 @@ def login():
             
 
             if checkusername and user.password == password:
-                  session.permant = True
+                  print("Login Successful")
+                  session.permanent = True
                   session['userid']=user.id
                   session['username']=user.username
                   session['usertype'] = user.isadmin
                   if session['usertype'] == True:
+                        print("Redirecting to Admin Page")
                         return redirect ('/admin')
                   else:
-                        return redirect ('/')
-            
-        return render_template("login.html")
+                        print("Invalid Username or Password")
+                        print("Redirecting to Main Page")
+                        return redirect ('/login')
+        else: 
+            return render_template("login.html")
 @app.route('/signup', methods=["GET","POST"])
 def signup():
         if request.method=="POST":
@@ -148,7 +154,7 @@ def signup():
             username=request.form.get('username')
             email=request.form.get('email')
             password=request.form.get('password')
-        
+            print(f"Form Data Received: firstname={firstname}, lastname={lastname}, username={username}, email={email}, password={password}")
             if not firstname or not lastname or not username or not email or not password:
               return "please enter all data",400
             elif not re.match(firstnameRegex,firstname):
@@ -173,7 +179,18 @@ def signup():
 
 @app.route('/wishlist')
 def wishlist():
-        return render_template("wishlist.html")
+        if not loginchecker():
+             return redirect('/login')
+        userid=session('userid')
+        gamedetailDict={}
+        usergameslist= games.query.filter_by(userid=userid).all()
+        for game in usergameslist:
+             id=game.id
+             gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?steamAppid={}").id
+             gamedetailsjson=gamedetails.json()
+             gamedetailDict[id]=gamedetailsjson
+            
+        return render_template('wishlist.html',gamedetailDict=gamedetailDict)
 @app.route('/gamesearch',methods =["GET","POST"])
 def get_Game():
     if request.method == "POST":

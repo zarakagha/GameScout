@@ -14,6 +14,7 @@ from backend.ConvertPrice import ConvertUSDToCad
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 import re
+import pymysql
 
 
 
@@ -28,9 +29,62 @@ SESSION_TYPE = 'filesystem'
 app.config.from_object(__name__)
 app.permanent_session_lifetime = timedelta(minutes=10)
 
+
+
 Session(app)
 
-class user(db.Model):
+
+class UsersDatabase:
+      def __init__(self):
+          self.dbname = "GameScout"
+          self.tablename = "Users"
+
+      def insert(self,firstname,lastname, username, email,password ):
+          connection = self.DBOPEN()
+
+          try:
+                cursor = connection.cursor()
+                cursor.execute("USE GameScout;")
+                sql = "INSERT INTO Users (firstname,lastname,username,email,password) VALUES (%s, %s,%s,%s,%s)"
+                cursor.execute(sql,(firstname,lastname,username,email,password))
+          finally:
+                connection.commit()
+                connection.close()
+
+      def select(self,SQL,*args):
+          connection = self.DBOPEN()
+
+          try:
+                cursor = connection.cursor()
+                cursor.execute("USE GameScout;")
+                cursor.execute(SQL,args)
+                value = cursor.fetchall()
+          finally:
+                connection.commit()
+                connection.close()
+
+          return value
+
+
+      def DBOpen(self):
+           timeout = 10
+           connection = pymysql.connect(
+            charset="utf8mb4",
+            connect_timeout=timeout,
+            cursorclass=pymysql.cursors.DictCursor,
+            db="defaultdb",
+            host="mysql-3483d28-gamescout.k.aivencloud.com",
+            password="AVNS_84_-W4vXr2O0cZwE5xm",
+            read_timeout=timeout,
+            port=11029,
+            user="avnadmin",
+            write_timeout=timeout,
+           )
+           return connection
+
+users = UsersDatabase()
+
+'''class user(db.Model):
       __tablename__ = 'user'
       id=db.Column(db.Integer, primary_key=True)
       firstname= db.Column(db.String(100), nullable=False)
@@ -39,7 +93,7 @@ class user(db.Model):
       email= db.Column(db.String(100),unique=True, nullable=False)
       password=db.Column(db.String(100),nullable=False)
       isadmin = db.Column(db.Boolean, default=False, nullable=False)
-      
+  '''
 class games(db.Model):
       __tablename__ = 'games'
       id=db.Column(db.Integer, primary_key=True)
@@ -111,10 +165,22 @@ def serve_form():
     print(goggamesDict)
     print(fanaticalgamesjson)
     print(fanaticalgamesDict)
-    return render_template("mainpage.html", steamgamesjson=steamgamesDict.items(),epicgamesjson=epicgamesDict.items(),goggamesjson=goggamesDict.items(),fanaticalgamesjson=fanaticalgamesDict.items()) 
+    return render_template("mainpage.html", steamgamesjson=steamgamesDict.items(),epicgamesjson=epicgamesDict.items(),goggamesjson=goggamesDict.items(),fanaticalgamesjson=fanaticalgamesDict.items())
+
+
 @app.route('/accounts')
 def accounts():
+        if request.method=="POST":
+            filter =request.form.get('username')
+            search =request.form.get('password')
+            
+            
+
+            if search != "":
+                 query = SQLAlchemy.select
+                 
         return render_template("accounts.html")
+
 @app.route('/admin')
 def admin():
         return render_template("admin.html")
@@ -133,17 +199,20 @@ def genre():
         return render_template("genre.html")
 @app.route('/login',methods=["GET","POST"])
 def login():
+        
         if request.method=="POST":
+            
             username =request.form.get('username')
             password =request.form.get('password')
-            checkusername = user.query.filter_by(username=username).first()
+            #checkusername = user.query.filter_by(username=username).first()
+            user = users.select("SELECT * FROM Users WHERE username = %s;",username)
             
 
-            if checkusername and user.password == password:
-                  session.permant = True
-                  session['userid']=user.id
-                  session['username']=user.username
-                  session['usertype'] = user.isadmin
+            if user and user[0]['password'] == password:
+                  session.permanent = True
+                  session['userid']=user[0]['id']
+                  session['username']=user[0]['username']
+                  session['usertype'] = user[0]['isAdmin']
                   if session['usertype'] == True:
                         return redirect ('/admin')
                   else:
@@ -152,12 +221,15 @@ def login():
         return render_template("login.html")
 @app.route('/signup', methods=["GET","POST"])
 def signup():
-        if request.method=="POST":
+        
+        if request.method== "POST":
+          
             firstname=request.form.get('firstname')
             lastname=request.form.get('lastname')
             username=request.form.get('username')
             email=request.form.get('email')
             password=request.form.get('password')
+            
         
             if not firstname or not lastname or not username or not email or not password:
               return "please enter all data",400
@@ -171,12 +243,14 @@ def signup():
               return "please enter a valid email",400
             elif not re.match(passwordRegex,password):
               return "please enter a valid password",400
-            exists = user.query.filter((user.username== username)|(user.email == email)).first()
+            #exists = user.query.filter((user.username== username)|(user.email == email)).first()
+            exists = users.select("SELECT * FROM Users WHERE username = %s;",username)
             if exists:
               return "user already exists",400
-            new_user =user(firstname=firstname,lastname=lastname,username=username,password=password,email=email,isadmin=False)
-            db.session.add(new_user)
-            db.session.commit()
+            new_user =users.insert(firstname=firstname,lastname=lastname,username=username,password=password,email=email,isadmin=False)
+            #new_user = user.insert(firstname=firstname,lastname=lastname,username=username,password=password,email=email,isadmin=False)
+            #db.session.add(new_user)
+            #db.session.commit()
             return redirect("/login")
         else:
             return render_template("signup.html")

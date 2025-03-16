@@ -48,20 +48,20 @@
     </div>
     <div class="content-wrap">
        <section class="product"> 
-            <h2 class="product-category">On Sale</h2>
+            <h2 class="product-category">On Sale From Steam</h2>
             <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
             <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
             <div class="product-container">
-                {% for key in steamgamesjson %}
+                {% for key, value in steamgamesjson %}
                 <div class="product-card">
                     <div class="product-image">
-                        <span class="discount-tag">80% off</span>
-                        <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key['steamAppID']}}/library_600x900_2x.jpg" class="product-thumb" alt="">
+                        <span class="discount-tag">{{value[2]}} %</span>
+                        <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt="">
                         <button class="card-btn">add to wishlist</button>
                     </div>
                     <div class="product-info">
-                        <h2 class="product-brand">{{key['title']}}</h2>
-                        <span class="price">{{key['salePrice']}}</span><span class="actual-price">{{key['normalPrice']}}</span>
+                        <h2 class="product-brand">{{value[3]}}</h2>
+                        <span class="price">{{value[1]}}</span><span class="actual-price">{{value[0]}}</span>
                     </div>
                 </div>
                 {% endfor %}
@@ -70,20 +70,20 @@
             </div>
             <div class="content-wrap">
                 <section class="product"> 
-                     <h2 class="product-category">On Sale</h2>
+                     <h2 class="product-category">On Sale From Epic Games</h2>
                      <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
                      <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
                      <div class="product-container">
-                        {% for key in epicgamesjson %}
+                        {% for key, value in epicgamesjson %}
                          <div class="product-card">
                              <div class="product-image">
-                                 <span class="discount-tag">80% off</span>
-                                 <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key['steamAppID']}}/library_600x900_2x.jpg" class="product-thumb" alt="">
+                                 <span class="discount-tag">{{value[2]}} %</span>
+                                 <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt="">
                                  <button class="card-btn">add to wishlist</button>
                              </div>
                              <div class="product-info">
-                                 <h2 class="product-brand">{{key['title']}}</h2>
-                                 <span class="price">{{key['salePrice']}}</span><span class="actual-price">{{key['normalPrice']}}</span>
+                                 <h2 class="product-brand">{{value[3]}}</h2>
+                                 <span class="price">{{value[1]}}</span><span class="actual-price">{{value[0]}}</span>
                              </div>
                          </div>
                          {% endfor %}
@@ -92,20 +92,20 @@
                 </div>
                 <div class="content-wrap">
                     <section class="product"> 
-                            <h2 class="product-category">On Sale</h2>
+                            <h2 class="product-category">On Sale From GOG</h2>
                             <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
                             <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
                             <div class="product-container">
-                                {% for item in goggamesjson %}
+                                {% for key, value in goggamesjson %}
                                 <div class="product-card">
                                      <div class="product-image">
-                                            <span class="discount-tag">80% off</span>
-                                            <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{item['steamAppID']}}/library_600x900_2x.jpg" class="product-thumb" alt="">
+                                            <span class="discount-tag">{{value[2]}} %</span>
+                                            <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt="">
                                             <button class="card-btn">add to wishlist</button>
                                      </div>
                                      <div class="product-info">
-                                            <h2 class="product-brand">{{item['title']}}</h2>
-                                            <span class="price">{{item['salePrice']}}</span><span class="actual-price">{{item['normalPrice']}}</span>
+                                            <h2 class="product-brand">{{value[3]}}</h2>
+                                            <span class="price">{{value[1]}}</span><span class="actual-price">{{value[0]}}</span>
     
                                      </div>
                                 </div>
@@ -114,6 +114,30 @@
                             
                     </section>
                     </div>
+                    <div class="content-wrap">
+                        <section class="product"> 
+                                <h2 class="product-category">On Sale From Fanatical Games</h2>
+                                <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
+                                <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
+                                <div class="product-container">
+                                    {% for key, value in fanaticalgamesjson %}
+                                    <div class="product-card">
+                                         <div class="product-image">
+                                                <span class="discount-tag">{{value[2]}} %</span>
+                                                <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt="">
+                                                <button class="card-btn">add to wishlist</button>
+                                         </div>
+                                         <div class="product-info">
+                                                <h2 class="product-brand">{{value[3]}}</h2>
+                                                <span class="price">{{value[1]}}</span><span class="actual-price">{{value[0]}}</span>
+        
+                                         </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                
+                        </section>
+                        </div>
                    <!--<div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>

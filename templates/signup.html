@@ -8,43 +8,49 @@
     <title>GameScout</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/> 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="js/eventHandlers.js"></script>
+    <script src="{{ url_for('static', filename='js/eventHandler.js') }}"></script>
 </head>
 
 <body id="signup-page" class="ID-body2">
     <div class="wrapper">
-            <form action="">
+            <form action="/signup" method="POST" id="signup-form">
             <div class="logo"><a href="{{ url_for('serve_form') }}">
                     <img src="../static/images/GameScout-logo.png" alt=""> 
                 </a>
             </div>
             <h1>Sign Up</h1>
             <div class="input-box">
-                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="First Name" id="firstname">
+                <span id="error-text-fname" class="error-text hidden">First Name must only have letters</span>
                 <i></i>
             </div>
             <div class="input-box">
-                <input type="text" placeholder="Last Name" required>
+                <input type="text" placeholder="Last Name" id="lastname" >
+                <span id="error-text-lname" class="error-text hidden">Last Name must only have letters</span>
                 <i></i>
             </div>
             <div class="input-box">
-                <input class="User" type="text" placeholder="Username" required>
+                <input class="User" type="text" placeholder="Username" id="username">
+                <span id="error-text-username" class="error-text hidden">Username taken</span>
                 <i></i>
             </div>
             <div class="input-box">
-                <input class="email" type="text" placeholder="Email" required>
+                <input class="email" type="text" placeholder="Email" id="email">
+                <span id="error-text-email" class="error-text hidden">Please enter a valid email</span>
                 <i></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Password" id="password">
+                <span id="error-text-password" class="error-text hidden">Password must be atleast 8 characers long</span>
                 <i></i>
             </div>
-            <button type="submit" class="btn">Sign Up</button>
+            <button type="submit" class="btn" value="submit">Sign Up</button>
             <div class="signup-link">
                 <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
             </div>
             </form>
         </div>
+        <script src="{{ url_for('static', filename='js/eventRegisterSignup.js') }}"></script>
 </body>
-<script src="js/eventRegisterSignup.js"></script>
+
 </html>

@@ -96,36 +96,36 @@ def login():
                         return redirect ('/')
             
         return render_template("login.html")
-@app.route('/signup', methods=['GET'])
-def signupform():
-        return render_template("signup.html")
-@app.route('/signup', methods=['POST'])
+@app.route('/signup', methods=["GET","POST"])
 def signup():
-        firstname=request.form.get('firstname')
-        lastname=request.form.get('lastname')
-        username=request.form.get('username')
-        email=request.form.get('email')
-        password=request.form.get('password')
+        if request.method=="POST":
+            firstname=request.form.get('firstname')
+            lastname=request.form.get('lastname')
+            username=request.form.get('username')
+            email=request.form.get('email')
+            password=request.form.get('password')
         
-        if not firstname or not lastname or not username or not email or not password:
+            if not firstname or not lastname or not username or not email or not password:
               return "please enter all data",400
-        elif not re.match(firstnameRegex,firstname):
+            elif not re.match(firstnameRegex,firstname):
               return "please enter a first name with only letters",400
-        elif not re.match(lastnameRegex,lastname):
+            elif not re.match(lastnameRegex,lastname):
               return "please enter a last name with only letters",400
-        elif not re.match(usernameRegex,username):
+            elif not re.match(usernameRegex,username):
               return "please enter a username with only letters and numbers",400
-        elif not re.match(emailRegex,email):
+            elif not re.match(emailRegex,email):
               return "please enter a valid email",400
-        elif not re.match(passwordRegex,password):
+            elif not re.match(passwordRegex,password):
               return "please enter a valid password",400
-        exists = user.query.filter((user.username== username)|(user.email == email)).first()
-        if exists:
+            exists = user.query.filter((user.username== username)|(user.email == email)).first()
+            if exists:
               return "user already exists",400
-        new_user =user(firstname=firstname,lastname=lastname,username=username,password=password,email=email,isadmin=False)
-        db.session.add(new_user)
-        db.session.commit()
-        return redirect("/login")
+            new_user =user(firstname=firstname,lastname=lastname,username=username,password=password,email=email,isadmin=False)
+            db.session.add(new_user)
+            db.session.commit()
+            return redirect("/login")
+        else:
+            return render_template("signup.html")
 
 @app.route('/wishlist')
 def wishlist():

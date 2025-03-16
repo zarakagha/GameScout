@@ -12,7 +12,7 @@ from backend.checkNSFW import CheckGameisNSFW
 from backend.GetSteamPriceCadForGame import get_inital_price
 from backend.ConvertPrice import ConvertUSDToCad
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func
+from sqlalchemy.sql import func, text
 import re
 import pymysql
 
@@ -74,7 +74,7 @@ class UsersDatabase:
             cursorclass=pymysql.cursors.DictCursor,
             db="defaultdb",
             host="mysql-3483d28-gamescout.k.aivencloud.com",
-            password="AVNS_84_-W4vXr2O0cZwE5xm",
+            password="**************",
             read_timeout=timeout,
             port=11029,
             user="avnadmin",
@@ -98,13 +98,16 @@ class games(db.Model):
       __tablename__ = 'games'
       id=db.Column(db.Integer, primary_key=True)
       gameID= db.Column(db.String(100), nullable=False)
+      gameprice=db.Column(db.Float, nullable=False)
       user_id =db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
 
+def loginchecker():
+     return 'userid' in session
 firstnameRegex=r'^[a-zA-Z]+$'
 lastnameRegex=r'^[a-zA-Z]+$'
 usernameRegex=r'^[a-zA-Z0-9]+$'
 emailRegex=r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
-passwordRegex=r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+passwordRegex=r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
 
 @app.route('/',methods=["GET","POST"])
 def serve_form():
@@ -120,7 +123,7 @@ def serve_form():
                 OriginalPriceOfGame = get_inital_price(currentdeal["steamAppID"])
                 discounted_price = round(ConvertUSDToCad.convertPriceForGame(float(OriginalPriceOfGame), int(currentdeal["storeID"]), float(currentdeal["savings"])), 2)
                 savings = int(round(float(currentdeal["savings"]), 0))
-                steamgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"]]
+                steamgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"], currentdeal["gameID"]]
           except:
                 print("Error in creating dictionary for game for Steam, Game name: " + currentdeal["title"] + " Steam App ID value: " + str(currentdeal["steamAppID"]))
                 continue
@@ -132,7 +135,7 @@ def serve_form():
                 OriginalPriceOfGame = get_inital_price(currentdeal["steamAppID"])
                 discounted_price = round(ConvertUSDToCad.convertPriceForGame(float(OriginalPriceOfGame), int(currentdeal["storeID"]), float(currentdeal["savings"])), 2)
                 savings = int(round(float(currentdeal["savings"]), 0))
-                epicgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"]]
+                epicgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"], currentdeal["gameID"]]
           except:
                 print("Error in creating dictionary for game for Epic, Game name: " + currentdeal["title"] + " Steam App ID value: " + str(currentdeal["steamAppID"]))
                 continue
@@ -144,7 +147,7 @@ def serve_form():
                 OriginalPriceOfGame = get_inital_price(currentdeal["steamAppID"])
                 discounted_price = round(ConvertUSDToCad.convertPriceForGame(float(OriginalPriceOfGame), int(currentdeal["storeID"]), float(currentdeal["savings"])), 2)
                 savings = int(round(float(currentdeal["savings"]), 0))
-                goggamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"]]
+                goggamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"], currentdeal["gameID"]]
           except:
                 print("Error in creating dictionary for game for GOG, Game name: " + currentdeal["title"] + " Steam App ID value: " + str(currentdeal["steamAppID"]))
                 continue
@@ -156,7 +159,7 @@ def serve_form():
                 OriginalPriceOfGame = get_inital_price(currentdeal["steamAppID"])
                 discounted_price = round(ConvertUSDToCad.convertPriceForGame(float(OriginalPriceOfGame), int(currentdeal["storeID"]), float(currentdeal["savings"])), 2)
                 savings = int(round(float(currentdeal["savings"]), 0))
-                fanaticalgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"]]
+                fanaticalgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"], currentdeal["gameID"]]
           except:
                 print("Error in creating dictionary for game for Fanatical, Game name: " + currentdeal["title"] + " Steam App ID value: " + str(currentdeal["steamAppID"]))
                 continue
@@ -214,16 +217,20 @@ def login():
                   session['username']=user[0]['username']
                   session['usertype'] = user[0]['isAdmin']
                   if session['usertype'] == True:
+                        print("Redirecting to Admin Page")
                         return redirect ('/admin')
                   else:
-                        return redirect ('/')
-            
-        return render_template("login.html")
+                        print("Invalid Username or Password")
+                        print("Redirecting to Main Page")
+                        return redirect ('/login')
+        else: 
+            return render_template("login.html")
+        
 @app.route('/signup', methods=["GET","POST"])
 def signup():
-        
+        print(request.method)
         if request.method== "POST":
-          
+            
             firstname=request.form.get('firstname')
             lastname=request.form.get('lastname')
             username=request.form.get('username')
@@ -231,6 +238,7 @@ def signup():
             password=request.form.get('password')
             
         
+            print(f"Form Data Received: firstname={firstname}, lastname={lastname}, username={username}, email={email}, password={password}")
             if not firstname or not lastname or not username or not email or not password:
               return "please enter all data",400
             elif not re.match(firstnameRegex,firstname):
@@ -254,10 +262,33 @@ def signup():
             return redirect("/login")
         else:
             return render_template("signup.html")
-
+@app.route('/addtowishlist',methods=['POST'])
+def addtowishlist():
+     gameid=request.form.get('gameID')
+     if not loginchecker():
+          return redirect('login')
+     userid= session['userid']
+     gameexists= games.query.filter_by(gameID=gameid,user_id=userid).first()
+     if gameexists:
+          return redirect('/wishlist')
+     newgame=games(gameID=gameid,user_id=userid)
+     db.session.add(newgame)
+     db.session.commit()
+     return redirect('/wishlist')
 @app.route('/wishlist')
 def wishlist():
-        return render_template("wishlist.html")
+        if not loginchecker():
+             return redirect('/login')
+        userid=session('userid')
+        gamedetailDict={}
+        usergameslist= games.query.filter_by(userid=userid).all()
+        for game in usergameslist:
+             id=game.id
+             gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
+             gamedetailsjson=gamedetails.json()
+             gamedetailDict[id]=gamedetailsjson
+            
+        return render_template('wishlist.html',gamedetailDict=gamedetailDict)
 @app.route('/gamesearch',methods =["GET","POST"])
 def get_Game():
     if request.method == "POST":

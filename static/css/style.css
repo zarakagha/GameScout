@@ -212,14 +212,19 @@
   margin: 30px;
 }
 
-table, tr, td, th {
+table,
+tr,
+td,
+th {
   width: 40%;
   border-collapse: collapse;
   white-space: nowrap;
   margin-top: 20px;
 }
 
-table a { color: inherit; } 
+table a {
+  color: inherit;
+}
 
 /*Content*/
 .content-wrap {
@@ -570,4 +575,21 @@ table a { color: inherit; }
 }
 .hidden {
   visibility: hidden;
+}
+
+/*EXPLORE PAGE*/
+.gameList {
+  background-color: black;
+  align-items: center;
+}
+.explorePage_gameTitle {
+  color: white;
+  font-size: 30px;
+}
+.gameCard {
+  height: 60px;
+}
+.gameCard img {
+  align-items: center;
+  justify-content: space-between;
 }

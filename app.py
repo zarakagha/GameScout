@@ -5,6 +5,7 @@ from datetime import timedelta
 import requests
 import urllib.parse
 import json
+import pymysql
 from backend.gameclass import Game
 from backend.DealFactory import DealForGameSimpleFactory
 from backend.StoreNameAndPrice import StoreIDAction
@@ -30,7 +31,7 @@ app.permanent_session_lifetime = timedelta(minutes=10)
 
 Session(app)
 
-<<<<<<< HEAD
+
 
 class UsersDatabase:
       def __init__(self):
@@ -82,10 +83,8 @@ class UsersDatabase:
 
 users = UsersDatabase()
 
+
 '''class user(db.Model):
-=======
-class user(db.Model):
->>>>>>> parent of b65d525 (Database)
       __tablename__ = 'user'
       id=db.Column(db.Integer, primary_key=True)
       firstname= db.Column(db.String(100), nullable=False)
@@ -94,7 +93,7 @@ class user(db.Model):
       email= db.Column(db.String(100),unique=True, nullable=False)
       password=db.Column(db.String(100),nullable=False)
       isadmin = db.Column(db.Boolean, default=False, nullable=False)
-      
+      '''
 class games(db.Model):
       __tablename__ = 'games'
       id=db.Column(db.Integer, primary_key=True)
@@ -194,14 +193,14 @@ def login():
         if request.method=="POST":
             username =request.form.get('username')
             password =request.form.get('password')
-            checkusername = user.query.filter_by(username=username).first()
-            
+            #checkusername = user.query.filter_by(username=username).first()
+            user = users.select("SELECT * FROM Users WHERE username = %s;",username)
 
-            if checkusername and user.password == password:
+            if user and user[0]["password"]== password:
                   session.permant = True
-                  session['userid']=user.id
-                  session['username']=user.username
-                  session['usertype'] = user.isadmin
+                  session['userid']=user[0]["id"]
+                  session['username']=user[0]["username"]
+                  session['usertype'] = user[0]["isAdmin"]
                   if session['usertype'] == True:
                         print("Redirecting to Admin Page")
                         return redirect ('/admin')
@@ -214,13 +213,12 @@ def login():
         
 @app.route('/signup', methods=["GET","POST"])
 def signup():
-<<<<<<< HEAD
-        print(request.method)
-        if request.method== "POST":
+
+       
             
-=======
+
         if request.method=="POST":
->>>>>>> parent of b65d525 (Database)
+
             firstname=request.form.get('firstname')
             lastname=request.form.get('lastname')
             username=request.form.get('username')
@@ -240,12 +238,13 @@ def signup():
               return "please enter a valid email",400
             elif not re.match(passwordRegex,password):
               return "please enter a valid password",400
-            exists = user.query.filter((user.username== username)|(user.email == email)).first()
+            #exists = user.query.filter((user.username== username)|(user.email == email)).first()
+            exists = users.select("SELECT * FROM Users WHERE username = %s AND email = %s;",username,email)
             if exists:
               return "user already exists",400
-            new_user =user(firstname=firstname,lastname=lastname,username=username,password=password,email=email,isadmin=False)
-            db.session.add(new_user)
-            db.session.commit()
+            new_user =users.insert(firstname=firstname,lastname=lastname,username=username,password=password,email=email,isadmin=False)
+            #db.session.add(new_user)
+            #db.session.commit()
             return redirect("/login")
         else:
             return render_template("signup.html")

@@ -36,7 +36,6 @@ Session(app)
 class UsersDatabase:
       def __init__(self):
           self.dbname = "GameScout"
-          self.tablename = "Users"
 
       def insert(self,firstname,lastname, username, email,password,isAdmin = False ):
           connection = self.DBOpen()
@@ -253,7 +252,8 @@ def addtowishlist():
      if not loginchecker():
           return redirect('login')
      userid= session['userid']
-     gameexists= games.query.filter_by(gameID=gameid,user_id=userid).first()
+     gameexists=game.select("SELECT ")
+     #gameexists= games.query.filter_by(gameID=gameid,user_id=userid).first()
      if gameexists:
           return redirect('/wishlist')
      newgame=games(gameID=gameid,user_id=userid)

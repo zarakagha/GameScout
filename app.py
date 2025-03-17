@@ -38,8 +38,8 @@ class UsersDatabase:
           self.dbname = "GameScout"
           self.tablename = "Users"
 
-      def insert(self,firstname,lastname, username, email,password ):
-          connection = self.DBOPEN()
+      def insert(self,firstname,lastname, username, email,password,isAdmin = False ):
+          connection = self.DBOpen()
 
           try:
                 cursor = connection.cursor()
@@ -51,7 +51,7 @@ class UsersDatabase:
                 connection.close()
 
       def select(self,SQL,*args):
-          connection = self.DBOPEN()
+          connection = self.DBOpen()
 
           try:
                 cursor = connection.cursor()
@@ -73,7 +73,7 @@ class UsersDatabase:
             cursorclass=pymysql.cursors.DictCursor,
             db="defaultdb",
             host="mysql-3483d28-gamescout.k.aivencloud.com",
-            password="**************",#put in password here
+            password="AVNS_84_-W4vXr2O0cZwE5xm",#put in password here
             read_timeout=timeout,
             port=11029,
             user="avnadmin",
@@ -169,6 +169,7 @@ def serve_form():
     print(fanaticalgamesjson)
     print(fanaticalgamesDict)
     return render_template("mainpage.html", steamgamesjson=steamgamesDict.items(),epicgamesjson=epicgamesDict.items(),goggamesjson=goggamesDict.items(),fanaticalgamesjson=fanaticalgamesDict.items()) 
+
 @app.route('/accounts')
 def accounts():
         return render_template("accounts.html")
@@ -191,11 +192,12 @@ def genre():
 @app.route('/login',methods=["GET","POST"])
 def login():
         if request.method=="POST":
+            
             username =request.form.get('username')
             password =request.form.get('password')
             #checkusername = user.query.filter_by(username=username).first()
             user = users.select("SELECT * FROM Users WHERE username = %s;",username)
-
+            print(user[0])
             if user and user[0]["password"]== password:
                   session.permant = True
                   session['userid']=user[0]["id"]
@@ -205,20 +207,17 @@ def login():
                         print("Redirecting to Admin Page")
                         return redirect ('/admin')
                   else:
-                        print("Invalid Username or Password")
+                        #print("Invalid Username or Password")
                         print("Redirecting to Main Page")
-                        return redirect ('/login')
+                        return redirect ('/')
         else: 
             return render_template("login.html")
         
 @app.route('/signup', methods=["GET","POST"])
 def signup():
-
-       
-            
-
+        
         if request.method=="POST":
-
+            
             firstname=request.form.get('firstname')
             lastname=request.form.get('lastname')
             username=request.form.get('username')
@@ -242,7 +241,7 @@ def signup():
             exists = users.select("SELECT * FROM Users WHERE username = %s AND email = %s;",username,email)
             if exists:
               return "user already exists",400
-            new_user =users.insert(firstname=firstname,lastname=lastname,username=username,password=password,email=email,isadmin=False)
+            new_user =users.insert(firstname=firstname,lastname=lastname,username=username,password=password,email=email,isAdmin=False)
             #db.session.add(new_user)
             #db.session.commit()
             return redirect("/login")

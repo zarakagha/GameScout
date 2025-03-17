@@ -83,6 +83,8 @@ function validateLogin(event)
 }
 function validateSignup(event)  
 {
+
+    
     let fname =document.getElementById('firstname');
     let lname =document.getElementById('lastname');
     let username =document.getElementById('username');
@@ -130,18 +132,18 @@ function validateSignup(event)
         errortext.classList.add("hidden");
     }
     if(!validateEmail(email.value))
-        {
-            email.classList.add("errorborder");
-            var errortext = document.getElementById("error-text-email");
-            username.classList.remove("hidden");
-            formIsValid = false;
-        }
-        else
-        {
-            email.classList.remove("errorborder");
-            var errortext = document.getElementById("error-text-email");
-            errortext.classList.add("hidden");
-        }
+    {
+        email.classList.add("errorborder");
+        var errortext = document.getElementById("error-text-email");
+        username.classList.remove("hidden");
+        formIsValid = false;
+    }
+    else
+    {
+        email.classList.remove("errorborder");
+        var errortext = document.getElementById("error-text-email");
+        errortext.classList.add("hidden");
+    }
     if(!validatePWD(password.value))
     {
         password.classList.add("errorborder");
@@ -156,6 +158,8 @@ function validateSignup(event)
         errortext.classList.add("hidden");
     }
     if (!formIsValid) {
+        
         event.preventDefault();
     }
+
 }

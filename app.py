@@ -39,7 +39,7 @@ class UsersDatabase:
           self.tablename = "Users"
 
       def insert(self,firstname,lastname, username, email,password ):
-          connection = self.DBOPEN()
+          connection = self.DBOpen()
 
           try:
                 cursor = connection.cursor()
@@ -51,7 +51,7 @@ class UsersDatabase:
                 connection.close()
 
       def select(self,SQL,*args):
-          connection = self.DBOPEN()
+          connection = self.DBOpen()
 
           try:
                 cursor = connection.cursor()
@@ -73,7 +73,7 @@ class UsersDatabase:
             cursorclass=pymysql.cursors.DictCursor,
             db="defaultdb",
             host="mysql-3483d28-gamescout.k.aivencloud.com",
-            password="**************",#put in password here
+            password="AVNS84-W4vXr2O0cZwE5xm",#put in password here
             read_timeout=timeout,
             port=11029,
             user="avnadmin",

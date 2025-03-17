@@ -38,14 +38,14 @@ class UsersDatabase:
           self.dbname = "GameScout"
           self.tablename = "Users"
 
-      def insert(self,firstname,lastname, username, email,password ):
+      def insert(self,firstname,lastname, username, email,password, isadmin=False):
           connection = self.DBOpen()
 
           try:
                 cursor = connection.cursor()
                 cursor.execute("USE GameScout;")
-                sql = "INSERT INTO Users (firstname,lastname,username,email,password) VALUES (%s, %s,%s,%s,%s)"
-                cursor.execute(sql,(firstname,lastname,username,email,password))
+                sql = "INSERT INTO Users (firstname,lastname,username,email,password,isadmin) VALUES (%s, %s,%s,%s,%s,%s)"
+                cursor.execute(sql,(firstname,lastname,username,email,password,isadmin))
           finally:
                 connection.commit()
                 connection.close()
@@ -73,7 +73,7 @@ class UsersDatabase:
             cursorclass=pymysql.cursors.DictCursor,
             db="defaultdb",
             host="mysql-3483d28-gamescout.k.aivencloud.com",
-            password="AVNS84-W4vXr2O0cZwE5xm",#put in password here
+            password="AVNS_84_-W4vXr2O0cZwE5xm",#put in password here
             read_timeout=timeout,
             port=11029,
             user="avnadmin",

@@ -44,8 +44,8 @@ class UsersDatabase:
           try:
                 cursor = connection.cursor()
                 cursor.execute("USE GameScout;")
-                sql = "INSERT INTO Users (firstname,lastname,username,email,password) VALUES (%s, %s,%s,%s,%s)"
-                cursor.execute(sql,(firstname,lastname,username,email,password))
+                sql = "INSERT INTO Users (firstname,lastname,username,email,password,isadmin) VALUES (%s, %s,%s,%s,%s,%s)"
+                cursor.execute(sql,(firstname,lastname,username,email,password,isAdmin))
           finally:
                 connection.commit()
                 connection.close()

@@ -25,7 +25,7 @@ class Database:
 
 class UsersDatabase(Database):
     def __init__(self):
-        super().__init__(self)
+        super().__init__()
     
 
     def insert(self,firstname,lastname, username, email,password,isAdmin = False ):
@@ -56,7 +56,7 @@ class UsersDatabase(Database):
 
 class WishListDatabase(Database):
     def __init__(self):
-        super().__init__(self)
+        super().__init__()
 
     def insert(self,userId,gameId, price,gamename):
         connection = self.DBOpen()

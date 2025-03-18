@@ -125,7 +125,7 @@
                                          <div class="product-image">
                                                 <span class="discount-tag">{{value[2]}} %</span>
                                                 <a href="{{url_for('gamedetail',game_id=value[4])}}"><img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt=""></a>
-                                                <form action="{{url_for('addtowishlist',game_id=value[4])}}" method="POST"><button class="card-btn">add to wishlist</button></form>
+                                                <form action="{{url_for('addtowishlist',game_id=value[4])}}" method="GET"><button class="card-btn">add to wishlist</button></form>
                                          </div>
                                          <div class="product-info">
                                                 <h2 class="product-brand">{{value[3]}}</h2>

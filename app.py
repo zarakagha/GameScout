@@ -36,7 +36,8 @@ Session(app)
 
 
 users = database.UsersDatabase()
-wishlist = database.WishListDatabase()
+WishList = database.WishListDatabase()
+
 
 '''class user(db.Model):
       __tablename__ = 'user'
@@ -202,30 +203,38 @@ def signup():
         else:
             return render_template("signup.html")
         
-@app.route('/addtowishlist',methods=['POST'])
-def addtowishlist():
-     gameid=request.form.get('gameID')
+@app.route('/addtowishlist/<game_id>',methods=['GET'])
+def addtowishlist(game_id):
+     print(game_id)
+     
      if not loginchecker():
-          return redirect('login')
+          return redirect('/login')
      userid= session['userid']
-     gameexists=game.select("SELECT ")
+     sql = "SELECT * FROM WishList WHERE userID = %s AND gameID = %s;"
+     gameexists = WishList.select(sql,userid,game_id)
+    
      #gameexists= games.query.filter_by(gameID=gameid,user_id=userid).first()
      if gameexists:
           return redirect('/wishlist')
-     newgame=games(gameID=gameid,user_id=userid)
-     db.session.add(newgame)
-     db.session.commit()
+     
+     WishList.insert(userid,game_id,0)
+
+     #newgame=games(gameID=game_id,user_id=userid)
+     #db.session.add(newgame)
+     #db.session.commit()
      return redirect('/wishlist')
 
 @app.route('/wishlist')
 def wishlist():
         if not loginchecker():
              return redirect('/login')
-        userid=session('userid')
+        userid=session['userid']
         gamedetailDict={}
-        usergameslist= games.query.filter_by(userid=userid).all()
+        sql = "SELECT * FROM WishList WHERE userID = %s;"
+        usergameslist = WishList.select(sql,userid)
+        #usergameslist= games.query.filter_by(userid=userid).all()
         for game in usergameslist:
-             id=game.id
+             id=game["gameID"]
              gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
              gamedetailsjson=gamedetails.json()
              gamedetailDict[id]=gamedetailsjson

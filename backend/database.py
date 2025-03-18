@@ -58,16 +58,28 @@ class WishListDatabase(Database):
     def __init__(self):
         super().__init__()
 
-    def insert(self,userId,gameId, price,gamename):
+    def insert(self,userId,gameId, price):
         connection = self.DBOpen()
 
         try:
             cursor = connection.cursor()
             cursor.execute("USE GameScout;")
-            sql = "INSERT INTO WishList (userID,gameID,price,gameName) VALUES (%s, %s,%s,%s)"
-            cursor.execute(sql,(userId,gameId,price,gamename))
+            sql = "INSERT INTO WishList (userID,gameID,price) VALUES (%s, %s,%s)"
+            cursor.execute(sql,(userId,gameId,price))
         finally:
             connection.commit()
             connection.close()
       
+    def select(self,SQL,*args):
+        connection = self.DBOpen()
 
+        try:
+            cursor = connection.cursor()
+            cursor.execute("USE GameScout;")
+            cursor.execute(SQL,args)
+            value = cursor.fetchall()
+        finally:
+            connection.commit()
+            connection.close()
+
+        return value

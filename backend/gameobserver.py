@@ -1,13 +1,16 @@
 from abc import ABC
 
+#The setState() will check if there is an update to the DB that needs to occur if the price is lower, 
+#if there is a change in price that is lower we will update the observer and the display, indicating a change in price for a specific subject (game)
+
 
 #general class for subject of the Game
 class Subject(ABC):
     #registers user as observer of the wishlisted game
-    def AddObserverToWishlist(Observer):
+    def AddObserver(Observer):
         pass
     #removes user as an observer of the wishlisted game
-    def RemoveObserverFromWishlist(Observer):
+    def RemoveObserver(Observer):
         pass
     #notifies the list of users for the wishlisted game that the state has changed
     def NotifyObservers():
@@ -18,10 +21,10 @@ class Subject(ABC):
 class WishlistGame(Subject):
     #list of observers exists in database, list of users = database call
     #add user as observer of game
-    def AddObserverToWishlist(Observer):
+    def AddObserver(Observer):
         #add user to list in database
         pass
-    def RemoveObserverFromWishlist(Observer):
+    def RemoveObserver(Observer):
         #remove user from list in database
         pass
     def NotifyObservers():
@@ -30,7 +33,8 @@ class WishlistGame(Subject):
         pass
     #set the state of the subject (set the price within the database)
     def setState():
-        #set price into database
+        #set new price into database if it is lower (use the getState() function to possibly retreive from database)
+        #call notifyObservers() if it is lower
         pass
     #get current price of game function
     def getState():
@@ -39,19 +43,16 @@ class WishlistGame(Subject):
     
 
 class Observer(ABC):
-    lowest_stored_price_in_db = 0
-    def update():
+    #general update function that takes in the game and the new price
+    def update(WishlistGame, priceOfGame):
         pass
 
 class Shopper(Observer):
     lowest_stored_price_in_db = 0
     #update the price of the game in the database for the gameid
     def update(WishlistGame, priceOfGame):
-        #use the getState() from the WishlistGame class to get the datavalue of interest from Database
-        #check if price is lower than stored value
-        #if lower set lowest_stored_price_in_db = priceOfGame
-        #probably update the value in the db afterwards
-        #call updateview() function
+        #update the screen with the new price of the game
+        #use the updateview function to update the screen
         pass
     def updateview():
         #change the view of the user to indiciate a change has occurred

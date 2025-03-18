@@ -6,6 +6,7 @@ import requests
 import urllib.parse
 import json
 import pymysql
+import backend.database as database
 from backend.gameclass import Game
 from backend.DealFactory import DealForGameSimpleFactory
 from backend.StoreNameAndPrice import StoreIDAction
@@ -33,55 +34,9 @@ Session(app)
 
 
 
-class UsersDatabase:
-      def __init__(self):
-          self.dbname = "GameScout"
 
-      def insert(self,firstname,lastname, username, email,password,isAdmin = False ):
-          connection = self.DBOpen()
-
-          try:
-                cursor = connection.cursor()
-                cursor.execute("USE GameScout;")
-                sql = "INSERT INTO Users (firstname,lastname,username,email,password,isadmin) VALUES (%s, %s,%s,%s,%s,%s)"
-                cursor.execute(sql,(firstname,lastname,username,email,password,isAdmin))
-          finally:
-                connection.commit()
-                connection.close()
-
-      def select(self,SQL,*args):
-          connection = self.DBOpen()
-
-          try:
-                cursor = connection.cursor()
-                cursor.execute("USE GameScout;")
-                cursor.execute(SQL,args)
-                value = cursor.fetchall()
-          finally:
-                connection.commit()
-                connection.close()
-
-          return value
-
-
-      def DBOpen(self):
-           timeout = 10
-           connection = pymysql.connect(
-            charset="utf8mb4",
-            connect_timeout=timeout,
-            cursorclass=pymysql.cursors.DictCursor,
-            db="defaultdb",
-            host="mysql-3483d28-gamescout.k.aivencloud.com",
-            password="AVNS_84_-W4vXr2O0cZwE5xm",#put in password here
-            read_timeout=timeout,
-            port=11029,
-            user="avnadmin",
-            write_timeout=timeout,
-           )
-           return connection
-
-users = UsersDatabase()
-
+users = database.UsersDatabase()
+wishlist = database.WishListDatabase()
 
 '''class user(db.Model):
       __tablename__ = 'user'
@@ -246,6 +201,7 @@ def signup():
             return redirect("/login")
         else:
             return render_template("signup.html")
+        
 @app.route('/addtowishlist',methods=['POST'])
 def addtowishlist():
      gameid=request.form.get('gameID')
@@ -260,6 +216,7 @@ def addtowishlist():
      db.session.add(newgame)
      db.session.commit()
      return redirect('/wishlist')
+
 @app.route('/wishlist')
 def wishlist():
         if not loginchecker():

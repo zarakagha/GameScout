@@ -561,8 +561,9 @@ table a {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
+  min-width: 100vh;
   flex-wrap: wrap;
 
   padding-top: 0px;
@@ -572,7 +573,12 @@ table a {
   background-position: center;
 }
 .admin-div {
+  position: fixed;
+  top:0;
+  right:0;
+  
   margin-top: 0px;
+  padding: 0px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -581,7 +587,7 @@ table a {
   background: black;
 
   height: 100px;
-  width: 97vw;
+  width: 98vw;
 }
 .admin-div img {
   height: 90px;

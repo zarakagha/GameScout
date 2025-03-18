@@ -52,6 +52,20 @@ class UsersDatabase(Database):
             connection.close()
 
         return value
+    
+    def remove(self,SQL,*args):
+        connection = self.DBOpen()
+
+        try:
+            cursor = connection.cursor()
+            cursor.execute("USE GameScout;")
+            cursor.execute(SQL,args)
+            value = cursor.fetchall()
+        finally:
+            connection.commit()
+            connection.close()
+
+        return value
 
 
 class WishListDatabase(Database):
@@ -71,6 +85,20 @@ class WishListDatabase(Database):
             connection.close()
       
     def select(self,SQL,*args):
+        connection = self.DBOpen()
+
+        try:
+            cursor = connection.cursor()
+            cursor.execute("USE GameScout;")
+            cursor.execute(SQL,args)
+            value = cursor.fetchall()
+        finally:
+            connection.commit()
+            connection.close()
+
+        return value
+    
+    def remove(self,SQL,*args):
         connection = self.DBOpen()
 
         try:

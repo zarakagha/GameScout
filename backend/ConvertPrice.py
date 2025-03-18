@@ -23,6 +23,18 @@ class ConvertUSDToCad:
             else:
                 Gameobj.storeWithPriceSavingsDealURl()[int(storeID)][0] = ConvertUSDToCad.Convert(Gameobj.storeWithPriceSavingsDealURl()[int(storeID)][0])
 
+    def getDiscountedPrice(Gameobj):
+        CanadianStoreID = [1, 2, 3, 7, 8, 15, 25, 35]
+        price = 10000.0
+        store = 0
+        for deal in Gameobj:
+            if int(deal["storeID"]) in CanadianStoreID:
+                val = float(deal["price"])
+                if val < price:
+                    price = val
+                    store = int(deal["storeID"])
+
+        return ConvertUSDToCad.Convert(price),store
 
     def convertPriceForGame(original_price, storeID, savings):
         CanadianStoreID = [1, 2, 3, 7, 8, 15, 25, 35]

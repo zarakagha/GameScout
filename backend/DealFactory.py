@@ -10,11 +10,11 @@ class GameSimpleFactory:
     def acquireGame(gameType):
         gameType = int(gameType)
         gameDetails = None
-        if gameType == -1:
+        if gameType == 10000000:
             gameDetails = GameType.lowPriceGame()
-        elif gameType == -2:
+        elif gameType == 20000000:
             gameDetails = GameType.midPriceGame()
-        elif gameType == -3:
+        elif gameType == 30000000:
             gameDetails = GameType.highPriceGame()
         else:
             gameDetails = GameType.specificGame(gameType)

@@ -140,6 +140,7 @@ def accounts():
       if request.method=="POST":
             username = request.form.get('usertextsearch')
             select = request.form.get("order")
+<<<<<<< Updated upstream
             print(username)
             print(select)
             
@@ -156,6 +157,9 @@ def accounts():
                  userList = users.select("SELECT * FROM Users WHERE isAdmin = 0 ORDER BY %s;" ,select)
 
 
+=======
+            userList = users.select("SELECT * FROM Users WHERE username = %s;",username)
+>>>>>>> Stashed changes
 
       
       else:

@@ -727,3 +727,12 @@ table a {
   display: block; /* Ensures the width applies */
   width: 100%; /* Make sure it takes the div’s width */
 }
+
+.button {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  color: black;
+  border: none;
+  border-radius: 5px;
+}

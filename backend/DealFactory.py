@@ -4,20 +4,34 @@ import re
 from backend.gameclass import Game
 from backend.GetSteamPriceCadForGame import get_inital_price
 from backend.ConvertPrice import ConvertUSDToCad
+from backend.GameTypeList import GameType
 
-class DealForGameSimpleFactory:
-        
+class GameSimpleFactory:
+    def acquireGame(gameType):
+        gameDetails = None
+        if gameType == "low":
+            gameDetails = GameType.lowPriceGame()
+        elif gameType == "mid":
+            gameDetails = GameType.midPriceGame()
+        elif gameType == "high":
+            gameDetails = GameType.highPriceGame()
+        else:
+            gameDetails = GameType.specificGame(gameType)
+        return gameDetails
+
+class DealForGameSimpleFactory:        
     def GetGameDealsAcrossStores(cheapsharkgameID):
         gameObj = Game(cheapsharkgameID)
-        cheapsharkdealsRequest = requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(gameObj.cheapSharkGameId()))
-        cheapsharkJSON = cheapsharkdealsRequest.json()
-        gameObj.setGameName(cheapsharkJSON["info"]["title"])
-        gameObj.setGameSteamappid(cheapsharkJSON["info"]["steamAppID"])
-        gameObj.setGamePriceCAD(get_inital_price(gameObj.gameSteamAppId()))
-        gameObj.setGameImageURL("https://steamcdn-a.akamaihd.net/steam/apps/{}/library_600x900_2x.jpg".format(str(gameObj.gameSteamAppId())))
-        for deal in cheapsharkJSON["deals"]:
-            gameObj.addToListOfPrices(deal["price"])
-            gameObj.addToListOfStores(deal["storeID"])
-            gameObj.addStorePriceSavingsDealUrl(deal["storeID"], deal["price"], deal["savings"], gameObj.cheapSharkGeneralDealURL+deal["dealID"])
+        cheapsharkJSON, gameID = GameSimpleFactory.acquireGame(cheapsharkgameID)
+        #gameObj.setCheapSharkGameID(gameID)
+        #gameObj.setGameName(cheapsharkJSON["info"]["title"])
+        #gameObj.setGameSteamappid(cheapsharkJSON["info"]["steamAppID"])
+        #gameObj.setGamePriceCAD(get_inital_price(gameObj.gameSteamAppId()))
+        #gameObj.setGameImageURL("https://steamcdn-a.akamaihd.net/steam/apps/{}/library_600x900_2x.jpg".format(str(gameObj.gameSteamAppId())))
+        #for deal in cheapsharkJSON["deals"]:
+            #gameObj.addToListOfPrices(deal["price"])
+            #gameObj.addToListOfStores(deal["storeID"])
+            #gameObj.addStorePriceSavingsDealUrl(deal["storeID"], deal["price"], deal["savings"], gameObj.cheapSharkGeneralDealURL+deal["dealID"])
+        gameObj.prepareGameObject(cheapsharkJSON, gameID)
         ConvertUSDToCad.convertListOfPricesFromGame(gameObj)
         return gameObj

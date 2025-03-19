@@ -1,5 +1,7 @@
 #Game object class
 
+from backend.ConvertPrice import ConvertUSDToCad
+from backend.GetSteamPriceCadForGame import get_inital_price
 
 class Game:
     #initalization of game Object
@@ -24,6 +26,9 @@ class Game:
     def setGameName(self, Game_name):
         self.name = str(Game_name)
     
+    def setCheapSharkGameID(self, cheapsharkID):
+        self.cheapsharkgameid = str(cheapsharkID)
+    
     def setGamePriceCAD(self, Game_price):
         self.inital_price = float(Game_price)
     
@@ -44,6 +49,20 @@ class Game:
         
     def addStorePriceSavingsDealUrl(self, storeID, price, savings, dealurl):
         self.StoreID_Price_Savings_Dealurl[int(storeID)] = [float(price), float(savings), str(dealurl)]
+        
+    def prepareGameObject(self, gamedetails, gameid):
+        #game id
+        self.cheapsharkgameid = str(gameid)
+        #game name
+        self.name = str(gamedetails["info"]["title"])
+        self.steamappid = int(gamedetails["info"]["steamAppID"])
+        self.inital_price = float(get_inital_price(self.steamappid))
+        self.imageURL = "https://steamcdn-a.akamaihd.net/steam/apps/{}/library_600x900_2x.jpg".format(str(self.steamappid))
+        for deal in gamedetails["deals"]:
+            self.addToListOfPrices(deal["price"])
+            self.addToListOfStores(deal["storeID"])
+            self.addStorePriceSavingsDealUrl(deal["storeID"], deal["price"], deal["savings"], self.cheapSharkGeneralDealURL+deal["dealID"])
+
     
     #def addStoreAndPrice(self, storeID, price):
     #    self.store_and_price[int(storeID)] = float(price)

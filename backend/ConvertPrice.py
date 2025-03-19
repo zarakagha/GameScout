@@ -1,5 +1,4 @@
 import requests
-from backend.gameclass import Game
 import json
 
 class ConvertUSDToCad:
@@ -13,6 +12,7 @@ class ConvertUSDToCad:
         return newprice
     
     def convertListOfPricesFromGame(Gameobj):
+        from backend.gameclass import Game
         CanadianStoreID = [1, 2, 3, 7, 8, 15, 25, 35]
         for storeID in Gameobj.gameStores():
             if int(storeID) in CanadianStoreID:
@@ -24,6 +24,7 @@ class ConvertUSDToCad:
                 Gameobj.storeWithPriceSavingsDealURl()[int(storeID)][0] = ConvertUSDToCad.Convert(Gameobj.storeWithPriceSavingsDealURl()[int(storeID)][0])
 
     def getDiscountedPrice(Gameobj):
+        from backend.gameclass import Game
         CanadianStoreID = [1, 2, 3, 7, 8, 15, 25, 35]
         price = 10000.0
         store = 0

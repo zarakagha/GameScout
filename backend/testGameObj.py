@@ -29,5 +29,4 @@ from DealFactory import DealForGameSimpleFactory
 
 #ConvertUSDToCad.convertListOfPricesFromGame(testobj)
 
-newobj = DealForGameSimpleFactory.GetGameDealsAcrossStores("142818")
-print(newobj.storesWithPrice())
+newobj = DealForGameSimpleFactory.GetGameDealsAcrossStores("low")

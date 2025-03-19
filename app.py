@@ -17,6 +17,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func, text
 import re
 import threading
+from backend.sessionVariables import SessionData
+from backend.API import API
 
 
 
@@ -66,20 +68,16 @@ emailRegex=r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*
 passwordRegex=r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
 
 
-class SessionData:
-      steamgamesDict = {}
-      epicgamesDict = {}
-      goggamesDict = {}
-      fanaticalgamesDict = {}
-      gamedetailDict = {}
-      Loaded = False
-
 sessionData = SessionData()
+api =API(sessionData)
+
+
+
 
 @app.route('/',methods=["GET","POST"])
 def serve_form():
-    
-    if not sessionData.Loaded:
+    api.runMainAPI()
+    '''if not sessionData.Loaded:
       steamgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=1")
       steamgamesjson=steamgames.json()
       steamgamesjson=steamgamesjson[:9]
@@ -134,7 +132,7 @@ def serve_form():
     print(sessionData.epicgamesDict)
     print(sessionData.goggamesDict)
     
-    print(sessionData.fanaticalgamesDict)
+    print(sessionData.fanaticalgamesDict)'''
     return render_template("mainpage.html", steamgamesjson=sessionData.steamgamesDict.items(),epicgamesjson=sessionData.epicgamesDict.items(),goggamesjson=sessionData.goggamesDict.items(),fanaticalgamesjson=sessionData.fanaticalgamesDict.items()) 
 
 @app.route('/accounts')
@@ -184,7 +182,9 @@ def login():
                         print("Redirecting to Admin Page")
                         return redirect ('/admin')
                   else:
-                        sql = "SELECT * FROM WishList WHERE userID = %s;"
+                        api.runWishAPI(user[0]["id"])
+
+                        '''sql = "SELECT * FROM WishList WHERE userID = %s;"
                         usergameslist = WishList.select(sql,user[0]["id"])
                         #usergameslist= games.query.filter_by(userid=userid).all()
                         for game in usergameslist:
@@ -196,7 +196,7 @@ def login():
                               OriginalPriceOfGame = get_inital_price(gamedetailsjson["info"]["steamAppID"])
                               discounted_price,store = ConvertUSDToCad.getDiscountedPrice(gamedetailsjson["deals"])
                               savings = int(round((1.0 - discounted_price/float(OriginalPriceOfGame))*100 ))
-                              sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(OriginalPriceOfGame), round(discounted_price,2), savings, gamedetailsjson["info"]["title"], id,store]
+                              sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(OriginalPriceOfGame), round(discounted_price,2), savings, gamedetailsjson["info"]["title"], id,store]'''
                         print("Redirecting to Main Page")
                         return redirect ('/')
                   

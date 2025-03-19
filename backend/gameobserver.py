@@ -68,5 +68,5 @@ class Shopper(Observer):
         pass
     def updateview():
         #change the view of the user to indiciate a change has occurred
-        
+    
         pass

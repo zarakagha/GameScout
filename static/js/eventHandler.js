@@ -96,7 +96,7 @@ function validateSignup(event)
     {
         fname.classList.add("errorborder");
         var errortext = document.getElementById("error-text-fname");
-        fname.classList.remove("hidden");
+        errortext.classList.remove("hidden");
         formIsValid = false;
     }
     else
@@ -109,7 +109,7 @@ function validateSignup(event)
     {
         lname.classList.add("errorborder");
         var errortext = document.getElementById("error-text-lname");
-        lname.classList.remove("hidden");
+        errortext.classList.remove("hidden");
         formIsValid = false;
     }
     else
@@ -122,7 +122,7 @@ function validateSignup(event)
     {
         username.classList.add("errorborder");
         var errortext = document.getElementById("error-text-username");
-        username.classList.remove("hidden");
+        errortext.classList.remove("hidden");
         formIsValid = false;
     }
     else
@@ -135,7 +135,7 @@ function validateSignup(event)
     {
         email.classList.add("errorborder");
         var errortext = document.getElementById("error-text-email");
-        username.classList.remove("hidden");
+        errortext.classList.remove("hidden");
         formIsValid = false;
     }
     else
@@ -148,7 +148,7 @@ function validateSignup(event)
     {
         password.classList.add("errorborder");
         var errortext = document.getElementById("error-text-password");
-        password.classList.remove("hidden");
+        errortext.classList.remove("hidden");
         formIsValid = false;
     }
     else

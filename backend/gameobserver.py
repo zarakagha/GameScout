@@ -1,5 +1,6 @@
 from abc import ABC
-
+import requests
+from database import Database
 #The setState() will check if there is an update to the DB that needs to occur if the price is lower, 
 #if there is a change in price that is lower we will update the observer and the display, indicating a change in price for a specific subject (game)
 
@@ -45,6 +46,7 @@ class WishlistGame(Subject):
 class Observer(ABC):
     #general update function that takes in the game and the new price
     def update(WishlistGame, priceOfGame):
+        
         pass
 
 class Shopper(Observer):
@@ -53,6 +55,12 @@ class Shopper(Observer):
     def update(WishlistGame, priceOfGame):
         #update the screen with the new price of the game
         #use the updateview function to update the screen
+        price=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(WishlistGame.gameid))
+        if(priceOfGame<price):
+            #set price as wishlist new price
+            sql="UPDATE Wishlist Set price=%s WHERE userid=%s AND gameID=%s;"
+
+            update.view()
         pass
     def updateview():
         #change the view of the user to indiciate a change has occurred

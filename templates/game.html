@@ -44,13 +44,13 @@
         <div class="split-container">
             <div class="split-left">
                 <img src={{gameIMG}} object-fit: contain; alt="">
-                <button class="game-btn" role="button">
-                    <span class="text">Add to Wishlist</span>
-                </button>
             </div>
             <div class="split-right">
                 <h1 style="font-size:50px">{{gamename}}</h1>
                 <table>
+                    <form action="{{url_for('addtowishlist',game=gamename)}}" method="GET"><button class="game-btn" role="button">
+                        <span class="text">Add to Wishlist</span>
+                    </button></form>
                     <!--
                     <tr>
                         <th style="font-size:15px;">Genre</th>

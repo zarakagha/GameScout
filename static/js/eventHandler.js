@@ -19,7 +19,7 @@ function validatelname(lname) {
 }
 
 function validatePWD(pwd) {
-    let pwdRegEx =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    let pwdRegEx =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d\W_]{8,}$/;
 	if (pwdRegEx.test(pwd))
 		return true;
 	else

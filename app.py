@@ -187,9 +187,6 @@ def adminGamePage():
 @app.route('/adminGame')
 def adminGame():
       return render_template("adminGame.html")
-@app.route('/genre')
-def genre():
-      return render_template("genre.html")
 
 @app.route('/logout')
 def logout():

@@ -9,9 +9,11 @@ from database import Database
 class Subject(ABC):
     #registers user as observer of the wishlisted game
     def AddObserver(Observer):
+        
         pass
     #removes user as an observer of the wishlisted game
     def RemoveObserver(Observer):
+         
         pass
     #notifies the list of users for the wishlisted game that the state has changed
     def NotifyObservers():
@@ -27,6 +29,8 @@ class WishlistGame(Subject):
         pass
     def RemoveObserver(Observer):
         #remove user from list in database
+        sql = "DELETE FROM WishList WHERE userID = %s AND gameID = %s;"
+         WishList.remove(sql,userid,game_id)
         pass
     def NotifyObservers():
         #inform list of users that the state of the game has changed (cheaper price), update the value in the DB
@@ -59,9 +63,10 @@ class Shopper(Observer):
         if(priceOfGame<price):
             #set price as wishlist new price
             sql="UPDATE Wishlist Set price=%s WHERE userid=%s AND gameID=%s;"
-
-            update.view()
+            updateview()
+            
         pass
     def updateview():
         #change the view of the user to indiciate a change has occurred
+        
         pass

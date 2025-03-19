@@ -678,6 +678,12 @@ table a {
   min-width: 300px;
 }
 
+/*accounts*/
+
+.list-element{
+  color:white;
+}
+
 .errorborder {
   border: 2px solid red;
 }

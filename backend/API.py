@@ -112,14 +112,15 @@ class API:
         sql = "SELECT * FROM WishList WHERE userID = %s;"
         usergameslist = WishList.select(sql,userID)
         #self.wishAPI(usergameslist)
-        threads = [0]*((len(usergameslist)-1)//5 + 1)
+        size = 5
+        threads = [0]*((len(usergameslist)-1)//size + 1)
         mutex_lock = threading.Lock()
-        for i in range((len(usergameslist)-1)//5 + 1):
+        for i in range((len(usergameslist)-1)//size + 1):
             
-            if 5*(i+1) >= len(usergameslist):
-                threads[i] = threading.Thread(target = self.wishAPI, args = ( usergameslist[5*i:],mutex_lock))
+            if size*(i+1) >= len(usergameslist):
+                threads[i] = threading.Thread(target = self.wishAPI, args = ( usergameslist[size*i:],mutex_lock))
             else:
-                threads[i] = threading.Thread(target = self.wishAPI, args = (  usergameslist[5*i:5*i+5],mutex_lock))
+                threads[i] = threading.Thread(target = self.wishAPI, args = (  usergameslist[size*i:size*i+size],mutex_lock))
 
         for i in range(len(threads)):
              threads[i].start()

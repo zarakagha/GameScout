@@ -259,17 +259,8 @@ def addtowishlist(game):
           return redirect('/wishlist')
      
      WishList.insert(userid,game_id,game_price)
-
-     id=game_id
-     gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
-     gamedetailsjson=gamedetails.json()
-                              
-                                                            
-     OriginalPriceOfGame = get_inital_price(gamedetailsjson["info"]["steamAppID"])
-     discounted_price,store = ConvertUSDToCad.getDiscountedPrice(gamedetailsjson["deals"])
-     savings = int(round((1.0 - discounted_price/float(OriginalPriceOfGame))*100 ))
-     sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(OriginalPriceOfGame), round(discounted_price,2), savings, gamedetailsjson["info"]["title"], id,store]
-     print(len(sessionData.gamedetailDict))
+     api.addToWishList(game_id)
+  
     
      return redirect('/wishlist')
 

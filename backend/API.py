@@ -111,24 +111,25 @@ class API:
          
         sql = "SELECT * FROM WishList WHERE userID = %s;"
         usergameslist = WishList.select(sql,userID)
-        self.wishAPI(usergameslist)
-        '''threads = [0]*((len(usergameslist)-1)//5 + 1)
+        #self.wishAPI(usergameslist)
+        threads = [0]*((len(usergameslist)-1)//5 + 1)
+        mutex_lock = threading.Lock()
         for i in range((len(usergameslist)-1)//5 + 1):
-        
+            
             if 5*(i+1) >= len(usergameslist):
-                threads[i] = threading.Thread(target = self.wishAPI, args = ( usergameslist[5*i:]))
+                threads[i] = threading.Thread(target = self.wishAPI, args = ( usergameslist[5*i:],mutex_lock))
             else:
-                threads[i] = threading.Thread(target = self.wishAPI, args = (  usergameslist[5*i:5*i+5]))
+                threads[i] = threading.Thread(target = self.wishAPI, args = (  usergameslist[5*i:5*i+5],mutex_lock))
 
         for i in range(len(threads)):
              threads[i].start()
 
         for i in range(len(threads)):
-             threads[i].join()'''
+             threads[i].join()
         
              
 
-    def wishAPI(self,usergameslist):      
+    def wishAPI(self,usergameslist,lock):      
         
         for game in usergameslist:
             id=game["gameID"]
@@ -139,8 +140,20 @@ class API:
             OriginalPriceOfGame = get_inital_price(gamedetailsjson["info"]["steamAppID"])
             discounted_price,store = ConvertUSDToCad.getDiscountedPrice(gamedetailsjson["deals"])
             savings = int(round((1.0 - discounted_price/float(OriginalPriceOfGame))*100 ))
+            lock.acquire()
             self.sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(OriginalPriceOfGame), round(discounted_price,2), savings, gamedetailsjson["info"]["title"], id,store]
-                        
+            lock.release()
+
+    def addToWishList(self,id):
+        gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
+        gamedetailsjson=gamedetails.json()
+                              
+                                                            
+        OriginalPriceOfGame = get_inital_price(gamedetailsjson["info"]["steamAppID"])
+        discounted_price,store = ConvertUSDToCad.getDiscountedPrice(gamedetailsjson["deals"])
+        savings = int(round((1.0 - discounted_price/float(OriginalPriceOfGame))*100 ))
+        self.sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(OriginalPriceOfGame), round(discounted_price,2), savings, gamedetailsjson["info"]["title"], id,store]
+     
         
     
       

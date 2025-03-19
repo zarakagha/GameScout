@@ -16,6 +16,7 @@ from backend.ConvertPrice import ConvertUSDToCad
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func, text
 import re
+import threading
 
 
 
@@ -70,6 +71,7 @@ class SessionData:
       epicgamesDict = {}
       goggamesDict = {}
       fanaticalgamesDict = {}
+      gamedetailDict = {}
       Loaded = False
 
 sessionData = SessionData()
@@ -154,6 +156,16 @@ def adminGame():
 @app.route('/genre')
 def genre():
         return render_template("genre.html")
+
+@app.route('/logout')
+def logout():
+     session['userid']=None
+     session['username']=None
+     session['usertype'] = None
+     return redirect('/login')
+
+     
+     
 @app.route('/login',methods=["GET","POST"])
 def login():
         if request.method=="POST":
@@ -172,7 +184,19 @@ def login():
                         print("Redirecting to Admin Page")
                         return redirect ('/admin')
                   else:
-                        #print("Invalid Username or Password")
+                        sql = "SELECT * FROM WishList WHERE userID = %s;"
+                        usergameslist = WishList.select(sql,user[0]["id"])
+                        #usergameslist= games.query.filter_by(userid=userid).all()
+                        for game in usergameslist:
+                              id=game["gameID"]
+                              gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
+                              gamedetailsjson=gamedetails.json()
+                              
+                                                            
+                              OriginalPriceOfGame = get_inital_price(gamedetailsjson["info"]["steamAppID"])
+                              discounted_price,store = ConvertUSDToCad.getDiscountedPrice(gamedetailsjson["deals"])
+                              savings = int(round((1.0 - discounted_price/float(OriginalPriceOfGame))*100 ))
+                              sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(OriginalPriceOfGame), round(discounted_price,2), savings, gamedetailsjson["info"]["title"], id,store]
                         print("Redirecting to Main Page")
                         return redirect ('/')
                   
@@ -230,16 +254,23 @@ def addtowishlist(game):
      sql = "SELECT * FROM WishList WHERE userID = %s AND gameID = %s;"
      gameexists = WishList.select(sql,userid,game_id)
     
-     #gameexists= games.query.filter_by(gameID=gameid,user_id=userid).first()
-     
+    
      if gameexists:
           return redirect('/wishlist')
      
      WishList.insert(userid,game_id,game_price)
 
-     #newgame=games(gameID=game_id,user_id=userid)
-     #db.session.add(newgame)
-     #db.session.commit() 
+     id=game_id
+     gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
+     gamedetailsjson=gamedetails.json()
+                              
+                                                            
+     OriginalPriceOfGame = get_inital_price(gamedetailsjson["info"]["steamAppID"])
+     discounted_price,store = ConvertUSDToCad.getDiscountedPrice(gamedetailsjson["deals"])
+     savings = int(round((1.0 - discounted_price/float(OriginalPriceOfGame))*100 ))
+     sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(OriginalPriceOfGame), round(discounted_price,2), savings, gamedetailsjson["info"]["title"], id,store]
+     print(len(sessionData.gamedetailDict))
+    
      return redirect('/wishlist')
 
 @app.route('/removefromwishlist/<game>',methods=['GET'])
@@ -247,7 +278,7 @@ def removefromwishlist(game):
      game =game.replace("'",'"')
      game = json.loads(game)
      game_id = int(game[4])
-     
+
      
      
      
@@ -260,6 +291,12 @@ def removefromwishlist(game):
 
      sql = "DELETE FROM WishList WHERE userID = %s AND gameID = %s;"
      WishList.remove(sql,userid,game_id)
+
+     for i,j in sessionData.gamedetailDict.items():
+          if j[4] == game_id:
+               
+               sessionData.gamedetailDict.pop(i)
+               break
     
      
      return redirect('/wishlist')
@@ -268,25 +305,10 @@ def removefromwishlist(game):
 def wishlist():
         if not loginchecker():
              return redirect('/login')
-        userid=session['userid']
-        gamedetailDict={}
-        sql = "SELECT * FROM WishList WHERE userID = %s;"
-        usergameslist = WishList.select(sql,userid)
-        #usergameslist= games.query.filter_by(userid=userid).all()
-        for game in usergameslist:
-             id=game["gameID"]
-             gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
-             gamedetailsjson=gamedetails.json()
-            
+        
              
-             
-             OriginalPriceOfGame = get_inital_price(gamedetailsjson["info"]["steamAppID"])
-             discounted_price,store = ConvertUSDToCad.getDiscountedPrice(gamedetailsjson["deals"])
-             savings = int(round((1.0 - discounted_price/float(OriginalPriceOfGame))*100 ))
-             gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(OriginalPriceOfGame), round(discounted_price,2), savings, gamedetailsjson["info"]["title"], id,store]
+        return render_template('wishlist.html', gamedetailDict=sessionData.gamedetailDict.items())
 
-             
-        return render_template('wishlist.html', gamedetailDict=gamedetailDict.items())
 @app.route('/gamesearch',methods =["GET","POST"])
 def get_Game():
     if request.method == "POST":

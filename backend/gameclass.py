@@ -27,7 +27,7 @@ class Game:
         self.name = str(Game_name)
     
     def setCheapSharkGameID(self, cheapsharkID):
-        self.cheapsharkgameid = str(cheapsharkID)
+        self.cheapsharkgameid = int(cheapsharkID)
     
     def setGamePriceCAD(self, Game_price):
         self.inital_price = float(Game_price)
@@ -52,7 +52,7 @@ class Game:
         
     def prepareGameObject(self, gamedetails, gameid):
         #game id
-        self.cheapsharkgameid = str(gameid)
+        self.cheapsharkgameid = int(gameid)
         #game name
         self.name = str(gamedetails["info"]["title"])
         self.steamappid = int(gamedetails["info"]["steamAppID"])

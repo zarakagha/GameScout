@@ -8,12 +8,13 @@ from backend.GameTypeList import GameType
 
 class GameSimpleFactory:
     def acquireGame(gameType):
+        gameType = int(gameType)
         gameDetails = None
-        if gameType == "low":
+        if gameType == -1:
             gameDetails = GameType.lowPriceGame()
-        elif gameType == "mid":
+        elif gameType == -2:
             gameDetails = GameType.midPriceGame()
-        elif gameType == "high":
+        elif gameType == -3:
             gameDetails = GameType.highPriceGame()
         else:
             gameDetails = GameType.specificGame(gameType)

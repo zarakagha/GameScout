@@ -135,25 +135,55 @@ def serve_form():
     print(sessionData.fanaticalgamesDict)'''
     return render_template("mainpage.html", steamgamesjson=sessionData.steamgamesDict.items(),epicgamesjson=sessionData.epicgamesDict.items(),goggamesjson=sessionData.goggamesDict.items(),fanaticalgamesjson=sessionData.fanaticalgamesDict.items()) 
 
-@app.route('/accounts')
+@app.route('/accounts', methods = ["POST", "GET"])
 def accounts():
-        return render_template("accounts.html")
+      if request.method=="POST":
+            username = request.form.get('usertextsearch')
+            select = request.form.get("order")
+            print(username)
+            print(select)
+            
+
+            
+
+            if username != None:
+                  userList = users.select("SELECT * FROM Users WHERE username = %s AND isAdmin = 0;",username)
+            
+                  if len(userList) == 0:
+                        userList = users.select("SELECT * FROM Users WHERE username REGEXP %s AND isAdmin = 0 ORDER BY %s;","^"+username,select)
+
+            else:
+                 userList = users.select("SELECT * FROM Users WHERE isAdmin = 0 ORDER BY %s;" ,select)
+
+
+
+      
+      else:
+           userList = users.select("SELECT * FROM Users WHERE isAdmin = 0")
+      return render_template("accounts.html",userlist = userList)
 @app.route('/admin')
 def admin():
-        return render_template("admin.html")
+      print(session)
+      if 'usertype' not in session.keys() or session["usertype"] == 0 :
+            
+            return redirect("/login")
+      
+      else:
+           
+            return render_template("admin.html")
 
 @app.route('/adminUser')
 def adminUser():
-        return render_template("adminUser.html")
+      return render_template("adminUser.html")
 @app.route('/adminGamePage')
 def adminGamePage():
-        return render_template("adminGamePage.html")
+      return render_template("adminGamePage.html")
 @app.route('/adminGame')
 def adminGame():
-        return render_template("adminGame.html")
+      return render_template("adminGame.html")
 @app.route('/genre')
 def genre():
-        return render_template("genre.html")
+      return render_template("genre.html")
 
 @app.route('/logout')
 def logout():
@@ -228,13 +258,12 @@ def signup():
               return "please enter a valid email",400
             elif not re.match(passwordRegex,password):
               return "please enter a valid password",400
-            #exists = user.query.filter((user.username== username)|(user.email == email)).first()
+            
             exists = users.select("SELECT * FROM Users WHERE username = %s AND email = %s;",username,email)
             if exists:
               return "user already exists",400
             new_user =users.insert(firstname=firstname,lastname=lastname,username=username,password=password,email=email,isAdmin=False)
-            #db.session.add(new_user)
-            #db.session.commit()
+            
             return redirect("/login")
         else:
             return render_template("signup.html")

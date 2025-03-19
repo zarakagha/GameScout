@@ -20,15 +20,23 @@
         </div>
     </nav>
 
-    <div class = "admin-filters">
+    <form class = "admin-filters" method = "POST">
+
         <div class = "filter"><p>Filter:</p>
-        <select size="1">
-            <option>Signup Date</option>
-            <option>Last accessed</option>
-            <option>UserName</option>
+        <select size="1" name = "order">
+            <option>username</option>
+            <option>email</option>
+            <option>id</option>
         </select></div>
-        <input  type="text" placeholder="Search Accounts">
-    </div>
+        <input  type="text" placeholder="Search Accounts" name = "usertextsearch">
+        <button type="submit" class="btn" value="submit">Search</button>
+    </form>
+
+    <ul class = "account-list">
+        {% for value in userlist %}
+        <li class = "list-element">id: {{value["id"]}}   Username: {{value["username"]}}   Firstname = {{value["firstname"]}}   Lastname = {{value["lastname"]}}  Email = {{value["email"]}}  Password: {{value["password"]}} </li>
+        {% endfor %}
+    </ul>
 
    
 </body>

@@ -277,7 +277,7 @@ def addtowishlist(game):
      game = json.loads(game)
      print(game)
      game_id = int(game[4])
-     game_price = float(game[0])
+     game_price = float(game[1])
      
      if not loginchecker():
           return redirect('/login')
@@ -292,7 +292,7 @@ def addtowishlist(game):
           return redirect('/wishlist')
      
      WishList.insert(userid,game_id,game_price)
-     api.addToWishList(game_id, game[0], game[1], game[2])
+     api.addToWishList(game_id)
   
     
      return redirect('/wishlist')

@@ -13,46 +13,32 @@
     <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
 </head>
 
-
 <body class="mainpage-body">
-        <nav class="nav_bar">
-            <div class="nav_div">
-                <div class="logo"><a href="#">
-                    <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
-                    <h1 class = "admin-title">Users</h1>
-                <ul>
-                    <li>
-                        <div class="dropdown">
-                            <a class="drop-button">
-                                <img class="navdiv-icon" src="../static/images/person.png" alt="">
-                            </a>
-                            <div class="dropdown-content">
-                                <a href="{{ url_for('login') }}">Log In</a>
-                                <a href="{{ url_for('signup') }}">Sign Up</a>
-                            </div>
+    <nav class="nav_bar">
+        <div class="nav_div">
+            <div class="logo"><a href="#">
+                <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
+                <h1 class = "admin-title">Administrate</h1>
+            <ul>
+                <li>
+                    <div class="dropdown">
+                        <a class="drop-button">
+                            <img class="navdiv-icon" src="../static/images/person.png" alt="">
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('login') }}">Log In</a>
+                            <a href="{{ url_for('signup') }}">Sign Up</a>
                         </div>
-                    <li><a href="/admin"><img class="navdiv-icon" src="../static/images/home.png" alt=""></a></li>
-                                
-                     
+                    </div>
+                    
                    
-                </ul>
-            </div>
-        </nav>
-
-
+                    
+               
+            </ul>
+        </div>
     </nav>
 
-    <form  method = "POST">
-
-        <div class = "filter"><p>Filter:</p>
-        <select size="1" name = "order">
-
-            <option>username</option>
-            <option>email</option>
-            <option>id</option>
-
-        
-    
+   
         <div class ="account-options">
         
             <form id = "account-form" method = "POST">
@@ -94,6 +80,8 @@
         </div>
     </div>
 
+<<<<<<< Updated upstream
+=======
     <ul class = "account-list">
         {% for value in userlist %}
         <li class = "list-element">id: {{value["id"]}}    Username: {{value["username"]}}   Firstname = {{value["firstname"]}}   Lastname = {{value["lastname"]}}  Email = {{value["email"]}}  Password: {{value["password"]}} </li>
@@ -101,6 +89,7 @@
     </ul>
 
    
+>>>>>>> Stashed changes
 </body>
 <!--<script src="{{ url_for('static', filename='js/accountsScript.js') }}"></script>-->
 </html>

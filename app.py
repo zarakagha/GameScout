@@ -89,20 +89,21 @@ def accounts():
       if request.method=="POST":
             username = request.form.get('usertextsearch')
             select = request.form.get("order")
-
+            print(select)
 
             if username != None:
                   userList = users.select("SELECT * FROM Users WHERE username = %s AND isAdmin = 0;",username)
             
                   if len(userList) == 0:
-                        userList = users.select("SELECT * FROM Users WHERE username REGEXP %s AND isAdmin = 0 ORDER BY %s;","^"+username,select)
-
+                        userList = users.select("SELECT * FROM Users WHERE username REGEXP %s AND isAdmin = 0 ORDER BY {s};".format(s=select),"^"+username)
+                        print("el 1")
             else:
-                 userList = users.select("SELECT * FROM Users WHERE isAdmin = 0 ORDER BY %s;" ,select)
-
+                 userList = users.select("SELECT * FROM Users WHERE isAdmin = 0 ORDER BY {s};".format(s=select))
+                 print("el 2")
       else:
            userList = users.select("SELECT * FROM Users WHERE isAdmin = 0")
-
+           print("el 3")
+      print(userList)
       return render_template("accounts.html",userlist = userList)
 
 @app.route('/admin')
@@ -121,6 +122,13 @@ def adminUser(id):
       user = users.select("SELECT * FROM Users WHERE id = %s;",id)
       print(user)
       return render_template("adminUser.html",user = user[0])
+@app.route('/adminDelete/<id>')
+def adminDelete(id):
+     sql = "DELETE FROM WishList WHERE userID = %s;"
+     WishList.remove(sql,id)
+     sql = "DELETE FROM Users WHERE id = %s;"
+     users.remove(sql,id)
+     return redirect('/accounts')
 @app.route('/adminGamePage')
 def adminGamePage():
       return render_template("adminGamePage.html")

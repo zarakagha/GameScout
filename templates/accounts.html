@@ -18,19 +18,12 @@
         <div class="nav_div">
             <div class="logo"><a href="#">
                 <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
-                <h1 class = "admin-title">Administrate</h1>
+                <h1 class = "admin-title">Users</h1>
             <ul>
-                <li>
-                    <div class="dropdown">
-                        <a class="drop-button">
-                            <img class="navdiv-icon" src="../static/images/person.png" alt="">
-                        </a>
-                        <div class="dropdown-content">
-                            <a href="{{ url_for('login') }}">Log In</a>
-                            <a href="{{ url_for('signup') }}">Sign Up</a>
-                        </div>
-                    </div>
+                
                     
+                <li><a href="/admin"><img class="navdiv-icon" src="../static/images/home.png" alt=""></a></li>
+                <li><a href="/logout"><img class="navdiv-icon" src="../static/images/Logout.png" alt=""></a></li>
                    
                     
                
@@ -45,11 +38,9 @@
 
                 <label class = "form-labels" id = "order-text" for="order">Sort the users by:</label>
 
-                <select class = "form-labels" name="order" id="filter">
+                <select class = "form-labels" name="order" id="filter" >
                     <option value="id">id</option>
                     <option value="username">Username</option>
-                    <option value="firstname">First Name</option>
-                    <option value="lastname">Lastname</option>
                     <option value="email">Email</option>
                 </select>
                 <input id = "account-input" class = "form-labels" type="text" placeholder="Search Accounts" name = "usertextsearch">

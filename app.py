@@ -19,7 +19,7 @@ import re
 import threading
 from backend.sessionVariables import SessionData
 from backend.API import API
-from backend.gameobserver import WishlistGame
+from backend.gameobserver import WishlistGame,Shopper
 
 
 
@@ -78,9 +78,12 @@ api =API(sessionData)
 @app.route('/',methods=["GET","POST"])
 def serve_form():
     api.runMainAPI()
-    
-    return render_template("mainpage.html", steamgamesjson=sessionData.steamgamesDict.items(),epicgamesjson=sessionData.epicgamesDict.items(),goggamesjson=sessionData.goggamesDict.items(),fanaticalgamesjson=sessionData.fanaticalgamesDict.items()) 
-
+    if session['userid']==None:
+         return render_template("mainpage.html", steamgamesjson=sessionData.steamgamesDict.items(),epicgamesjson=sessionData.epicgamesDict.items(),goggamesjson=sessionData.goggamesDict.items(),fanaticalgamesjson=sessionData.fanaticalgamesDict.items(),wishlistupdate=False) 
+    else:
+         needsupdate=Shopper.updatechecker(session['userid'])
+         return render_template("mainpage.html", steamgamesjson=sessionData.steamgamesDict.items(),epicgamesjson=sessionData.epicgamesDict.items(),goggamesjson=sessionData.goggamesDict.items(),fanaticalgamesjson=sessionData.fanaticalgamesDict.items(),wishlistupdate=needsupdate) 
+         
 @app.route('/accounts', methods = ["POST", "GET"])
 def accounts():
       if 'usertype' not in session.keys() or session["usertype"] == 0 :
@@ -158,6 +161,8 @@ def login():
                         return redirect ('/admin')
                   else:
                         api.runWishAPI(user[0]["id"])
+                        for key, value in sessionData.gamedetailDict.items():
+                             WishlistGame.setState(value[4])
 
                     
                         print("Redirecting to Main Page")

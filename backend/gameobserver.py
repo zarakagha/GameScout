@@ -69,10 +69,6 @@ class WishlistGame(Subject):
             wishlist.select(sqludp,(lowest_price,game_id))
             WishlistGame.NotifyObservers(game_id)
     #get current price of game function
-    def getState():
-        #gets state within the database
-        
-        pass
     
 
 class Observer(ABC):
@@ -83,7 +79,6 @@ class Observer(ABC):
         pass
 
 class Shopper(Observer):
-    lowest_stored_price_in_db = 0
     #update the price of the game in the database for the gameid
 
     def updatechecker(user_id):

@@ -71,6 +71,7 @@ class WishlistGame(Subject):
     #get current price of game function
     def getState():
         #gets state within the database
+        
         pass
     
 
@@ -84,14 +85,21 @@ class Observer(ABC):
 class Shopper(Observer):
     lowest_stored_price_in_db = 0
     #update the price of the game in the database for the gameid
-    def update(WishlistGame, priceOfGame):
+
+    def updatechecker(user_id):
+        sql ="SELECT updateuser FROM Users WHERE id = %s;"
+        user = users.select(sql,user_id)
+        if user["updateuser"]==1:
+            return Shopper.updateview()
+        else:
+            return False
+    def update(user_id):
         #update the screen with the new price of the game
         #use the updateview function to update the screen
-        
+        sql = "UPDATE Users SET updateuser=1 WHERE id = %s;"
+        users.select(sql,user_id)
+
             #updateview()
-            
-        pass
     def updateview():
         #change the view of the user to indiciate a change has occurred
-    
-        pass
+        return True

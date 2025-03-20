@@ -132,6 +132,8 @@ def logout():
      session['userid']=None
      session['username']=None
      session['usertype'] = None
+     
+     sessionData.gamedetailDict ={}
      return redirect('/login')
 
      

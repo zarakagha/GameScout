@@ -676,7 +676,7 @@ body th ,
 }
 
 /*accounts*/
-<<<<<<< Updated upstream
+
 .account-options{
   width: 100%;
   height: 65vh;
@@ -688,7 +688,7 @@ body th ,
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
-=======
+}
 
 .list-element{
   color:white; 
@@ -697,7 +697,7 @@ body th ,
 
 .edit-icon{
   size: 5%;
->>>>>>> Stashed changes
+
 }
 
 #account-form{

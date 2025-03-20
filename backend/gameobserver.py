@@ -1,7 +1,7 @@
 from abc import ABC
 import requests
 import backend.database as database
-from backend.gameclass import game
+from backend.gameclass import Game
 from backend.DealFactory import DealForGameSimpleFactory
 #The setState() will check if there is an update to the DB that needs to occur if the price is lower, 
 #if there is a change in price that is lower we will update the observer and the display, indicating a change in price for a specific subject (game)

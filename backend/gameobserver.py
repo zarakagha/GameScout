@@ -63,10 +63,10 @@ class WishlistGame(Subject):
         AcquiredWishlistList = wishlist[str(CurrGameObj.gameSteamAppId())]
         lowest_price = AcquiredWishlistList[1]
         sqlsel = "SELECT price FROM WishList Where gameID = %s;"
-        databaseprice = wishlist.select(sqlsel,game_id)
-        if(lowest_price<databaseprice):
+        databaseprice = WishList.select(sqlsel,game_id)
+        if(lowest_price<databaseprice[0]["price"]):
             sqludp = "UPDATE WishList SET price = %s WHERE gameID = %s;"
-            wishlist.select(sqludp,(lowest_price,game_id))
+            WishList.select(sqludp,lowest_price,game_id)
             WishlistGame.NotifyObservers(game_id)
     #get current price of game function
     
@@ -84,7 +84,7 @@ class Shopper(Observer):
     def updatechecker(user_id):
         sql ="SELECT updateuser FROM Users WHERE id = %s;"
         user = users.select(sql,user_id)
-        if user["updateuser"]==1:
+        if user[0]["updateuser"]==1:
             return Shopper.updateview()
         else:
             return False

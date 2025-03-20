@@ -68,7 +68,6 @@ class WishlistGame(Subject):
             sqludp = "UPDATE WishList SET price = %s WHERE gameID = %s;"
             wishlist.select(sqludp,(lowest_price,game_id))
             WishlistGame.NotifyObservers(game_id)
-        pass
     #get current price of game function
     def getState():
         #gets state within the database
@@ -88,11 +87,7 @@ class Shopper(Observer):
     def update(WishlistGame, priceOfGame):
         #update the screen with the new price of the game
         #use the updateview function to update the screen
-        price=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(WishlistGame.gameid))
-        if(priceOfGame<price):
-            #set price as wishlist new price
-            sql="UPDATE Wishlist Set price=%s WHERE userid=%s AND gameID=%s;"
-            Wishlist.update()
+        
             #updateview()
             
         pass

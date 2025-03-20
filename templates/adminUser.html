@@ -20,18 +20,9 @@
                     <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
                     <h1 class = "admin-title">User</h1>
                 <ul>
-                    <li>
-                        <div class="dropdown">
-                            <a class="drop-button">
-                                <img class="navdiv-icon" src="../static/images/person.png" alt="">
-                            </a>
-                            <div class="dropdown-content">
-                                <a href="{{ url_for('login') }}">Log In</a>
-                                <a href="{{ url_for('signup') }}">Sign Up</a>
-                            </div>
-                        </div>
+                    <li><a href="/accounts"><img class="navdiv-icon" src="../static/images/person.png" alt=""></a></li>
                     <li><a href="/admin"><img class="navdiv-icon" src="../static/images/home.png" alt=""></a></li>
-                                
+                    <li><a href="/logout"><img class="navdiv-icon" src="../static/images/Logout.png" alt=""></a></li>            
                      
                    
                 </ul>
@@ -53,7 +44,7 @@
             <button class="edit-btn-user"  > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
             <p class = "admin-user-item">Password: {{user['password']}} </p>
             <button class="edit-btn-user" > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
-            <button class="delete-btn-user"  > <img class="account-delete" src="../static/images/garbage.png" alt=""></button> 
+            <button class="delete-btn-user"  ><a href="{{ url_for('adminDelete',id = user['id']) }}"> <img class="account-delete" src="../static/images/garbage.png" alt=""></a></button> 
     
         </div>
     

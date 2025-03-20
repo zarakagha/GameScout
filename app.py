@@ -19,6 +19,7 @@ import re
 import threading
 from backend.sessionVariables import SessionData
 from backend.API import API
+from backend.gameobserver import WishlistGame
 
 
 
@@ -206,14 +207,14 @@ def addtowishlist(game):
      
      userid= session['userid']
 
-     sql = "SELECT * FROM WishList WHERE userID = %s AND gameID = %s;"
-     gameexists = WishList.select(sql,userid,game_id)
+     #sql = "SELECT * FROM WishList WHERE userID = %s AND gameID = %s;"
+     #gameexists = WishList.select(sql,userid,game_id)
+     game_added = WishlistGame.AddObserver(userid, game_id, game_price)
     
-    
-     if gameexists:
+     if not game_added:
           return redirect('/wishlist')
      
-     WishList.insert(userid,game_id,game_price)
+     #WishList.insert(userid,game_id,game_price)
      api.addToWishList(game_id)
   
     
@@ -230,13 +231,16 @@ def removefromwishlist(game):
      
      userid= session['userid']
 
-     sql = "SELECT * FROM WishList WHERE userID = %s AND gameID = %s;"
-     usergameslist = WishList.select(sql,userid,game_id)
-     if not usergameslist:
+     #sql = "SELECT * FROM WishList WHERE userID = %s AND gameID = %s;"
+     #usergameslist = WishList.select(sql,userid,game_id)
+     
+     GameRemoved = WishlistGame.RemoveObserver(userid, game_id)
+     
+     if not GameRemoved:
           redirect('/wishlist')
 
-     sql = "DELETE FROM WishList WHERE userID = %s AND gameID = %s;"
-     WishList.remove(sql,userid,game_id)
+     #sql = "DELETE FROM WishList WHERE userID = %s AND gameID = %s;"
+     #WishList.remove(sql,userid,game_id)
 
      for i,j in sessionData.gamedetailDict.items():
           if j[4] == game_id:

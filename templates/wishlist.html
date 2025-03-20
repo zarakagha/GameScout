@@ -57,6 +57,9 @@
                 <tr>
                     <td class="wishlist-container">
                         <a href="{{url_for('gamedetail',game_id=value[4])}}"><img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="wishlist-img" alt=""style="text-align: left;"></a>
+                        <form action="{{url_for('removefromwishlist',game=value)}}" method="GET"><button class="game-btn" role="button">
+                            <span class="text">Remove from Wishlist</span>
+                        </button></form>
                     </td>
                     <td>{{value[3]}}</td>
                     <td>{{value[1]}}</td>

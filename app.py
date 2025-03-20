@@ -77,62 +77,7 @@ api =API(sessionData)
 @app.route('/',methods=["GET","POST"])
 def serve_form():
     api.runMainAPI()
-    '''if not sessionData.Loaded:
-      steamgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=1")
-      steamgamesjson=steamgames.json()
-      steamgamesjson=steamgamesjson[:9]
-      for currentdeal in steamgamesjson:
-            try:
-                  OriginalPriceOfGame = get_inital_price(currentdeal["steamAppID"])
-                  discounted_price = round(ConvertUSDToCad.convertPriceForGame(float(OriginalPriceOfGame), int(currentdeal["storeID"]), float(currentdeal["savings"])), 2)
-                  savings = int(round(float(currentdeal["savings"]), 0))
-                  sessionData.steamgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"], currentdeal["gameID"]]
-            except:
-                  print("Error in creating dictionary for game for Steam, Game name: " + currentdeal["title"] + " Steam App ID value: " + str(currentdeal["steamAppID"]))
-                  continue
-      epicgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=25")
-      epicgamesjson=epicgames.json()
-      epicgamesjson=epicgamesjson[:9]
-      for currentdeal in epicgamesjson:
-            try:
-                  OriginalPriceOfGame = get_inital_price(currentdeal["steamAppID"])
-                  discounted_price = round(ConvertUSDToCad.convertPriceForGame(float(OriginalPriceOfGame), int(currentdeal["storeID"]), float(currentdeal["savings"])), 2)
-                  savings = int(round(float(currentdeal["savings"]), 0))
-                  sessionData.epicgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"], currentdeal["gameID"]]
-            except:
-                  print("Error in creating dictionary for game for Epic, Game name: " + currentdeal["title"] + " Steam App ID value: " + str(currentdeal["steamAppID"]))
-                  continue
-      goggames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=7")
-      goggamesjson=goggames.json()
-      goggamesjson=goggamesjson[:9]
-      for currentdeal in goggamesjson:
-            try:
-                  OriginalPriceOfGame = get_inital_price(currentdeal["steamAppID"])
-                  discounted_price = round(ConvertUSDToCad.convertPriceForGame(float(OriginalPriceOfGame), int(currentdeal["storeID"]), float(currentdeal["savings"])), 2)
-                  savings = int(round(float(currentdeal["savings"]), 0))
-                  sessionData.goggamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"], currentdeal["gameID"]]
-            except:
-                  print("Error in creating dictionary for game for GOG, Game name: " + currentdeal["title"] + " Steam App ID value: " + str(currentdeal["steamAppID"]))
-                  continue
-      fanaticalgames=requests.get("https://www.cheapshark.com/api/1.0/deals?storeID=15")
-      fanaticalgamesjson=fanaticalgames.json()
-      fanaticalgamesjson=fanaticalgamesjson[:9]
-      for currentdeal in fanaticalgamesjson:
-            try:
-                  OriginalPriceOfGame = get_inital_price(currentdeal["steamAppID"])
-                  discounted_price = round(ConvertUSDToCad.convertPriceForGame(float(OriginalPriceOfGame), int(currentdeal["storeID"]), float(currentdeal["savings"])), 2)
-                  savings = int(round(float(currentdeal["savings"]), 0))
-                  sessionData.fanaticalgamesDict[str(currentdeal["steamAppID"])] = [str(OriginalPriceOfGame), discounted_price, savings, currentdeal["title"], currentdeal["gameID"]]
-            except:
-                  print("Error in creating dictionary for game for Fanatical, Game name: " + currentdeal["title"] + " Steam App ID value: " + str(currentdeal["steamAppID"]))
-                  continue
-      
-      sessionData.Loaded = True
-    print(sessionData.steamgamesDict)
-    print(sessionData.epicgamesDict)
-    print(sessionData.goggamesDict)
     
-    print(sessionData.fanaticalgamesDict)'''
     return render_template("mainpage.html", steamgamesjson=sessionData.steamgamesDict.items(),epicgamesjson=sessionData.epicgamesDict.items(),goggamesjson=sessionData.goggamesDict.items(),fanaticalgamesjson=sessionData.fanaticalgamesDict.items()) 
 
 @app.route('/accounts', methods = ["POST", "GET"])
@@ -141,10 +86,6 @@ def accounts():
             username = request.form.get('usertextsearch')
             select = request.form.get("order")
 
-           
-            
-
-            
 
             if username != None:
                   userList = users.select("SELECT * FROM Users WHERE username = %s AND isAdmin = 0;",username)
@@ -155,18 +96,11 @@ def accounts():
             else:
                  userList = users.select("SELECT * FROM Users WHERE isAdmin = 0 ORDER BY %s;" ,select)
 
-
-
-            userList = users.select("SELECT * FROM Users WHERE username = %s;",username)
-
-
-            userList = users.select("SELECT * FROM Users WHERE username = %s;",username)
-
-
-      
       else:
            userList = users.select("SELECT * FROM Users WHERE isAdmin = 0")
+
       return render_template("accounts.html",userlist = userList)
+
 @app.route('/admin')
 def admin():
       print(session)
@@ -217,19 +151,7 @@ def login():
                   else:
                         api.runWishAPI(user[0]["id"])
 
-                        '''sql = "SELECT * FROM WishList WHERE userID = %s;"
-                        usergameslist = WishList.select(sql,user[0]["id"])
-                        #usergameslist= games.query.filter_by(userid=userid).all()
-                        for game in usergameslist:
-                              id=game["gameID"]
-                              gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
-                              gamedetailsjson=gamedetails.json()
-                              
-                                                            
-                              OriginalPriceOfGame = get_inital_price(gamedetailsjson["info"]["steamAppID"])
-                              discounted_price,store = ConvertUSDToCad.getDiscountedPrice(gamedetailsjson["deals"])
-                              savings = int(round((1.0 - discounted_price/float(OriginalPriceOfGame))*100 ))
-                              sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(OriginalPriceOfGame), round(discounted_price,2), savings, gamedetailsjson["info"]["title"], id,store]'''
+                    
                         print("Redirecting to Main Page")
                         return redirect ('/')
                   

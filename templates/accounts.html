@@ -20,7 +20,7 @@
         </div>
     </nav>
 
-    <form class = "admin-filters" method = "POST">
+    <form  method = "POST">
 
         <div class = "filter"><p>Filter:</p>
         <select size="1" name = "order">
@@ -37,7 +37,7 @@
 
     <ul class = "account-list">
         {% for value in userlist %}
-        <li class = "list-element">id: {{value["id"]}}   Username: {{value["username"]}}   Firstname = {{value["firstname"]}}   Lastname = {{value["lastname"]}}  Email = {{value["email"]}}  Password: {{value["password"]}} </li>
+        <li class = "list-element">id: {{value["id"]}}    Username: {{value["username"]}}   Firstname = {{value["firstname"]}}   Lastname = {{value["lastname"]}}  Email = {{value["email"]}}  Password: {{value["password"]}} </li>
         {% endfor %}
     </ul>
 

@@ -681,7 +681,12 @@ table a {
 /*accounts*/
 
 .list-element{
-  color:white;
+  color:white; 
+   
+}
+
+.edit-icon{
+  size: 5%;
 }
 
 .errorborder {

@@ -10,7 +10,7 @@
     <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
 </head>
 
-<body >
+<body style="background-color:rgb(16,16,16);">
     <nav class="nav_bar">
         <div class="nav_div">
             <div class="logo"><a href="{{ url_for('serve_form') }}">
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                 </li>
-                <li><a href=""><img class="navdiv-icon" src="../static/images/heart.png" alt=""></a></li>
+                <li><a href="/wishlist"><img class="navdiv-icon" src="../static/images/heart.png" alt=""></a></li>
                 <li><a href=""><img class="navdiv-icon" src="../static/images/Logout.png" alt=""></a></li>
             </ul>
         </div>
@@ -44,15 +44,25 @@
         <div class="split-container">
             <div class="split-left">
                 <img src={{gameIMG}} object-fit: contain; alt="">
+                {% for key, value in wishlistdict %}
+                <form action="{{url_for('addtowishlist',game=value)}}" method="GET">
+                    <button class="game-btn" role="button"> 
+                        <span class="text">Add to Wishlist</span>
+                    </button>
+                </form>
+                {% endfor %}
+                
+                <form action="{{url_for('removefromwishlist',game=value)}}" method="GET" id="notWishlist">
+                    <button class="game-btn" role="button"> 
+                        <span class="text">Remove from Wishlist</span>
+                    </button>
+                </form>
+                
             </div>
+
             <div class="split-right">
                 <h1 style="font-size:50px">{{gamename}}</h1>
                 <table>
-                    {% for key, value in wishlistdict %}
-                    <form action="{{url_for('addtowishlist',game=value)}}" method="GET"><button class="game-btn" role="button">
-                        <span class="text">Add to Wishlist</span>
-                    </button></form>
-                    {% endfor %}
                     <!--
                     <tr>
                         <th style="font-size:15px;">Genre</th>
@@ -75,7 +85,7 @@
                     </tr>
                     {% for key, value in store_dict %}
                     <tr>
-                        <td><a href={{value[2]}}  target="_blank">{{key}}</a></td>
+                        <td><a href={{value[2]}}  target="_blank"   style="color: inherit;">{{key}}</a></td>
                         <td>{{value[0]}}</td>
                     </tr>
                     {% endfor %}

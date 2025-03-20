@@ -13,6 +13,7 @@
     <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
 </head>
 
+<<<<<<< Updated upstream
 <body class="mainpage-body">
         <nav class="nav_bar">
             <div class="nav_div">
@@ -37,6 +38,28 @@
                 </ul>
             </div>
         </nav>
+=======
+<body class = "admin-body">
+    <nav class="nav_bar">
+        <div class="admin-div">
+            <div class="logo" style="flex-grow: 8"><a href="#">
+                <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
+            
+            <div><li><a href="{{ url_for('signup') }}"><img src="../static/images/person.png" alt=""></a></li></div>
+            <div><li><a href="{{ url_for('admin') }}"><img src="../static/images/home.png" alt=""></a></li></div>
+            
+        </div>
+    </nav>
+
+    <form  method = "POST">
+
+        <div class = "filter"><p>Filter:</p>
+        <select size="1" name = "order">
+
+            <option>username</option>
+            <option>email</option>
+            <option>id</option>
+>>>>>>> Stashed changes
         
     
         <div class ="account-options">
@@ -80,6 +103,16 @@
         </div>
     </div>
 
+<<<<<<< Updated upstream
+=======
+    <ul class = "account-list">
+        {% for value in userlist %}
+        <li class = "list-element">id: {{value["id"]}}    Username: {{value["username"]}}   Firstname = {{value["firstname"]}}   Lastname = {{value["lastname"]}}  Email = {{value["email"]}}  Password: {{value["password"]}} </li>
+        {% endfor %}
+    </ul>
+
+   
+>>>>>>> Stashed changes
 </body>
 <!--<script src="{{ url_for('static', filename='js/accountsScript.js') }}"></script>-->
 </html>

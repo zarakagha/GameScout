@@ -44,10 +44,14 @@ class WishlistGame(Subject):
             sqldel = "DELETE FROM WishList WHERE userID = %s AND gameID = %s;"
             WishList.remove(sqldel,Observer,game_id)
             return True
-    def NotifyObservers():
+    def NotifyObservers(gameid):
         #inform list of users that the state of the game has changed (cheaper price), update the value in the DB
         #{for each user in list from database call the Shopper.update() function}
-        pass
+        sqlsel = "SELECT userID FROM WishList WHERE gameID = %s;"
+        userList = WishList.select(sqlsel, gameid)
+        for i in userList:
+            userid = i["userID"]
+            Shopper.update(userid)
     #set the state of the subject (set the price within the database)
     def setState():
         #set new price into database if it is lower (use the getState() function to possibly retreive from database)
@@ -60,6 +64,7 @@ class WishlistGame(Subject):
     
 
 class Observer(ABC):
+    
     #general update function that takes in the game and the new price
     def update(WishlistGame, priceOfGame):
         

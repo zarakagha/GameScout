@@ -60,7 +60,7 @@ def serve_form():
       if session['userid']==None:
             return render_template("mainpage.html", steamgamesjson=sessionData.steamgamesDict.items(),epicgamesjson=sessionData.epicgamesDict.items(),goggamesjson=sessionData.goggamesDict.items(),fanaticalgamesjson=sessionData.fanaticalgamesDict.items(),wishlistupdate=False)
       else:
-         needsupdate=Shopper.updatechecker(session['userid'])
+         needsupdate=WishlistGame.getState(session['userid'])
          sql = "UPDATE Users SET updateuser=0 WHERE id = %s;"
          users.select(sql,session['userid'])
          return render_template("mainpage.html", steamgamesjson=sessionData.steamgamesDict.items(),epicgamesjson=sessionData.epicgamesDict.items(),goggamesjson=sessionData.goggamesDict.items(),fanaticalgamesjson=sessionData.fanaticalgamesDict.items(),wishlistupdate=needsupdate)   

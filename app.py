@@ -83,6 +83,9 @@ def serve_form():
 
 @app.route('/accounts', methods = ["POST", "GET"])
 def accounts():
+      if 'usertype' not in session.keys() or session["usertype"] == 0 :
+            
+            return redirect("/login")
       if request.method=="POST":
             username = request.form.get('usertextsearch')
             select = request.form.get("order")
@@ -104,7 +107,7 @@ def accounts():
 
 @app.route('/admin')
 def admin():
-      print(session)
+      
       if 'usertype' not in session.keys() or session["usertype"] == 0 :
             
             return redirect("/login")
@@ -113,9 +116,11 @@ def admin():
            
             return render_template("admin.html")
 
-@app.route('/adminUser')
-def adminUser():
-      return render_template("adminUser.html")
+@app.route('/adminUser/<id>')
+def adminUser(id):
+      user = users.select("SELECT * FROM Users WHERE id = %s;",id)
+      print(user)
+      return render_template("adminUser.html",user = user[0])
 @app.route('/adminGamePage')
 def adminGamePage():
       return render_template("adminGamePage.html")
@@ -128,6 +133,8 @@ def logout():
      session['userid']=None
      session['username']=None
      session['usertype'] = None
+     
+     sessionData.gamedetailDict ={}
      return redirect('/login')
 
      

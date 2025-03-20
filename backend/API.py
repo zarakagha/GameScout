@@ -134,28 +134,39 @@ class API:
         
         for game in usergameslist:
             id=game["gameID"]
-            gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
-            gamedetailsjson=gamedetails.json()
+            CurrGameObj = DealForGameSimpleFactory.GetGameDealsAcrossStores(id)
+            wishlist=CurrGameObj.getWishListFormatDict()
+            AcquiredWishlistList = wishlist[str(CurrGameObj.gameSteamAppId())]
+            inital_price = str(AcquiredWishlistList[0])
+            lowest_price = AcquiredWishlistList[1]
+            savings = AcquiredWishlistList[2]
+            title = AcquiredWishlistList[3]
+            #gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
+            #gamedetailsjson=gamedetails.json()
                          
                                                             
-            OriginalPriceOfGame = get_inital_price(gamedetailsjson["info"]["steamAppID"])
-            discounted_price,store = ConvertUSDToCad.getDiscountedPrice(gamedetailsjson["deals"])
-            savings = int(round((1.0 - discounted_price/float(OriginalPriceOfGame))*100 ))
+            #OriginalPriceOfGame = get_inital_price(gamedetailsjson["info"]["steamAppID"])
+            #discounted_price,store = ConvertUSDToCad.getDiscountedPrice(gamedetailsjson["deals"])
+            #savings = int(round((1.0 - discounted_price/float(OriginalPriceOfGame))*100 ))
             lock.acquire()
-            self.sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(OriginalPriceOfGame), round(discounted_price,2), savings, gamedetailsjson["info"]["title"], id,store]
+            self.sessionData.gamedetailDict[CurrGameObj.gameSteamAppId()] = [inital_price, lowest_price, savings, title, id, 0]
             lock.release()
 
-    def addToWishList(self,id, original_price, discounted_price, savings):
-        gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
-        gamedetailsjson=gamedetails.json()
-        print(original_price)
-        print(discounted_price)
-        print(savings)
+    def addToWishList(self,id):
+        CurrGameObj = DealForGameSimpleFactory.GetGameDealsAcrossStores(id)
+        wishlist=CurrGameObj.getWishListFormatDict()
+        wishlist=CurrGameObj.getWishListFormatDict()
+        AcquiredWishlistList = wishlist[str(CurrGameObj.gameSteamAppId())]
+        inital_price = str(AcquiredWishlistList[0])
+        lowest_price = AcquiredWishlistList[1]
+        savings = AcquiredWishlistList[2]
+        title = AcquiredWishlistList[3]
+        #gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
+        #gamedetailsjson=gamedetails.json()
                                                             
         #discounted_price,store = ConvertUSDToCad.getDiscountedPrice(gamedetailsjson["deals"])
         #savings = int(round((1.0 - discounted_price/float(OriginalPriceOfGame))*100 ))
-        self.sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(original_price), discounted_price, savings, gamedetailsjson["info"]["title"], id,0]
-        print(self.sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])])
+        self.sessionData.gamedetailDict[CurrGameObj.gameSteamAppId()] = [inital_price, lowest_price, savings, title, id,0]
         
     
       

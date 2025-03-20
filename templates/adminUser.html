@@ -1,0 +1,76 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameScout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" /> 
+    <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
+</head>
+
+<body class="mainpage-body">
+        <nav class="nav_bar">
+            <div class="nav_div">
+                <div class="logo"><a href="#">
+                    <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
+                    <h1 class = "admin-title">User</h1>
+                <ul>
+                    <li>
+                        <div class="dropdown">
+                            <a class="drop-button">
+                                <img class="navdiv-icon" src="../static/images/person.png" alt="">
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="{{ url_for('login') }}">Log In</a>
+                                <a href="{{ url_for('signup') }}">Sign Up</a>
+                            </div>
+                        </div>
+                    <li><a href="/admin"><img class="navdiv-icon" src="../static/images/home.png" alt=""></a></li>
+                                
+                     
+                   
+                </ul>
+            </div>
+        </nav>
+        
+    
+        <div class ="user-options">
+        
+            <p class = "admin-user-item">ID: {{user['id']}} </p>
+            <button class="edit-btn-user"  > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
+            <p class = "admin-user-item">Username: {{user['username']}} </p>
+            <button class="edit-btn-user"  > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
+            <p class = "admin-user-item">First name: {{user['firstname']}} </p>
+            <button class="edit-btn-user"  > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
+            <p class = "admin-user-item">Last name: {{user['lastname']}} </p>
+            <button class="edit-btn-user"  > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
+            <p class = "admin-user-item">Email: {{user['email']}} </p>
+            <button class="edit-btn-user"  > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
+            <p class = "admin-user-item">Password: {{user['password']}} </p>
+            <button class="edit-btn-user" > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
+            <button class="delete-btn-user"  > <img class="account-delete" src="../static/images/garbage.png" alt=""></button> 
+    
+        </div>
+    
+    
+    
+    <div class="footer">
+        
+        <div class="footerColumn2">
+            <h3>Creators</h3>
+            <a href="">Snaoll</a>
+            <a href="">Ordnary45</a>
+            <a href="">zarakagha</a>
+            <a href="">TracePrice135</a>
+        </div>
+    </div>
+
+</body>
+<!--<script src="{{ url_for('static', filename='js/accountsScript.js') }}"></script>-->
+</html>
+

@@ -1,40 +1,70 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-
-
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameScout</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" /> 
+    <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
 </head>
 
-<body class = "admin-body">
-    <nav class="nav_bar">
-        <div class="admin-div">
-            <div class="logo"><a href="#">
-                <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
-            <ul>
-                <li><a href="{{ url_for('login') }}"><img src="../static/images/person.png" alt=""></a></li>
-                
-            </ul>
+<body class="mainpage-body">
+        <nav class="nav_bar">
+            <div class="nav_div">
+                <div class="logo"><a href="#">
+                    <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
+                    <h1 class = "admin-title">Administrate</h1>
+                <ul>
+                    <li>
+                        <div class="dropdown">
+                            <a class="drop-button">
+                                <img class="navdiv-icon" src="../static/images/person.png" alt="">
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="{{ url_for('login') }}">Log In</a>
+                                <a href="{{ url_for('signup') }}">Sign Up</a>
+                            </div>
+                        </div>
+                        
+                       
+                        
+                   
+                </ul>
+            </div>
+        </nav>
+        
+    
+        <div class ="admin-options">
+        
+            <a class = "butten-a" href = "{{ url_for('accounts') }}">
+                <button class = "admin-button" type= "button">Accounts</button>
+            </a>
+            <a class = "butten-a" href = "{{ url_for('adminGame') }}">
+                <button class = "admin-button" type = "button">Games</button>
+            </a>
+            
+    
         </div>
-    </nav>
-
-    <div class ="admin-options">
+    
+    
+    
+    <div class="footer">
         
-        <a href = "{{ url_for('accounts') }}">
-            <button type= "button">Accounts</button>
-        </a>
-        <a href = "{{ url_for('game') }}">
-            <button type = "button">Games</button>
-        </a>
-        
-
+        <div class="footerColumn2">
+            <h3>Creators</h3>
+            <a href="">Snaoll</a>
+            <a href="">Ordnary45</a>
+            <a href="">zarakagha</a>
+            <a href="">TracePrice135</a>
+        </div>
     </div>
 
-    
 </body>
-
+<script src="{{ url_for('static', filename='js/MainpageScript.js') }}"></script>
 </html>
+

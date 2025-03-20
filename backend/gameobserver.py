@@ -69,7 +69,13 @@ class WishlistGame(Subject):
             WishList.select(sqludp,lowest_price,game_id)
             WishlistGame.NotifyObservers(game_id)
     #get current price of game function
-    
+    def getState(observer):
+        sql ="SELECT updateuser FROM Users WHERE id = %s;"
+        user = users.select(sql,observer)
+        if user[0]["updateuser"]==1:
+            return Shopper.updateview()
+        else:
+            return False
 
 class Observer(ABC):
     
@@ -80,14 +86,6 @@ class Observer(ABC):
 
 class Shopper(Observer):
     #update the price of the game in the database for the gameid
-
-    def updatechecker(user_id):
-        sql ="SELECT updateuser FROM Users WHERE id = %s;"
-        user = users.select(sql,user_id)
-        if user[0]["updateuser"]==1:
-            return Shopper.updateview()
-        else:
-            return False
     def update(user_id):
         #update the screen with the new price of the game
         #use the updateview function to update the screen

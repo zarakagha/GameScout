@@ -1,6 +1,8 @@
 from abc import ABC
 import requests
 import backend.database as database
+from backend.gameclass import game
+from backend.DealFactory import DealForGameSimpleFactory
 #The setState() will check if there is an update to the DB that needs to occur if the price is lower, 
 #if there is a change in price that is lower we will update the observer and the display, indicating a change in price for a specific subject (game)
 
@@ -53,9 +55,19 @@ class WishlistGame(Subject):
             userid = i["userID"]
             Shopper.update(userid)
     #set the state of the subject (set the price within the database)
-    def setState():
+    def setState(game_id):
         #set new price into database if it is lower (use the getState() function to possibly retreive from database)
         #call notifyObservers() if it is lower
+        CurrGameObj = DealForGameSimpleFactory.GetGameDealsAcrossStores(game_id)
+        wishlist=CurrGameObj.getWishListFormatDict()
+        AcquiredWishlistList = wishlist[str(CurrGameObj.gameSteamAppId())]
+        lowest_price = AcquiredWishlistList[1]
+        sqlsel = "SELECT price FROM WishList Where gameID = %s;"
+        databaseprice = wishlist.select(sqlsel,game_id)
+        if(lowest_price<databaseprice):
+            sqludp = "UPDATE WishList SET price = %s WHERE gameID = %s;"
+            wishlist.select(sqludp,(lowest_price,game_id))
+            WishlistGame.NotifyObservers(game_id)
         pass
     #get current price of game function
     def getState():

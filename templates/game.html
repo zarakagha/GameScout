@@ -48,9 +48,11 @@
             <div class="split-right">
                 <h1 style="font-size:50px">{{gamename}}</h1>
                 <table>
-                    <form action="{{url_for('addtowishlist',game=gamename)}}" method="GET"><button class="game-btn" role="button">
+                    {% for key, value in wishlistdict %}
+                    <form action="{{url_for('addtowishlist',game=value)}}" method="GET"><button class="game-btn" role="button">
                         <span class="text">Add to Wishlist</span>
                     </button></form>
+                    {% endfor %}
                     <!--
                     <tr>
                         <th style="font-size:15px;">Genre</th>

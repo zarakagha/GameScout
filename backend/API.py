@@ -145,16 +145,17 @@ class API:
             self.sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(OriginalPriceOfGame), round(discounted_price,2), savings, gamedetailsjson["info"]["title"], id,store]
             lock.release()
 
-    def addToWishList(self,id):
+    def addToWishList(self,id, original_price, discounted_price, savings):
         gamedetails=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(id))
         gamedetailsjson=gamedetails.json()
-                              
+        print(original_price)
+        print(discounted_price)
+        print(savings)
                                                             
-        OriginalPriceOfGame = get_inital_price(gamedetailsjson["info"]["steamAppID"])
-        discounted_price,store = ConvertUSDToCad.getDiscountedPrice(gamedetailsjson["deals"])
-        savings = int(round((1.0 - discounted_price/float(OriginalPriceOfGame))*100 ))
-        self.sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(OriginalPriceOfGame), round(discounted_price,2), savings, gamedetailsjson["info"]["title"], id,store]
-     
+        #discounted_price,store = ConvertUSDToCad.getDiscountedPrice(gamedetailsjson["deals"])
+        #savings = int(round((1.0 - discounted_price/float(OriginalPriceOfGame))*100 ))
+        self.sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])] = [str(original_price), discounted_price, savings, gamedetailsjson["info"]["title"], id,0]
+        print(self.sessionData.gamedetailDict[str(gamedetailsjson["info"]["steamAppID"])])
         
     
       

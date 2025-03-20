@@ -16,10 +16,12 @@ class Game:
         self.cheapSharkGeneralDealURL = "https://www.cheapshark.com/redirect?dealID="
         self.list_of_prices = []
         self.list_of_game_stores = []
+        self.list_of_savings = []
         self.StoreID_Price_Savings_Dealurl = {}
         self.store_and_price = {}
         self.store_and_savings = {}
         self.store_and_dealurl = {}
+        self.wish_list_format = {}
         
 
     #setters
@@ -46,6 +48,9 @@ class Game:
     
     def addToListOfStores(self, storeID):
         self.list_of_game_stores.append(int(storeID))
+    
+    def addTolistOfSavings(self, savings):
+        self.list_of_savings.append(savings)
         
     def addStorePriceSavingsDealUrl(self, storeID, price, savings, dealurl):
         self.StoreID_Price_Savings_Dealurl[int(storeID)] = [float(price), float(savings), str(dealurl)]
@@ -61,6 +66,7 @@ class Game:
         for deal in gamedetails["deals"]:
             self.addToListOfPrices(deal["price"])
             self.addToListOfStores(deal["storeID"])
+            self.addTolistOfSavings(deal["savings"])
             self.addStorePriceSavingsDealUrl(deal["storeID"], deal["price"], deal["savings"], self.cheapSharkGeneralDealURL+deal["dealID"])
 
     
@@ -104,6 +110,21 @@ class Game:
     def storeWithPriceSavingsDealURl(self):
         return self.StoreID_Price_Savings_Dealurl
     
+    def getWishListFormatDict(self):
+        lowest_price = 100000
+        savings = 0
+        for key in self.StoreID_Price_Savings_Dealurl:
+            if self.StoreID_Price_Savings_Dealurl.get(key)[0] < lowest_price:
+                lowest_price = round(self.StoreID_Price_Savings_Dealurl.get(key)[0], 2)
+            if self.StoreID_Price_Savings_Dealurl.get(key)[1] > savings:
+                savings = int(round(self.StoreID_Price_Savings_Dealurl.get(key)[1], 0))
+        self.wish_list_format[str(self.steamappid)] = [self.inital_price, lowest_price, savings, self.name, self.cheapsharkgameid, 1]
+        print(self.wish_list_format)
+        return self.wish_list_format
+    
     #function to sort prices from cheapest to highest
     def sortPrice(self):
         return self.list_of_prices.sort()
+    
+    def sortSavings(self):
+        return self.list_of_savings.sort()

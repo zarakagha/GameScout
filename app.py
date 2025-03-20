@@ -275,6 +275,7 @@ def signup():
 def addtowishlist(game):
      game =game.replace("'",'"')
      game = json.loads(game)
+     print(game)
      game_id = int(game[4])
      game_price = float(game[0])
      
@@ -291,7 +292,7 @@ def addtowishlist(game):
           return redirect('/wishlist')
      
      WishList.insert(userid,game_id,game_price)
-     api.addToWishList(game_id)
+     api.addToWishList(game_id, game[0], game[1], game[2])
   
     
      return redirect('/wishlist')
@@ -377,9 +378,10 @@ def gamedetail(game_id):
       name=currentgamedeals.GetGamename()
       storedict=StoreIDAction.StoreIDToNameWithPrice(currentgamedeals.storeWithPriceSavingsDealURl())
       gameImg=currentgamedeals.gameImage()
+      wishlistdict = currentgamedeals.getWishListFormatDict()
       print(storedict)
       if game_id:
-            return render_template("game.html",gamename=name,store_dict=storedict.items(), gameIMG=gameImg)
+            return render_template("game.html",gamename=name,store_dict=storedict.items(), gameIMG=gameImg, wishlistdict=wishlistdict.items())
       else:
             return render_template("game.html",404,404)
 

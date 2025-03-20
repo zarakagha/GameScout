@@ -1,6 +1,8 @@
 from abc import ABC
 import requests
 import backend.database as database
+from backend.gameclass import game
+from backend.DealFactory import DealForGameSimpleFactory
 #The setState() will check if there is an update to the DB that needs to occur if the price is lower, 
 #if there is a change in price that is lower we will update the observer and the display, indicating a change in price for a specific subject (game)
 
@@ -44,22 +46,37 @@ class WishlistGame(Subject):
             sqldel = "DELETE FROM WishList WHERE userID = %s AND gameID = %s;"
             WishList.remove(sqldel,Observer,game_id)
             return True
-    def NotifyObservers():
+    def NotifyObservers(gameid):
         #inform list of users that the state of the game has changed (cheaper price), update the value in the DB
         #{for each user in list from database call the Shopper.update() function}
-        pass
+        sqlsel = "SELECT userID FROM WishList WHERE gameID = %s;"
+        userList = WishList.select(sqlsel, gameid)
+        for i in userList:
+            userid = i["userID"]
+            Shopper.update(userid)
     #set the state of the subject (set the price within the database)
-    def setState():
+    def setState(game_id):
         #set new price into database if it is lower (use the getState() function to possibly retreive from database)
         #call notifyObservers() if it is lower
-        pass
+        CurrGameObj = DealForGameSimpleFactory.GetGameDealsAcrossStores(game_id)
+        wishlist=CurrGameObj.getWishListFormatDict()
+        AcquiredWishlistList = wishlist[str(CurrGameObj.gameSteamAppId())]
+        lowest_price = AcquiredWishlistList[1]
+        sqlsel = "SELECT price FROM WishList Where gameID = %s;"
+        databaseprice = wishlist.select(sqlsel,game_id)
+        if(lowest_price<databaseprice):
+            sqludp = "UPDATE WishList SET price = %s WHERE gameID = %s;"
+            wishlist.select(sqludp,(lowest_price,game_id))
+            WishlistGame.NotifyObservers(game_id)
     #get current price of game function
     def getState():
         #gets state within the database
+        
         pass
     
 
 class Observer(ABC):
+    
     #general update function that takes in the game and the new price
     def update(WishlistGame, priceOfGame):
         
@@ -68,17 +85,21 @@ class Observer(ABC):
 class Shopper(Observer):
     lowest_stored_price_in_db = 0
     #update the price of the game in the database for the gameid
-    def update(WishlistGame, priceOfGame):
+
+    def updatechecker(user_id):
+        sql ="SELECT updateuser FROM Users WHERE id = %s;"
+        user = users.select(sql,user_id)
+        if user["updateuser"]==1:
+            return Shopper.updateview()
+        else:
+            return False
+    def update(user_id):
         #update the screen with the new price of the game
         #use the updateview function to update the screen
-        price=requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(WishlistGame.gameid))
-        if(priceOfGame<price):
-            #set price as wishlist new price
-            sql="UPDATE Wishlist Set price=%s WHERE userid=%s AND gameID=%s;"
+        sql = "UPDATE Users SET updateuser=1 WHERE id = %s;"
+        users.select(sql,user_id)
+
             #updateview()
-            
-        pass
     def updateview():
         #change the view of the user to indiciate a change has occurred
-    
-        pass
+        return True

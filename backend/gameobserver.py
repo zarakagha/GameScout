@@ -80,6 +80,7 @@ class Shopper(Observer):
         if(priceOfGame<price):
             #set price as wishlist new price
             sql="UPDATE Wishlist Set price=%s WHERE userid=%s AND gameID=%s;"
+            Wishlist.update()
             #updateview()
             
         pass

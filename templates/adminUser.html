@@ -31,21 +31,22 @@
         
     
         <div class ="user-options">
-            
-            <p class = "admin-user-item">ID: {{user['id']}} </p>
-            <button class="edit-btn-user"  > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
-            <p class = "admin-user-item">Username: {{user['username']}} </p>
-            <button class="edit-btn-user"  > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
-            <p class = "admin-user-item">First name: {{user['firstname']}} </p>
-            <button class="edit-btn-user"  > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
-            <p class = "admin-user-item">Last name: {{user['lastname']}} </p>
-            <button class="edit-btn-user"  > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
-            <p class = "admin-user-item">Email: {{user['email']}} </p>
-            <button class="edit-btn-user"  > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
-            <p class = "admin-user-item">Password: {{user['password']}} </p>
-            <button class="edit-btn-user" > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
+            <form method = "POST">
+            <p class = "admin-user-item">ID: <span id = "identity">{{user['id']}} </span></p>
+            <button class="edit-btn-user"  id = "button1"> <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
+            <p class = "admin-user-item">Username:<span id = "username"> {{user['username']}}</span> </p>
+            <button class="edit-btn-user" id = "button2" > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
+            <p class = "admin-user-item">First name: <span id = "firstname">{{user['firstname']}}</span> </p>
+            <button class="edit-btn-user"  id = "button3"> <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
+            <p class = "admin-user-item">Last name: <span id = "lastname">{{user['lastname']}}</span> </p>
+            <button class="edit-btn-user"  id = "button4"> <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
+            <p class = "admin-user-item">Email: <span id = "email">{{user['email']}}</span> </p>
+            <button class="edit-btn-user" id = "button5" > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
+            <p class = "admin-user-item">Password: <span id = "password">{{user['password']}}</span> </p>
+            <button class="edit-btn-user" id = "button6"> <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
+            </form>
             <button class="delete-btn-user"  ><a href="{{ url_for('adminDelete',id = user['id']) }}"> <img class="account-delete" src="../static/images/garbage.png" alt=""></a></button> 
-    
+            
         </div>
     
     

@@ -1,68 +1,151 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GameScout</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" /> 
-    <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
-</head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search"
+    />
+    <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet" />
+  </head>
 
-<body class="mainpage-body">
-        <nav class="nav_bar">
-            <div class="nav_div">
-                <div class="logo"><a href="#">
-                    <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
-                    <h1 class = "admin-title">User</h1>
-                <ul>
-                    <li><a href="/accounts"><img class="navdiv-icon" src="../static/images/person.png" alt=""></a></li>
-                    <li><a href="/admin"><img class="navdiv-icon" src="../static/images/home.png" alt=""></a></li>
-                    <li><a href="/logout"><img class="navdiv-icon" src="../static/images/Logout.png" alt=""></a></li>            
-                     
-                   
-                </ul>
-            </div>
-        </nav>
-        
-    
-        <div class ="user-options">
-            <form method = "POST">
-            <p class = "admin-user-item">ID: <span id = "identity">{{user['id']}} </span></p>
-            <button class="edit-btn-user"  id = "button1"> <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
-            <p class = "admin-user-item">Username:<span id = "username"> {{user['username']}}</span> </p>
-            <button class="edit-btn-user" id = "button2" > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
-            <p class = "admin-user-item">First name: <span id = "firstname">{{user['firstname']}}</span> </p>
-            <button class="edit-btn-user"  id = "button3"> <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
-            <p class = "admin-user-item">Last name: <span id = "lastname">{{user['lastname']}}</span> </p>
-            <button class="edit-btn-user"  id = "button4"> <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
-            <p class = "admin-user-item">Email: <span id = "email">{{user['email']}}</span> </p>
-            <button class="edit-btn-user" id = "button5" > <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
-            <p class = "admin-user-item">Password: <span id = "password">{{user['password']}}</span> </p>
-            <button class="edit-btn-user" id = "button6"> <img class="account-edit" src="../static/images/editIcon.webp" alt=""></button> 
-            </form>
-            <button class="delete-btn-user"  ><a href="{{ url_for('adminDelete',id = user['id']) }}"> <img class="account-delete" src="../static/images/garbage.png" alt=""></a></button> 
-            
+  <body class="mainpage-body">
+    <nav class="nav_bar">
+      <div class="nav_div">
+        <div class="logo">
+          <a href="#">
+            <img src="../static/images/GameScout-logo.png" alt="" />
+          </a>
         </div>
-    
-    
-    
-    <div class="footer">
-        
-        <div class="footerColumn2">
-            <h3>Creators</h3>
-            <a href="">Snaoll</a>
-            <a href="">Ordnary45</a>
-            <a href="">zarakagha</a>
-            <a href="">TracePrice135</a>
-        </div>
+        <h1 class="admin-title">User</h1>
+        <ul>
+          <li>
+            <a href="/accounts"
+              ><img
+                class="navdiv-icon"
+                src="../static/images/person.png"
+                alt=""
+            /></a>
+          </li>
+          <li>
+            <a href="/admin"
+              ><img class="navdiv-icon" src="../static/images/home.png" alt=""
+            /></a>
+          </li>
+          <li>
+            <a href="/logout"
+              ><img
+                class="navdiv-icon"
+                src="../static/images/Logout.png"
+                alt=""
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="user-options">
+      <div class="user-options-wrapper">
+        <form method="POST">
+          <div class="admin-user-item-wrapper">
+            <p class="admin-user-item">
+              ID: <span id="identity">{{user['id']}} </span>
+            </p>
+            <button class="edit-btn-user" id="button1">
+              <img
+                class="account-edit"
+                src="../static/images/editIcon.webp"
+                alt=""
+              />
+            </button>
+          </div>
+          <div class="admin-user-item-wrapper">
+            <p class="admin-user-item">
+              Username:<span id="username"> {{user['username']}}</span>
+            </p>
+            <button class="edit-btn-user" id="button2">
+              <img
+                class="account-edit"
+                src="../static/images/editIcon.webp"
+                alt=""
+              />
+            </button>
+          </div>
+          <div class="admin-user-item-wrapper">
+            <p class="admin-user-item">
+              First name: <span id="firstname">{{user['firstname']}}</span>
+            </p>
+            <button class="edit-btn-user" id="button3">
+              <img
+                class="account-edit"
+                src="../static/images/editIcon.webp"
+                alt=""
+              />
+            </button>
+          </div>
+          <div class="admin-user-item-wrapper">
+            <p class="admin-user-item">
+              Last name: <span id="lastname">{{user['lastname']}}</span>
+            </p>
+            <button class="edit-btn-user" id="button4">
+              <img
+                class="account-edit"
+                src="../static/images/editIcon.webp"
+                alt=""
+              />
+            </button>
+          </div>
+          <div class="admin-user-item-wrapper">
+            <p class="admin-user-item">
+              Email: <span id="email">{{user['email']}}</span>
+            </p>
+            <button class="edit-btn-user" id="button5">
+              <img
+                class="account-edit"
+                src="../static/images/editIcon.webp"
+                alt=""
+              />
+            </button>
+          </div>
+          <div class="admin-user-item-wrapper">
+            <p class="admin-user-item">
+              Password: <span id="password">{{user['password']}}</span>
+            </p>
+            <button class="edit-btn-user" id="button6">
+              <img
+                class="account-edit"
+                src="../static/images/editIcon.webp"
+                alt=""
+              />
+            </button>
+          </div>
+        </form>
+        <button class="delete-btn-user">
+          <a href="{{ url_for('adminDelete',id = user['id']) }}">
+            <img
+              class="account-delete"
+              src="../static/images/garbage.png"
+              alt=""
+          /></a>
+        </button>
+      </div>
     </div>
 
-</body>
-<script src="{{ url_for('static', filename='js/accountsScript.js') }}"></script>
+    <div class="footer">
+      <div class="footerColumn2">
+        <h3>Creators</h3>
+        <a href="">Snaoll</a>
+        <a href="">Ordnary45</a>
+        <a href="">zarakagha</a>
+        <a href="">TracePrice135</a>
+      </div>
+    </div>
+  </body>
+  <script src="{{ url_for('static', filename='js/accountsScript.js') }}"></script>
 </html>
-

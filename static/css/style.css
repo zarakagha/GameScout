@@ -671,7 +671,7 @@ body th,
 
 /* ACCOUNTS */
 .account-options {
-  height: 65vh;
+  height: 100%;
   position: relative;
   display: flex;
   background: #121212;

@@ -13,8 +13,6 @@ from backend.StoreNameAndPrice import StoreIDAction
 from backend.checkNSFW import CheckGameisNSFW
 from backend.GetSteamPriceCadForGame import get_inital_price
 from backend.ConvertPrice import ConvertUSDToCad
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func, text
 import re
 import threading
 from backend.sessionVariables import SessionData
@@ -24,11 +22,8 @@ from backend.gameobserver import WishlistGame,Shopper
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///database.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] ='SECRETKEY'
 app.secret_key="GameScout"
-db = SQLAlchemy(app)
 SECRET_KEY = "GameScout"
 SESSION_TYPE = 'filesystem'
 app.config.from_object(__name__)
@@ -43,24 +38,6 @@ users = database.UsersDatabase()
 WishList = database.WishListDatabase()
 Gamestores = database.Gamestores()
 
-
-'''class user(db.Model):
-      __tablename__ = 'user'
-      id=db.Column(db.Integer, primary_key=True)
-      firstname= db.Column(db.String(100), nullable=False)
-      lastname= db.Column(db.String(100), nullable=False)
-      username= db.Column(db.String(100),unique=True, nullable=False)
-      email= db.Column(db.String(100),unique=True, nullable=False)
-      password=db.Column(db.String(100),nullable=False)
-      isadmin = db.Column(db.Boolean, default=False, nullable=False)
-      '''
-
-class games(db.Model):
-      __tablename__ = 'games'
-      id=db.Column(db.Integer, primary_key=True)
-      gameID= db.Column(db.String(100), nullable=False)
-      gameprice=db.Column(db.Float, nullable=False)
-      user_id =db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
 
 def loginchecker():
      return 'userid' in session
@@ -255,14 +232,13 @@ def addtowishlist(game):
      
      userid= session['userid']
 
-     #sql = "SELECT * FROM WishList WHERE userID = %s AND gameID = %s;"
-     #gameexists = WishList.select(sql,userid,game_id)
+     
      game_added = WishlistGame.AddObserver(userid, game_id, game_price)
     
      if not game_added:
           return redirect('/wishlist')
      
-     #WishList.insert(userid,game_id,game_price)
+
      api.addToWishList(game_id)
   
     
@@ -279,16 +255,14 @@ def removefromwishlist(game):
      
      userid= session['userid']
 
-     #sql = "SELECT * FROM WishList WHERE userID = %s AND gameID = %s;"
-     #usergameslist = WishList.select(sql,userid,game_id)
+    
      
      GameRemoved = WishlistGame.RemoveObserver(userid, game_id)
      
      if not GameRemoved:
           redirect('/wishlist')
 
-     #sql = "DELETE FROM WishList WHERE userID = %s AND gameID = %s;"
-     #WishList.remove(sql,userid,game_id)
+     
 
      for i,j in sessionData.gamedetailDict.items():
           if j[4] == game_id:
@@ -359,8 +333,7 @@ def gamedetail(game_id):
       else:
             return render_template("game.html",404,404)
 
-with app.app_context():
-    db.create_all() 
+
 
 if __name__=='__main__':
    app.run(debug=True)

@@ -155,7 +155,6 @@ class API:
     def addToWishList(self,id):
         CurrGameObj = DealForGameSimpleFactory.GetGameDealsAcrossStores(id)
         wishlist=CurrGameObj.getWishListFormatDict()
-        wishlist=CurrGameObj.getWishListFormatDict()
         AcquiredWishlistList = wishlist[str(CurrGameObj.gameSteamAppId())]
         inital_price = str(AcquiredWishlistList[0])
         lowest_price = AcquiredWishlistList[1]

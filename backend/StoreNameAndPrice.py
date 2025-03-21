@@ -1,3 +1,7 @@
+import backend.database as database
+
+Gamestores = database.Gamestores()
+
 class StoreIDAction:
     def StoreIDToNameWithPrice(StorePriceSavingsDeal):
         StoreNameWithPrice = {}
@@ -6,41 +10,119 @@ class StoreIDAction:
                 case 1:
                     StoreNameWithPrice["Steam"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
                 case 2:
-                    StoreNameWithPrice["GamersGate"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["GamersGate"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 3:
-                    StoreNameWithPrice["GreenManGaming"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["GreenManGaming"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 7:
-                    StoreNameWithPrice["GOG"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["GOG"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 8:
-                    StoreNameWithPrice["Origin"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["Origin"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 11:
-                    StoreNameWithPrice["Humble Store"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["Humble Store"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 13:
-                    StoreNameWithPrice["Uplay"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["Uplay"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 15:
-                    StoreNameWithPrice["Fanatical"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["Fanatical"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 21:
-                    StoreNameWithPrice["WinGameStore"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["WinGameStore"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 23:
-                    StoreNameWithPrice["GameBillet"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["GameBillet"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 24:
-                    StoreNameWithPrice["Voidu"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["Voidu"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 25:
-                    StoreNameWithPrice["Epic Games Store"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["Epic Games Store"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 27:
-                    StoreNameWithPrice["Gamesplanet"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["Gamesplanet"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 28:
-                    StoreNameWithPrice["Gamesload"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["Gamesload"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 30:
-                    StoreNameWithPrice["IndieGala"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["IndieGala"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 31:
-                    StoreNameWithPrice["Blizzard Shop"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["Blizzard Shop"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 33:
-                    StoreNameWithPrice["DLGamer"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["DLGamer"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 34:
-                    StoreNameWithPrice["Noctre"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["Noctre"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case 35:
-                    StoreNameWithPrice["DreamGame"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    isenabled = StoreIDAction.checkEnabled(key)
+                    if isenabled:
+                        StoreNameWithPrice["DreamGame"] = [round(StorePriceSavingsDeal.get(key)[0], 2), StorePriceSavingsDeal.get(key)[1], StorePriceSavingsDeal.get(key)[2]]
+                    else:
+                        continue
                 case _:
                     continue
         return StoreNameWithPrice
+    
+    def checkEnabled(storeID):
+        sql = "SELECT enabled FROM Gamestores WHERE id = %s;"
+        game = Gamestores.select(sql, storeID)
+        return bool(game[0]["enabled"])
+        

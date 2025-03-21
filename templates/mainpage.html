@@ -52,6 +52,11 @@
         <p>A game on your wishlist has dropped in price</p>
     {% endif %}
     <div class="content-wrap">
+        <div class="price-range-wrapper">
+            <a href="{{url_for('gamedetail',game_id=10000000)}}">Low Price</a>
+            <a href="{{url_for('gamedetail',game_id=20000000)}}">Medium Price</a>
+            <a href="{{url_for('gamedetail',game_id=30000000)}}">High Price</a>
+        </div>
        <section class="product"> 
             <h2 class="product-category">On Sale From Steam</h2>
             <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
@@ -478,9 +483,6 @@
     
     <div class="footer">
         <div class="footerColumn1">
-            <a href="{{url_for('gamedetail',game_id=10000000)}}">Low Price</a>
-            <a href="{{url_for('gamedetail',game_id=20000000)}}">Medium Price</a>
-            <a href="{{url_for('gamedetail',game_id=30000000)}}">High Price</a>
             <h3>Other Game Stores</h3>
             <a href="https://store.playstation.com/en-ca/pages/latest?gad_source=1&gclid=EAIaIQobChMIi8qlrYvRiwMVrAytBh33ZAicEAAYASAAEgJ9CPD_BwE&gclsrc=aw.ds" target=" nk">Playstation</a>
             <a href="https://www.microsoft.com/en-ca/store/games" target="_blank">Microsoft</a>

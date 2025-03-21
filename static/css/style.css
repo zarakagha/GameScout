@@ -1049,10 +1049,10 @@ body th,
   animation: pulseGlow 1.5s infinite alternate;
 }
 
-.cssbuttons-io-button {
+.io-button {
   background-image: linear-gradient(19deg, #a80ce6 0%, #093de7 100%);
   color: white;
-  font-family: inherit;
+  font-family: "Motiva Sans", sans-serif;
   padding: 0.35em;
   padding-left: 1.2em;
   font-size: 17px;
@@ -1073,7 +1073,7 @@ body th,
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.cssbuttons-io-button .icon {
+.io-button .icon {
   background: white;
   margin-left: 1em;
   position: absolute;
@@ -1087,25 +1087,50 @@ body th,
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.cssbuttons-io-button:hover .icon {
+.io-button:hover .icon {
   width: calc(100% - 0.6em);
 }
 
-.cssbuttons-io-button .icon svg {
+.io-button .icon svg {
   width: 1.1em;
   transition: transform 0.3s;
   color: #000000;
 }
 
-.cssbuttons-io-button:hover .icon svg {
+.io-button:hover .icon svg {
   transform: translateX(0.1em);
 }
 
-.cssbuttons-io-button:active .icon {
+.io-button:active .icon {
   transform: scale(0.9);
 }
 
 .store-title {
   font-family: Arial, sans-serif;
   font-size: 20px;
+}
+
+/*Mainpage Price-range*/
+.price-range-wrapper {
+  display: flex;
+  gap: 5px; /* Small gap between buttons */
+  justify-content: center; /* Centers the buttons */
+}
+
+.price-range-wrapper a {
+  text-decoration: none;
+  color: white;
+  background-color: black;
+  padding: 10px 15px;
+  border: 2px solid #9400ff; /* Neon purple border */
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 5px #9400ff; /* Subtle neon glow */
+}
+
+.price-range-wrapper a:hover {
+  background-color: #9400ff; /* Neon purple background */
+  color: black;
+  box-shadow: 0 0 15px #9400ff; /* Stronger glow effect */
 }

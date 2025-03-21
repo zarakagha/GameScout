@@ -41,6 +41,7 @@ Gamestores = database.Gamestores()
 
 def loginchecker():
      return 'userid' in session
+
 firstnameRegex=r'^[a-zA-Z]+$'
 lastnameRegex=r'^[a-zA-Z]+$'
 usernameRegex=r'^[a-zA-Z0-9]+$'

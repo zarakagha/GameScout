@@ -9,10 +9,11 @@ class GameType:
         #initalize game acquired variable and iterator variable
         gameAcquired = False
         i = 0
-        #request getting the game
-        gameDetails = requests.get("https://www.cheapshark.com/api/1.0/deals?upperprice=14&storeID=1&onSale=1&maxAge=300").json()
+        gameDetails = None
         #while we have not got a game
         while not gameAcquired:
+            #request getting the game
+            gameDetails = requests.get("https://www.cheapshark.com/api/1.0/deals?upperprice=14&storeID=1&onSale=1&maxAge=300").json()
             #check if the game acquired is NSFW, skip this game if it is the case
             if CheckGameisNSFW.isNSFWGame(gameDetails[i]["steamAppID"]):
                 i = i + 1
@@ -27,11 +28,12 @@ class GameType:
     def midPriceGame():
         #initalize game acquired variable and iterator variable
         gameAcquired = False
-        #request getting the game
-        gameDetails = requests.get("https://www.cheapshark.com/api/1.0/deals?upperprice=28&lowerPrice=14&storeID=1&onSale=1&maxAge=300").json()
         i = 0
+        gameDetails = None
         #while we have not got a game
         while not gameAcquired:
+            #request getting the game
+            gameDetails = requests.get("https://www.cheapshark.com/api/1.0/deals?upperprice=28&lowerPrice=14&storeID=1&onSale=1&maxAge=300").json()
             #check if the game acquired is NSFW, skip this game if it is the case
             if CheckGameisNSFW.isNSFWGame(gameDetails[i]["steamAppID"]):
                 i = i + 1
@@ -46,11 +48,12 @@ class GameType:
     def highPriceGame():
         #initalize game acquired variable and iterator variable
         gameAcquired = False
-        #request getting the game
-        gameDetails = requests.get("https://www.cheapshark.com/api/1.0/deals?lowerPrice=28&storeID=1&onSale=1&maxAge=300").json()
         i = 0
+        gameDetails = None
         #while we have not got a game
         while not gameAcquired:
+            #request getting the game
+            gameDetails = requests.get("https://www.cheapshark.com/api/1.0/deals?lowerPrice=33&storeID=1&onSale=1&maxAge=300").json()
             #check if the game acquired is NSFW, skip this game if it is the case
             if CheckGameisNSFW.isNSFWGame(gameDetails[i]["steamAppID"]):
                 i = i + 1

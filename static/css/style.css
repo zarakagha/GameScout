@@ -654,11 +654,10 @@ body th,
   flex-grow: 4;
   border: 10px solid white;
   border-radius: 5px;
-
   text-align: center;
   color: white;
   margin-top: 35px;
-  font-size: 500%;
+  font-size: 60px;
   min-width: 300px;
   min-height: 400px;
 

@@ -172,11 +172,11 @@
 }
 
 .game-btn {
-  background-image: linear-gradient(315deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  background-image: linear-gradient(315deg, #af40ff, #5b42f3 50%, #00ddeb);
   border: 1px solid #000000;
   border-radius: 20px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   display: flex;
   justify-content: center;
   max-width: 100%;
@@ -446,8 +446,8 @@
 }
 
 .wishlist-img {
-  max-width:100%;
-  max-height:100%;
+  max-width: 100%;
+  max-height: 100%;
   min-height: min-content;
   object-fit: contain;
   text-align: left;
@@ -465,10 +465,9 @@ body th {
   width: 74em;
 }
 
-body th ,
+body th,
 .header {
   border: 1px solid gray;
-  
 }
 #myInput {
   background-position: 10px 12px;
@@ -614,15 +613,15 @@ body th ,
 
 /*ADMIN*/
 
-.admin-title{
+.admin-title {
   color: White;
-  font-size: 3em;
+  font-size: 40px;
 }
 .admin-div {
   position: fixed;
-  top:0;
-  right:0;
-  
+  top: 0;
+  right: 0;
+
   margin-top: 0px;
   padding: 0px;
   display: flex;
@@ -649,17 +648,14 @@ body th ,
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: flex-start;
-  padding-bottom: 100px;
-  
-
 }
 .admin-button {
   background-color: black;
   border: none;
-  flex-grow:4;
+  flex-grow: 4;
   border: 10px solid white;
   border-radius: 5px;
-  
+
   text-align: center;
   color: white;
   margin-top: 35px;
@@ -669,16 +665,14 @@ body th ,
 
   height: 50vh;
   width: 60vh;
-  
-  
 }
-.button-a{
-  flex-grow:4;
+.button-a {
+  flex-grow: 4;
 }
 
 /*accounts*/
 
-.account-options{
+.account-options {
   width: 100%;
   height: 65vh;
   position: relative;
@@ -691,74 +685,66 @@ body th ,
   align-items: center;
 }
 
-.list-element{
-  color:white; 
-   
+.list-element {
+  color: white;
 }
 
-.edit-icon{
+.edit-icon {
   size: 5%;
-
 }
 
-#account-form{
-  display:flex;
+#account-form {
+  display: flex;
   flex-direction: column;
 }
-#order-text{
+#order-text {
   margin-top: 40px;
-  color:white;
-  font-size:2em;
+  color: white;
+  font-size: 2em;
 }
 
-#filter{
-  width:10vw;
+#filter {
+  width: 10vw;
   height: 50px;
   min-width: 100px;
-  border-radius:10%;
-
+  border-radius: 10%;
 }
 
-#account-input{
+#account-input {
   margin-top: 20px;
-  width:10vw;
+  width: 10vw;
   height: 50px;
   min-width: 100px;
-  border-radius:10%;
+  border-radius: 10%;
 }
 
-#account-button{
+#account-button {
   margin-top: 20px;
-  width:10vw;
+  width: 10vw;
   height: 25px;
   min-width: 50px;
-  border-radius:20%;
+  border-radius: 20%;
 }
 
-.account-edit{
-  height:20px;
-  width:20px;
-  
+.account-edit {
+  height: 20px;
+  width: 20px;
 }
 
-.edit-btn{
+.edit-btn {
   margin-left: 5px;
   margin-right: 10px;
 }
 
-
-
-
-.account-list-element{
-  color:black; 
+.account-list-element {
+  color: black;
   background-color: white;
-  margin-top:10px;
+  margin-top: 10px;
   border-radius: 5px;
   padding-left: 10px;
-   
 }
 
-.user-options{
+.user-options {
   width: 100%;
   height: 65vh;
   position: relative;
@@ -769,24 +755,23 @@ body th ,
   color: black;
   justify-items: center;
   align-items: center;
-  
 }
 
-.edit-btn-user{
- 
+.edit-btn-user {
 }
-.admin-user-item{
+.admin-user-item {
   color: white;
   grid-column-start: 2;
   text-align: left;
 }
-.delete-btn-user{
-  grid-column-start:3;
+.delete-btn-user {
+  grid-column-start: 3;
 }
-.account-delete{
+.account-delete {
   height: 50px;
   width: 50px;
 }
+
 
 .submit-users{
   grid-column-start:2;
@@ -807,9 +792,7 @@ body th ,
   color: black;
   justify-items: center;
   align-items: center;
-  
 }
-
 
 .errorborder {
   border: 2px solid red;
@@ -868,4 +851,175 @@ body th ,
   color: black;
   border: none;
   border-radius: 5px;
+}
+
+/*ADMIN GAME PAGE*/
+.games-page-wrapper {
+  background-color: black;
+  min-height: 100vh; /* Makes sure it covers the full page */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.games-options {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.games-options form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(180, 0, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(180, 0, 255, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(180, 0, 255, 0.5);
+  }
+}
+
+@keyframes colorShift {
+  0% {
+    background: rgba(120, 0, 200, 0.1);
+  }
+  50% {
+    background: rgba(120, 0, 200, 0.3);
+  }
+  100% {
+    background: rgba(120, 0, 200, 0.1);
+  }
+}
+
+.game-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(180, 0, 255, 0.8);
+  animation: colorShift 2s infinite alternate;
+}
+
+.game-item::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(120, 0, 200, 0.2),
+    rgba(255, 0, 255, 0.2)
+  );
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.game-item:hover::before {
+  opacity: 1;
+}
+
+.game-form {
+  padding: 8px;
+  font-size: 14px;
+  border: 2px solid #b400ff;
+  border-radius: 8px;
+  background: black;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.game-form:hover {
+  background: #b400ff;
+  color: black;
+  box-shadow: 0 0 10px rgba(180, 0, 255, 0.8);
+}
+
+.game-form:focus {
+  outline: none;
+  animation: pulseGlow 1.5s infinite alternate;
+}
+
+.cssbuttons-io-button {
+  background-image: linear-gradient(19deg, #a80ce6 0%, #093de7 100%);
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  border-radius: 10em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+  box-shadow: 0 0 1.6em rgba(243, 2, 2, 0.705),
+    0 0 1.6em hsla(191, 98%, 56%, 0.3);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 10em;
+  right: 0.3em;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #000000;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.9);
+}
+
+.store-title {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
 }

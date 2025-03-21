@@ -36,7 +36,9 @@
                     </li>
                     {% endif %}
                     <li><a href="/wishlist"><img class="navdiv-icon" src="../static/images/heart.png" alt=""></a></li>
+                    {% if loginbutton == 0 %}
                     <li><a href="/logout"><img class="navdiv-icon" src="../static/images/Logout.png" alt=""></a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>

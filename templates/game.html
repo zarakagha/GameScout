@@ -22,21 +22,7 @@
                 </form>
                 </div>
             <ul>
-                {% if loginbutton %}
-                <li>
-                    <div class="dropdown">
-                        <a class="drop-button">
-                            <img class="navdiv-icon" src="../static/images/person.png" alt="">
-                        </a>
-                        <div class="dropdown-content">
-                            <a href="{{ url_for('login') }}">Log In</a>
-                            <a href="{{ url_for('signup') }}">Sign Up</a>
-                        </div>
-                    </div>
-                </li>
-                {% endif %}
                 <li><a href="/wishlist"><img class="navdiv-icon" src="../static/images/heart.png" alt=""></a></li>
-                <li><a href="/logout"><img class="navdiv-icon" src="../static/images/Logout.png" alt=""></a></li>
             </ul>
         </div>
     </nav>

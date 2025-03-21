@@ -1,68 +1,88 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GameScout</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" /> 
-    <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
-</head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search"
+    />
+    <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet" />
+  </head>
 
-<body class="mainpage-body">
+  <body class="mainpage-body">
     <nav class="nav_bar">
-        <div class="nav_div">
-            <div class="logo"><a href="#">
-                <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
-                <h1 class = "admin-title">Users</h1>
-            <ul>
-                
-                    
-                <li><a href="/admin"><img class="navdiv-icon" src="../static/images/home.png" alt=""></a></li>
-                <li><a href="/logout"><img class="navdiv-icon" src="../static/images/Logout.png" alt=""></a></li>
-                   
-                    
-               
-            </ul>
+      <div class="nav_div">
+        <div class="logo">
+          <a href="#">
+            <img src="../static/images/GameScout-logo.png" alt="" />
+          </a>
         </div>
+        <h1 class="admin-title">Account List</h1>
+        <ul>
+          <li>
+            <a href="/admin"
+              ><img class="navdiv-icon" src="../static/images/home.png" alt=""
+            /></a>
+          </li>
+          <li>
+            <a href="/logout"
+              ><img
+                class="navdiv-icon"
+                src="../static/images/Logout.png"
+                alt=""
+            /></a>
+          </li>
+        </ul>
+      </div>
     </nav>
 
-   
-        <div class ="account-options">
-        
-            <form id = "account-form" method = "POST">
+    <div class="account-options">
+      <form id="account-form" method="POST">
+        <label class="form-labels" id="order-text" for="order"
+          >Sort the users by:</label
+        >
 
-                <label class = "form-labels" id = "order-text" for="order">Sort the users by:</label>
+        <select class="form-labels" name="order" id="filter">
+          <option value="id">id</option>
+          <option value="username">Username</option>
+          <option value="email">Email</option>
+        </select>
+        <input
+          id="account-input"
+          class="form-labels"
+          type="text"
+          placeholder="Search Accounts"
+          name="usertextsearch"
+        />
+        <button id="account-button" type="submit" class="btn" value="submit">
+          Find
+        </button>
+      </form>
 
-                <select class = "form-labels" name="order" id="filter" >
-                    <option value="id">id</option>
-                    <option value="username">Username</option>
-                    <option value="email">Email</option>
-                </select>
-                <input id = "account-input" class = "form-labels" type="text" placeholder="Search Accounts" name = "usertextsearch">
-                <button id = "account-button" type="submit" class="btn" value="submit">Find</button>
-        
-        
-            </form>
-        
-            <ul class = "account-list">
-                {% for value in userlist %}
-                <li class = "account-list-element">id: {{value["id"]}}   Username: {{value["username"]}}     Email = {{value["email"]}}    <a class="edit-btn"  href="{{ url_for('adminUser',id = value['id']) }}"> <img class="account-edit" src="../static/images/editIcon.webp" alt=""></a>  </li>
-                {% endfor %}
-            </ul>
-            
-    
-        </div>
-    
-    
-    
-    
-   
-</body>
-<!--<script src="{{ url_for('static', filename='js/accountsScript.js') }}"></script>-->
+      <ul class="account-list">
+        {% for value in userlist %}
+        <li class="account-list-element">
+          id: {{value["id"]}} Username: {{value["username"]}} Email =
+          {{value["email"]}}
+          <a
+            class="edit-btn"
+            href="{{ url_for('adminUser',id = value['id']) }}"
+          >
+            <img
+              class="account-edit"
+              src="../static/images/editIcon.webp"
+              alt=""
+          /></a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+  <!--<script src="{{ url_for('static', filename='js/accountsScript.js') }}"></script>-->
 </html>
-

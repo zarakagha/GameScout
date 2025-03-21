@@ -72,7 +72,7 @@ def serve_form():
     api.runMainAPI()
     try:
       #user is not logged in 
-      if session['userid']==None:
+      if 'userid' not in session.keys() or session['userid']==None:
             #runs HTML for main page 
             #sends API details to the mainpage
             return render_template("mainpage.html", steamgamesjson=sessionData.steamgamesDict.items(),epicgamesjson=sessionData.epicgamesDict.items(),goggamesjson=sessionData.goggamesDict.items(),fanaticalgamesjson=sessionData.fanaticalgamesDict.items(),wishlistupdate=False, loginbutton=True)
@@ -471,11 +471,15 @@ Uses: sessionData
 @app.route('/wishlist')
 def wishlist():
         #checks if user is logged on and redirects them to login if they are not
-        if session['userid']==None:
-             return redirect('/login')
+          try:
+               if 'userid' not in session.keys() or session['userid']==None:
+                    return redirect('/login')
+          except:
+               return redirect('/login')
+
         
-        #renderes wishlist and sends the html the sessionData containing wishlist info
-        return render_template('wishlist.html', gamedetailDict=sessionData.gamedetailDict.items())
+          #renderes wishlist and sends the html the sessionData containing wishlist info
+          return render_template('wishlist.html', gamedetailDict=sessionData.gamedetailDict.items())
 
 '''
 get_game is a special function for finding the game that the user puts into the search bar. When 

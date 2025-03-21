@@ -471,7 +471,7 @@ Uses: sessionData
 @app.route('/wishlist')
 def wishlist():
         #checks if user is logged on and redirects them to login if they are not
-        if not loginchecker():
+        if session['userid']==None:
              return redirect('/login')
         
         #renderes wishlist and sends the html the sessionData containing wishlist info

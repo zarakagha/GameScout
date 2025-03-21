@@ -1,115 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GameScout</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" /> 
-    <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search">
+    <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet" />
+  </head>
 
-<body class="mainpage-body"  style="background-color:rgb(16,16,16);">
-        <nav class="nav_bar">
-            <div class="nav_div">
-                <div class="logo"><a href="/">
-                    <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
-                    <div class="search">
-                    <form action="/gamesearch" method="POST">
-                        <span class="material-symbols-outlined">search</span>
-                        <input class="input-search" type="search" name="name" placeholder="Search for Games">
-                    </form>
-                    </div>
-                <ul>
-                    <li>
-                        <div class="dropdown">
-                            <a class="drop-button">
-                                <img class="navdiv-icon" src="../static/images/person.png" alt="">
-                            </a>
-                            <div class="dropdown-content">
-                                <a href="{{ url_for('login') }}">Log In</a>
-                                <a href="{{ url_for('signup') }}">Sign Up</a>
-                            </div>
-                        </div>
+  <body class="mainpage-body" style="background-color: rgb(16, 16, 16)">
+    <nav class="nav_bar">
+      <div class="nav_div">
+        <div class="logo">
+          <a href="/">
+            <img src="../static/images/GameScout-logo.png" alt="" />
+          </a>
+        </div>
+        <div class="search">
+          <form action="/gamesearch" method="POST">
+            <span class="material-symbols-outlined">search</span>
+            <input class="input-search" type="search" name="name" placeholder="Search for Games">
+          </form>
+        </div>
+        <ul>
+          <li><a href="/"><img class="navdiv-icon" src="../static/images/home.png" alt=""></a></li>
+        </ul>
+      </div>
+    </nav>
 
-                        
-
-                    </li>
-                    <li><a href="/"><img class="navdiv-icon" src="../static/images/home.png" alt=""></a></li>
-                    <li><a href="/logout"><img class="navdiv-icon" src="../static/images/Logout.png" alt=""></a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <h2 class="product-category">Your Wishlist</h2>
-        <input type="text" id="myInput" onkeyup="filterTable()" placeholder="Search for your Wishlisted Games..">
-            <table id="wishlistGames">
-                <tr class="header">
-                    <th style="width: 20%;"> </th>
-                    <th onclick="sortAlphabetically(1)" style="width: 40%;">Name</th>
-                    <th onclick="sortNumerically(2)" style="width: 20%;">Discounted Price</th>
-                    <th onclick="sortNumerically(3)" style="width: 20%;">Standard Price</th>
-                </tr>
-                {% for key, value in gamedetailDict %}
-                <tr>
-                    <td class="wishlist-container">
-                        <a href="{{url_for('gamedetail',game_id=value[4])}}"><img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="wishlist-img" alt=""style="text-align: left;"></a>
-                        <form action="{{url_for('removefromwishlist',game=value)}}" method="GET"><button class="game-btn" role="button">
-                            <span class="text">Remove from Wishlist</span>
-                        </button></form>
-                    </td>
-                    <td>{{value[3]}}</td>
-                    <td>{{value[1]}}</td>
-                    <td>{{value[0]}}</td>
-                </tr>
-                {% endfor %}
-            </table>
-<!--
-    <div class="content-wrap">
-       <section class="product"> 
-        
-            <h2 class="product-category">Your Wishlist</h2>
-            <button class="pre-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
-            <button class="nxt-btn"><img src="../static/images/Game-Cards/arrow.png" alt=""></button>
-            <div class="product-container">
-                {% for key, value in gamedetailDict %}
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">{{value[2]}} %</span>
-                        <a href="{{url_for('gamedetail',game_id=value[4])}}"><img src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg" class="product-thumb" alt=""></a>
-                        <form action="{{url_for('removefromwishlist',game=value)}}" method="GET"><button class="card-btn">Remove From Wishlist</button></form>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">{{value[3]}}</h2>
-                        <span class="price">{{value[1]}}</span><span class="actual-price">{{value[0]}}</span>
-                        
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </section> 
-    </div>
--->        
+    <h2 class="product-category">Your Wishlist</h2>
+    <input
+      type="text"
+      id="myInput"
+      onkeyup="filterTable()"
+      placeholder="Search for your Wishlisted Games.."
+    />
+    <table id="wishlistGames">
+      <tr class="header">
+        <th style="width: 20%"></th>
+        <th onclick="sortAlphabetically(1)" style="width: 40%">Name</th>
+        <th onclick="sortNumerically(2)" style="width: 20%">
+          Discounted Price
+        </th>
+        <th onclick="sortNumerically(3)" style="width: 20%">Standard Price</th>
+      </tr>
+      {% for key, value in gamedetailDict %}
+      <tr>
+        <td class="wishlist-container">
+          <a href="{{url_for('gamedetail',game_id=value[4])}}"
+            ><img
+              src="https://steamcdn-a.akamaihd.net/steam/apps/{{key}}/library_600x900_2x.jpg"
+              class="wishlist-img"
+              alt=""
+              style="text-align: left"
+          /></a>
+          <form
+            action="{{url_for('removefromwishlist',game=value)}}"
+            method="GET"
+          >
+            <button class="game-btn" role="button">
+              <span class="text">Remove from Wishlist</span>
+            </button>
+          </form>
+        </td>
+        <td>{{value[3]}}</td>
+        <td>{{value[1]}}</td>
+        <td>{{value[0]}}</td>
+      </tr>
+      {% endfor %}
+    </table>
 
     <div class="footer">
-        <div class="footerColumn1">
-            <h3>Other Game Stores</h3>
-            <a href="https://store.playstation.com/en-ca/pages/latest?gad_source=1&gclid=EAIaIQobChMIi8qlrYvRiwMVrAytBh33ZAicEAAYASAAEgJ9CPD_BwE&gclsrc=aw.ds" target=" nk">Playstation</a>
-            <a href="https://www.microsoft.com/en-ca/store/games" target="_blank">Microsoft</a>
-            <a href="https://www.nintendo.com/en-ca/store/games/?utm_source=sw&utm_medium=pdpd&utm_id=C1090-01&utm_campaign=C1090-01&gad_source=1&gclid=EAIaIQobChMI1Oqb3IvRiwMVY83CBB0YjALfEAAYASAAEgJg5fD_BwE&gclsrc=aw.ds" target="_blank">Nintendo</a>
-            <a href="https://store.steampowered.com/" target="_blank">Steam</a>
-        </div>
-        <div class="footerColumn2">
-            <h3>Creators</h3>
-            <a href="">Snaoll</a>
-            <a href="">Ordnary45</a>
-            <a href="">zarakagha</a>
-        </div>
+      <div class="footerColumn1">
+        <h3>Other Game Stores</h3>
+        <a
+          href="https://store.playstation.com/en-ca/pages/latest?gad_source=1&gclid=EAIaIQobChMIi8qlrYvRiwMVrAytBh33ZAicEAAYASAAEgJ9CPD_BwE&gclsrc=aw.ds"
+          target=" nk"
+          >Playstation</a
+        >
+        <a href="https://www.microsoft.com/en-ca/store/games" target="_blank"
+          >Microsoft</a
+        >
+        <a
+          href="https://www.nintendo.com/en-ca/store/games/?utm_source=sw&utm_medium=pdpd&utm_id=C1090-01&utm_campaign=C1090-01&gad_source=1&gclid=EAIaIQobChMI1Oqb3IvRiwMVY83CBB0YjALfEAAYASAAEgJg5fD_BwE&gclsrc=aw.ds"
+          target="_blank"
+          >Nintendo</a
+        >
+        <a href="https://store.steampowered.com/" target="_blank">Steam</a>
+      </div>
+      <div class="footerColumn2">
+        <h3>Creators</h3>
+        <a href="">Snaoll</a>
+        <a href="">Ordnary45</a>
+        <a href="">zarakagha</a>
+      </div>
     </div>
-
-</body>
-<script src="{{ url_for('static', filename='js/MainpageScript.js') }}"></script>
-<script src="{{ url_for('static', filename='js/eventHandler.js') }}"></script>
-
+  </body>
+  <script src="{{ url_for('static', filename='js/MainpageScript.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/eventHandler.js') }}"></script>
 </html>

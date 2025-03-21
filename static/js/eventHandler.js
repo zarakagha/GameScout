@@ -167,18 +167,24 @@ function validateSignup(event)
 
 }
 
+// Function to filter table rows based on input value
 function filterTable() {
     var input, filter, table, tr, td, i, txtValue;
+
+    //Get the input value and convert to uppercase for comparison
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
+
+    //Get the table and rows
     table = document.getElementById("wishlistGames");
     tr = table.getElementsByTagName("tr");
   
+    //Loop through all table rows, except first row (header)
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName("td")[1];
       if (td) {
         txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {  //Id text matches the filter, display it, otherwise hide it
           tr[i].style.display = "";
         } else {
           tr[i].style.display = "none";
@@ -187,19 +193,28 @@ function filterTable() {
     }
 }
 
+// Function to sort table rows alphabetically
   function sortAlphabetically(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("wishlistGames");
     switching = true;
     dir = "asc"; 
-    while (switching) {
+
+    //Loop until no switching is needed
+    while (switching) {   
       switching = false;
       rows = table.rows;
+
+      //Loop through all table rows, except first row (header)
       for (i = 1; i < (rows.length - 1); i++) {
         shouldSwitch = false;
+
+        //Get the current row and the next row
         x = rows[i].getElementsByTagName("TD")[n];
         y = rows[i + 1].getElementsByTagName("TD")[n];
-        if (dir == "asc") {
+
+        //Checks the two rows and switches them based on direction
+        if (dir == "asc") { 
           if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
             shouldSwitch= true;
             break;
@@ -211,31 +226,40 @@ function filterTable() {
           }
         }
       }
+
+      //If a switch is needed, switch the rows
       if (shouldSwitch) {
         rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
         switching = true;
         switchcount ++;      
-      } else {
-        if (switchcount == 0 && dir == "asc") {
-          dir = "desc";
-          switching = true;
-        }
+      } else if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
       }
     }
   }
 
+  // Function to sort table rows numerically based on the specified column
   function sortNumerically(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("wishlistGames");
     switching = true;
     dir = "asc"; 
+
+    //Loop until no switching is needed
     while (switching) {
       switching = false;
       rows = table.rows;
+
+      //Loop through all table rows, except first row (header)
       for (i = 1; i < (rows.length - 1); i++) {
         shouldSwitch = false;
+
+        //Get the current row and the next row
         x = rows[i].getElementsByTagName("TD")[n];
         y = rows[i + 1].getElementsByTagName("TD")[n];
+
+        //Checks the two rows and switches them based on direction
         if (dir == "asc") {
           if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
             shouldSwitch = true;
@@ -248,15 +272,15 @@ function filterTable() {
           }
         }
       }
+
+      //If a switch is needed, switch the rows
       if (shouldSwitch) {
         rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
         switching = true;
         switchcount ++;      
-      } else {
-        if (switchcount == 0 && dir == "asc") {
-          dir = "desc";
-          switching = true;
-        }
+      } else if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
       }
     }
 }

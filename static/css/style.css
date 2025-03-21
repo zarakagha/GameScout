@@ -787,7 +787,7 @@ body th,
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh; /* Ensure it takes full height of the viewport */
+  height: 550px; /* Ensure it takes full height of the viewport */
   background: black;
   padding: 20px;
   box-sizing: border-box;

@@ -123,11 +123,13 @@ Uses: session variables, HTML, flask requests,POST,database class,
 '''
 @app.route('/accounts', methods = ["POST", "GET"])
 def accounts():
+      order = 0
       #Makes sure that the user is logged in with an admin account
       if 'usertype' not in session.keys() or session["usertype"] == 0 :
             #if they are not logged in it sends them to the login page
             return redirect("/login")
       #checks to see when the user presses the submit button for sort or search 
+      
       if request.method=="POST":
             #gets search text
             username = request.form.get('usertextsearch')
@@ -144,11 +146,17 @@ def accounts():
             #if nothing was written in text box is sorts users based off of select box          
             else:
                  userList = users.select("SELECT * FROM Users WHERE isAdmin = 0 ORDER BY {s};".format(s=select))
+            if select == "id":
+                 order = 0
+            if select == "username":
+                 order = 1
+            if select == "email":
+                 order = 2
       #default just selects users from database and lists them       
       else:
            userList = users.select("SELECT * FROM Users WHERE isAdmin = 0")
       #sends the list of users to the account.html to render    
-      return render_template("accounts.html",userlist = userList)
+      return render_template("accounts.html",userlist = userList,order = order)
 
 '''
 This page looks at an individual user.

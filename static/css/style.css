@@ -106,6 +106,7 @@
   height: 90vh;
   position: relative;
   overflow: hidden;
+  background-color: black;
 }
 
 .banner-slideshow {
@@ -1132,4 +1133,22 @@ body th,
   background-color: #9400ff; /* Neon purple background */
   color: black;
   box-shadow: 0 0 15px #9400ff; /* Stronger glow effect */
+}
+
+.pricedrop-alert {
+  background: linear-gradient(135deg, #6a0dad, #4b0082); /* Purple gradient */
+  color: #fff; /* White text */
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(106, 13, 173, 0.7);
+  max-width: 400px;
+  margin: 20px auto; /* Centers it */
+  border: 2px solid #8a2be2; /* Bright purple border */
+}
+
+.pricedrop-alert-wrap {
+  background-color: black;
 }

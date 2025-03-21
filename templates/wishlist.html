@@ -4,14 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GameScout</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search">
     <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet" />
   </head>
 
@@ -26,23 +20,15 @@
         <div class="search">
           <form action="/gamesearch" method="POST">
             <span class="material-symbols-outlined">search</span>
-            <input
-              class="input-search"
-              type="search"
-              name="name"
-              placeholder="Search for Games"
-            />
+            <input class="input-search" type="search" name="name" placeholder="Search for Games">
           </form>
         </div>
         <ul>
-          <li>
+            {% if loginbutton %}
+            <li>
             <div class="dropdown">
               <a class="drop-button">
-                <img
-                  class="navdiv-icon"
-                  src="../static/images/person.png"
-                  alt=""
-                />
+                <img class="navdiv-icon" src="../static/images/person.png" alt="">
               </a>
               <div class="dropdown-content">
                 <a href="{{ url_for('login') }}">Log In</a>
@@ -50,19 +36,9 @@
               </div>
             </div>
           </li>
-          <li>
-            <a href="/"
-              ><img class="navdiv-icon" src="../static/images/home.png" alt=""
-            /></a>
-          </li>
-          <li>
-            <a href="/logout"
-              ><img
-                class="navdiv-icon"
-                src="../static/images/Logout.png"
-                alt=""
-            /></a>
-          </li>
+          {% endif %}
+          <li><a href="/"><img class="navdiv-icon" src="../static/images/home.png" alt=""></a></li>
+          <li><a href="/logout"><img class="navdiv-icon" src="../static/images/Logout.png" alt=""></a></li>
         </ul>
       </div>
     </nav>

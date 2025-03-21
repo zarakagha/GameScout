@@ -247,7 +247,6 @@
   width: 100%;
   height: 65vh;
   position: relative;
-  display: flex;
   background: #000000;
   color: black;
 }

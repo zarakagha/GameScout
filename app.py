@@ -48,7 +48,8 @@ firstnameRegex=r'^[a-zA-Z]+$'
 lastnameRegex=r'^[a-zA-Z]+$'
 usernameRegex=r'^[a-zA-Z0-9]+$'
 emailRegex=r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
-passwordRegex=r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+passwordRegex=r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d\W_]{8,}$"
+
 
 #creates a variable to hold sessiondata and sends an address to the API call class
 sessionData = SessionData()
@@ -372,9 +373,9 @@ def signup():
             elif not re.match(passwordRegex,password):
               return "please enter a valid password",400
             #checks if user already exists by checking if the username is taken
-            exists = users.select("SELECT * FROM Users WHERE username = %s;",username)
+            exists = users.select("SELECT * FROM Users WHERE username = %s OR email = %s;",username,email)
             if exists:
-              return "user already exists",400
+              return render_template("signup.html",hasAccount = True)
             #adds the new user to the database
             new_user =users.insert(firstname=firstname,lastname=lastname,username=username,password=password,email=email,isAdmin=False)
             
@@ -382,7 +383,7 @@ def signup():
             return redirect("/login")
         else:
             #renders signup page
-            return render_template("signup.html")
+            return render_template("signup.html",hasAccount = False)
 '''
 This is a special function that will add a game to the wishlist. It will use the gameid
 to find the game and add the game to the users wishlist if they are logged on.

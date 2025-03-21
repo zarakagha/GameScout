@@ -19,6 +19,9 @@
                 </a>
             </div>
             <h1>Sign Up</h1>
+            {% if hasAccount %}
+            <span class="error-text">Username or Email is in use</span>
+            {% endif %}
             <div class="input-box">
                 <input type="text" placeholder="First Name" id="firstname" name="firstname">
                 <span id="error-text-fname" class="error-text hidden">First Name must only have letters</span>
@@ -31,7 +34,7 @@
             </div>
             <div class="input-box">
                 <input class="User" type="text" placeholder="Username" id="username" name="username">
-                <span id="error-text-username" class="error-text hidden">Username taken</span>
+                <span id="error-text-username" class="error-text hidden">Username taken or invalid</span>
                 <i></i>
             </div>
             <div class="input-box">
@@ -41,7 +44,7 @@
             </div>
             <div class="input-box">
                 <input type="password" placeholder="Password" id="password" name="password">
-                <span id="error-text-password" class="error-text hidden">Password must be atleast 8 characers long</span>
+                <span id="error-text-password" class="error-text hidden">Must be 8 characters, one capital letter, and one number</span>
                 <i></i>
             </div>
             <button type="submit" class="btn" value="submit">Sign Up</button>

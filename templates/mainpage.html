@@ -30,7 +30,7 @@
                             </a>
                             <div class="dropdown-content">
                                 <a href="{{ url_for('login') }}">Log In</a>
-                                <a href="{{ url_for('signup') }}">Sign Up</a>
+                                <a href="{{ url_for('signup'),hasAccount = False }}">Sign Up</a>
                             </div>
                         </div>
                     </li>

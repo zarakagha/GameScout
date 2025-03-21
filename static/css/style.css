@@ -769,8 +769,8 @@ body th ,
   justify-items: center;
   align-items: center;
   
-  
 }
+
 .edit-btn-user{
  
 }
@@ -785,6 +785,20 @@ body th ,
 .account-delete{
   height: 50px;
   width: 50px;
+}
+
+.game-options{
+  width: 100%;
+  height: auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: 50px 50px;
+  grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+  background-color: #000000;
+  color: black;
+  justify-items: center;
+  align-items: center;
+  
 }
 
 

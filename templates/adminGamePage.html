@@ -1,0 +1,72 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameScout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" /> 
+    <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
+</head>
+
+<body class="mainpage-body">
+    <nav class="nav_bar">
+        <div class="nav_div">
+            <div class="logo"><a href="#">
+                <img src="../static/images/GameScout-logo.png" alt=""> </a></div>
+                <h1 class = "admin-title">Users</h1>
+            <ul>
+                
+                    
+                <li><a href="/admin"><img class="navdiv-icon" src="../static/images/home.png" alt=""></a></li>
+                <li><a href="/logout"><img class="navdiv-icon" src="../static/images/Logout.png" alt=""></a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div class =  "games-options">
+        <form method = "POST">
+            <button value="submit">Submit</button>
+            {% for key,value in gameStoreArray %}
+
+                <div>{{value[0]}}</div>
+                
+                <select class = "game-form" name="{{value[0]}}" id="filter"  onchange = ""  >
+                    {% if value[1] == 1 %}
+                        <option value="1" selected >Enabled</option>
+                        <option value="0">Disabled</option>
+                    {% endif %}
+                    {% if value[1] ==0 %}
+                        <option value="0"selected>Disabled</option>
+                        <option value="1"  >Enabled</option>
+                    {% endif %}
+                        
+                </select>
+            {% endfor %}
+        </form>
+        
+        
+       
+                    
+    </div>      
+            
+
+    
+        
+            
+    
+    
+    
+    
+    
+    
+   
+</body>
+<!--<script src="{{ url_for('static', filename='js/accountsScript.js') }}"></script>-->
+</html>
+

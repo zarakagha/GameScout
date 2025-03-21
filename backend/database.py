@@ -111,3 +111,38 @@ class WishListDatabase(Database):
             connection.close()
 
         return value
+
+
+class Gamestores(Database):
+    def __init__(self):
+        super().__init__()
+
+   
+      
+    def select(self,SQL,*args):
+        connection = self.DBOpen()
+
+        try:
+            cursor = connection.cursor()
+            cursor.execute("USE GameScout;")
+            cursor.execute(SQL,args)
+            value = cursor.fetchall()
+        finally:
+            connection.commit()
+            connection.close()
+
+        return value
+    
+    def update(self,SQL,*args):
+        connection = self.DBOpen()
+
+        try:
+            cursor = connection.cursor()
+            cursor.execute("USE GameScout;")
+            cursor.execute(SQL,args)
+            value = cursor.fetchall()
+        finally:
+            connection.commit()
+            connection.close()
+
+        

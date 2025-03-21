@@ -41,6 +41,7 @@ Session(app)
 
 users = database.UsersDatabase()
 WishList = database.WishListDatabase()
+Gamestores = database.Gamestores()
 
 
 '''class user(db.Model):
@@ -53,6 +54,7 @@ WishList = database.WishListDatabase()
       password=db.Column(db.String(100),nullable=False)
       isadmin = db.Column(db.Boolean, default=False, nullable=False)
       '''
+
 class games(db.Model):
       __tablename__ = 'games'
       id=db.Column(db.Integer, primary_key=True)
@@ -130,6 +132,7 @@ def adminUser(id):
       user = users.select("SELECT * FROM Users WHERE id = %s;",id)
       print(user)
       return render_template("adminUser.html",user = user[0])
+
 @app.route('/adminDelete/<id>')
 def adminDelete(id):
      sql = "DELETE FROM WishList WHERE userID = %s;"
@@ -137,12 +140,32 @@ def adminDelete(id):
      sql = "DELETE FROM Users WHERE id = %s;"
      users.remove(sql,id)
      return redirect('/accounts')
-@app.route('/adminGamePage')
+
+@app.route('/adminGamePage',methods = ["POST","GET"])
 def adminGamePage():
-      return render_template("adminGamePage.html")
-@app.route('/adminGame')
-def adminGame():
-      return render_template("adminGame.html")
+      gameStoreArray = {2:"GamersGate",3:"GreenManGaming",7:"GOG",8:"Orgin",
+                        11:"Humble",13: "Uplay",15:"Fanatical",21:"WinGameStore",23:"GameBillet",
+                        24:"Voidu",25:"Epic Games Store",27:"Gamesplanet",28:"Gamesload",29:"2Game",
+                        30:"IndieGala",31:"BlizzardShop",33:"DLGamer",34:"Noctre",35:"DreamGame"}
+      
+      sql = "SELECT * FROM Gamestores;"
+      games = Gamestores.select(sql)
+
+      gameDict = {}
+      for i in range(len(games)):
+           gameDict[games[i]["id"]] = [gameStoreArray[games[i]["id"]],games[i]["enabled"]]
+
+      if request.method == "POST":
+            sql = "UPDATE Gamestores SET enabled = %s WHERE id = %s;"
+            for key,values in gameDict.items():
+                en=request.form.get(values[0])
+                Gamestores.update(sql,int(en),key)
+
+            return redirect("/adminGamePage")
+           
+
+      return render_template("adminGamePage.html",gameStoreArray = gameDict.items())
+
 
 @app.route('/logout')
 def logout():

@@ -22,6 +22,7 @@
                 </form>
                 </div>
             <ul>
+                {% if loginbutton %}
                 <li>
                     <div class="dropdown">
                         <a class="drop-button">
@@ -33,8 +34,9 @@
                         </div>
                     </div>
                 </li>
+                {% endif %}
                 <li><a href="/wishlist"><img class="navdiv-icon" src="../static/images/heart.png" alt=""></a></li>
-                <li><a href=""><img class="navdiv-icon" src="../static/images/Logout.png" alt=""></a></li>
+                <li><a href="/logout"><img class="navdiv-icon" src="../static/images/Logout.png" alt=""></a></li>
             </ul>
         </div>
     </nav>

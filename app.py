@@ -105,10 +105,42 @@ def admin():
            
             return render_template("admin.html")
 
-@app.route('/adminUser/<id>')
+@app.route('/adminUser/<id>',methods = ["POST","GET"])
 def adminUser(id):
+      
+      
+      if request.method == "POST":
+           
+           username = request.form.get("username")
+           firstname = request.form.get("firstname")
+           lastname = request.form.get("lastname")
+           email = request.form.get("email")
+           password = request.form.get("password")
+           
+           
+           
+           if username != None:
+                sql = "UPDATE Users SET username = %s WHERE id =%s;"
+                users.select(sql,username,id)
+
+           if firstname != None:
+                sql = "UPDATE Users SET firstname = %s WHERE id =%s;"
+                users.select(sql,firstname,id)   
+
+           if lastname != None:
+                sql = "UPDATE Users SET lastname = %s WHERE id =%s;"
+                users.select(sql,lastname,id)
+                
+           if email != None:
+                sql = "UPDATE Users SET email = %s WHERE id =%s;"
+                users.select(sql,email,id)  
+
+           if password != None:
+                sql = "UPDATE Users SET password = %s WHERE id =%s;"
+                users.select(sql,password,id) 
+           
       user = users.select("SELECT * FROM Users WHERE id = %s;",id)
-      print(user)
+           
       return render_template("adminUser.html",user = user[0])
 
 @app.route('/adminDelete/<id>')

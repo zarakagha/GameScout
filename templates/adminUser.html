@@ -52,24 +52,18 @@
 
     <div class="user-options">
       <div class="user-options-wrapper">
-        <form method="POST">
+        <form  id= "adminUser-form" method="POST"> 
           <div class="admin-user-item-wrapper">
             <p class="admin-user-item">
-              ID: <span id="identity">{{user['id']}} </span>
+              ID: <span id="identity">{{user['id']}}</span>
             </p>
-            <button class="edit-btn-user" id="button1">
-              <img
-                class="account-edit"
-                src="../static/images/editIcon.webp"
-                alt=""
-              />
-            </button>
+            
           </div>
           <div class="admin-user-item-wrapper">
             <p class="admin-user-item">
-              Username:<span id="username"> {{user['username']}}</span>
+              Username:<span id="username">{{user['username']}}</span>
             </p>
-            <button class="edit-btn-user" id="button2">
+            <button class="edit-btn-user" id="button2" type="button">
               <img
                 class="account-edit"
                 src="../static/images/editIcon.webp"
@@ -81,7 +75,7 @@
             <p class="admin-user-item">
               First name: <span id="firstname">{{user['firstname']}}</span>
             </p>
-            <button class="edit-btn-user" id="button3">
+            <button class="edit-btn-user" id="button3" type="button">
               <img
                 class="account-edit"
                 src="../static/images/editIcon.webp"
@@ -93,7 +87,7 @@
             <p class="admin-user-item">
               Last name: <span id="lastname">{{user['lastname']}}</span>
             </p>
-            <button class="edit-btn-user" id="button4">
+            <button class="edit-btn-user" id="button4" type="button">
               <img
                 class="account-edit"
                 src="../static/images/editIcon.webp"
@@ -105,7 +99,7 @@
             <p class="admin-user-item">
               Email: <span id="email">{{user['email']}}</span>
             </p>
-            <button class="edit-btn-user" id="button5">
+            <button class="edit-btn-user" id="button5" type="button">
               <img
                 class="account-edit"
                 src="../static/images/editIcon.webp"
@@ -117,7 +111,7 @@
             <p class="admin-user-item">
               Password: <span id="password">{{user['password']}}</span>
             </p>
-            <button class="edit-btn-user" id="button6">
+            <button class="edit-btn-user" id="button6" type="button">
               <img
                 class="account-edit"
                 src="../static/images/editIcon.webp"

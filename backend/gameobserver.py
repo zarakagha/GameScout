@@ -68,6 +68,9 @@ class WishlistGame(Subject):
             sqludp = "UPDATE WishList SET price = %s WHERE gameID = %s;"
             WishList.select(sqludp,lowest_price,game_id)
             WishlistGame.NotifyObservers(game_id)
+        else:
+            sqludp = "UPDATE WishList SET price = %s WHERE gameID = %s;"
+            WishList.select(sqludp, lowest_price, game_id)
     #get current price of game function
     def getState(observer):
         sql ="SELECT updateuser FROM Users WHERE id = %s;"

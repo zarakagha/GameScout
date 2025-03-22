@@ -11,11 +11,13 @@ Flask-Session==0.8.0
 Flask-SQLAlchemy==3.1.1
 Flask-WTF==1.2.2
 greenlet==3.1.1
+gunicorn==23.0.0
 idna==3.10
 itsdangerous==2.2.0
 Jinja2==3.1.6
 MarkupSafe==3.0.2
 msgspec==0.19.0
+packaging==24.2
 pycparser==2.22
 PyMySQL==1.1.1
 requests==2.32.3

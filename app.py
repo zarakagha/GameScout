@@ -186,8 +186,11 @@ def adminUser(id):
            
            #checks is username is changed then updates the database if it is changed
            if username != None:
-                sql = "UPDATE Users SET username = %s WHERE id =%s;"
-                users.select(sql,username,id)
+                
+                sql = "SELECT * FROM Users WHERE username = %s;"
+                if len(users.select(sql,username)) == 0:
+                    sql = "UPDATE Users SET username = %s WHERE id =%s;"
+                    users.select(sql,username,id)
 
            #checks is firstname is changed then updates the database if it is changed
            if firstname != None:
@@ -199,8 +202,10 @@ def adminUser(id):
                 users.select(sql,lastname,id)
            #checks is email is changed then updates the database if it is changed     
            if email != None:
-                sql = "UPDATE Users SET email = %s WHERE id =%s;"
-                users.select(sql,email,id)  
+                sql = "SELECT * FROM Users WHERE email = %s;"
+                if len(users.select(sql,email)) == 0:
+                    sql = "UPDATE Users SET email = %s WHERE id =%s;"
+                    users.select(sql,email,id)  
            
            #checks is password is changed then updates the database if it is changed
            if password != None:

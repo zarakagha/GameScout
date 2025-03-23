@@ -18,7 +18,7 @@ import threading
 from backend.sessionVariables import SessionData
 from backend.API import API
 from backend.gameobserver import WishlistGame,Shopper
-
+import time
 
 #create the flask app
 app = Flask(__name__)
@@ -331,11 +331,15 @@ def login():
                         return redirect ('/admin')
                   else:
                         #Runs API to load the wishlist
+                        
                         api.runWishAPI(user[0]["id"])
                         #checks games in wishlist to see if there are better deals for them
+                        
                         for key, value in sessionData.gamedetailDict.items():
-                             WishlistGame.setState(value[4])
-
+                             WishlistGame.setState(value)
+                             
+                        
+                      
                     
                         #sends user to mainpage
                         return redirect ('/')

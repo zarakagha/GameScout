@@ -55,22 +55,23 @@ class WishlistGame(Subject):
             userid = i["userID"]
             Shopper.update(userid)
     #set the state of the subject (set the price within the database)
-    def setState(game_id):
+    def setState(game):
         #set new price into database if it is lower (use the getState() function to possibly retreive from database)
         #call notifyObservers() if it is lower
-        CurrGameObj = DealForGameSimpleFactory.GetGameDealsAcrossStores(game_id)
-        wishlist=CurrGameObj.getWishListFormatDict()
-        AcquiredWishlistList = wishlist[str(CurrGameObj.gameSteamAppId())]
-        lowest_price = AcquiredWishlistList[1]
+        
+        lowest_price = game[1]
         sqlsel = "SELECT price FROM WishList Where gameID = %s;"
-        databaseprice = WishList.select(sqlsel,game_id)
+        databaseprice = WishList.select(sqlsel,game[4])
+        
         if(lowest_price<databaseprice[0]["price"]):
+            
             sqludp = "UPDATE WishList SET price = %s WHERE gameID = %s;"
-            WishList.select(sqludp,lowest_price,game_id)
-            WishlistGame.NotifyObservers(game_id)
+            WishList.select(sqludp,lowest_price,game[4])
+            WishlistGame.NotifyObservers(game[4])
         else:
             sqludp = "UPDATE WishList SET price = %s WHERE gameID = %s;"
-            WishList.select(sqludp, lowest_price, game_id)
+            WishList.select(sqludp, lowest_price, game[4])
+        
     #get current price of game function
     def getState(observer):
         sql ="SELECT updateuser FROM Users WHERE id = %s;"

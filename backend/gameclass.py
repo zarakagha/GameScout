@@ -3,6 +3,7 @@
 from backend.ConvertPrice import ConvertUSDToCad
 from backend.GetSteamPriceCadForGame import get_inital_price
 from backend.StoreNameAndPrice import StoreIDAction
+import requests
 
 class Game:
     #initalization of game Object
@@ -15,6 +16,7 @@ class Game:
         self.imageURL = ""
         self.NSFW = False
         self.cheapSharkGeneralDealURL = "https://www.cheapshark.com/redirect?dealID="
+        self.gameDetails = None
         self.list_of_prices = []
         self.list_of_game_stores = []
         self.list_of_savings = []
@@ -26,6 +28,9 @@ class Game:
         
 
     #setters
+    def setGameDetails(self, cheapsharkgameID):
+        pass
+    
     def setGameName(self, Game_name):
         self.name = str(Game_name)
     
@@ -124,9 +129,93 @@ class Game:
         print(self.wish_list_format)
         return self.wish_list_format
     
+    def getGameDetails(self):
+        return self.gameDetails
+    
     #function to sort prices from cheapest to highest
     def sortPrice(self):
         return self.list_of_prices.sort()
     
     def sortSavings(self):
         return self.list_of_savings.sort()
+
+
+class lowPriceGame(Game):
+    def __init__(self, cheapsharkID):
+        super().__init__(cheapsharkID)
+        
+    def setGameDetails(self):
+        from backend.checkNSFW import CheckGameisNSFW
+        #initalize game acquired variable and iterator variable
+        gameAcquired = False
+        i = 0
+        #while we have not got a game
+        while not gameAcquired:
+            #request getting the game
+            gameDetails = requests.get("https://www.cheapshark.com/api/1.0/deals?upperprice=14&storeID=1&onSale=1&maxAge=300").json()
+            #check if the game acquired is NSFW, skip this game if it is the case
+            if CheckGameisNSFW.isNSFWGame(gameDetails[i]["steamAppID"]):
+                i = i + 1
+                continue
+            #if it is not NSFW, we have successfully got a game and return the game deals information along with the game id.
+            else:
+                self.cheapsharkgameid = gameDetails[i]["gameID"]
+                self.gameDetails = requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(gameDetails[i]["gameID"])).json()
+                gameAcquired = True
+
+class midPriceGame(Game):
+    def __init__(self, cheapsharkID):
+        super().__init__(cheapsharkID)
+
+    def setGameDetails(self):
+        from backend.checkNSFW import CheckGameisNSFW
+        #initalize game acquired variable and iterator variable
+        gameAcquired = False
+        i = 0
+        #while we have not got a game
+        while not gameAcquired:
+            #request getting the game
+            gameDetails = requests.get("https://www.cheapshark.com/api/1.0/deals?upperprice=28&lowerPrice=14&storeID=1&onSale=1&maxAge=300").json()
+            #check if the game acquired is NSFW, skip this game if it is the case
+            if CheckGameisNSFW.isNSFWGame(gameDetails[i]["steamAppID"]):
+                i = i + 1
+                continue
+            #if it is not NSFW, we have successfully got a game and return the game deals information along with the game id.
+            else:
+                self.cheapsharkgameid = gameDetails[i]["gameID"]
+                self.gameDetails = requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(gameDetails[i]["gameID"])).json()
+                gameAcquired = True
+
+class highPriceGame(Game):
+    def __init__(self, cheapsharkID):
+        super().__init__(cheapsharkID)
+
+    def setGameDetails(self):
+        from backend.checkNSFW import CheckGameisNSFW
+        #initalize game acquired variable and iterator variable
+        gameAcquired = False
+        i = 0
+        #while we have not got a game
+        while not gameAcquired:
+            #request getting the game
+            gameDetails = requests.get("https://www.cheapshark.com/api/1.0/deals?lowerPrice=33&storeID=1&onSale=1&maxAge=300").json()
+            #check if the game acquired is NSFW, skip this game if it is the case
+            if CheckGameisNSFW.isNSFWGame(gameDetails[i]["steamAppID"]):
+                i = i + 1
+                continue
+            #if it is not NSFW, we have successfully got a game and return the game deals information along with the game id.
+            else:
+                self.cheapsharkgameid = gameDetails[i]["gameID"]
+                self.gameDetails = requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(gameDetails[i]["gameID"])).json()
+                gameAcquired = True
+
+class specificGame(Game):
+    def __init__(self, cheapsharkID):
+        super().__init__(cheapsharkID)
+        
+    def setGameDetails(self):
+        #get the game details
+        self.gameDetails = requests.get("https://www.cheapshark.com/api/1.0/games?id={}".format(self.cheapsharkgameid)).json()
+        #return the game deals information and the gameID
+
+    

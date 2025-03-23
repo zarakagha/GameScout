@@ -820,6 +820,12 @@ body th,
   flex-grow: 1;
 }
 
+.no-games-error{
+  color: white;
+  font-size: 50px;
+  text-align: center;
+}
+
 .edit-btn-user {
   background: none;
   border: none;

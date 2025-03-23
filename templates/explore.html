@@ -42,7 +42,7 @@
     <div class="explorePage-game_list">
       <div class="box left"></div>
       {% if error %}
-      <p>{{error}}</p>
+      <p class = "no-games-error">{{error}}</p>
       {% endif %}
       <div class="middle">
         {% for item in game_list %}

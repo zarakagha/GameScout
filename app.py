@@ -540,7 +540,7 @@ def game():
         return redirect("/",error="please enter game name")
    #No games were found for the name
    if len(noNSFWGameList) == 0:
-         error="no games found"
+         error="No games found"
          return render_template("explore.html",error=error)  
    #Games were found and the games are sent to the explore.html to be displayed
    if gamename:
